@@ -25,8 +25,22 @@
         <h2 class="hero__subheading fade-in-slow">
             -- Jerry Garcia
         </h2>
-        <audio class="hero__audio fade-in-very-slow" controls
-            src="./audio/fracos_2024-03-06/06-franklins-tower.mp3"></audio>
+        <div class="audio">
+            <audio id="hero-audio" class="audio__file hero__audio"
+                src="./audio/fracos_2024-03-06/01-secrets.mp3"></audio>
+            <div id="hero-audio-controls" class="audio__controls hero__audio-controls fade-in-slow">
+                <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                <button class="button button--pause hidden">
+                    <img src="./icons/pause-icon.svg" />
+                </button>
+                <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+            </div>
+            <div class="audio__track-info">
+                <h1 class="track-title">Franklin's Tower</h1>
+                <h2 class="track-artist">The Grateful Dead</h2>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -83,45 +97,125 @@
 
         <section id="recordings" class="section">
             <h2 class="section__heading">Recordings</h2>
-            <article class="recording">
-                <h3 class="recording__title">Live at Fraco's </h3>
-                <time datetime="2024-03-06">3/6/2024</time>
-                <img src="./images/fracos-2024-03-06.jpeg" alt="The Band on stage at Fraco's bar in Littleton">
-                <div class="track">
-                    <h4 class="track__title">Secrets</h4>
-                    <h5 class="track__artist">Billy Strings</h5>
-                    <audio class="track__audio" controls src="./audio/fracos_2024-03-06/01-secrets.mp3"></audio>
-                </div>
-                <div class="track">
-                    <h4 class="track__title">The Music's Hot / Use Me</h4>
-                    <h5 class="track__artist">Chris Robinson Brotherhood / Bill Withers</h5>
-                    <audio class="track__audio" controls
-                        src="./audio/fracos_2024-03-06/02-musics-hot-use-me.mp3"></audio>
-                </div>
-                <div class="track">
-                    <h4 class="track__title">Part of the Process</h4>
-                    <h5 class="track__artist">Morcheeba</h5>
-                    <audio class="track__audio" controls
-                        src="./audio/fracos_2024-03-06/03-part-of-the-process.mp3"></audio>
-                </div>
-                <div class="track">
-                    <h4 class="track__title">ACDC Bag / Come Together</h4>
-                    <h5 class="track__artist">Phish / Beatles</h5>
-                    <audio class="track__audio" controls
-                        src="./audio/fracos_2024-03-06/04-acdc-bag-come-together.mp3"></audio>
-                </div>
-                <div class="track">
-                    <h4 class="track__title">Show Me How</h4>
-                    <h5 class="track__artist">Men I Trust</h5>
-                    <audio class="track__audio" controls src="./audio/fracos_2024-03-06/05-show-me-how.mp3"></audio>
-                </div>
-                <div class="track">
-                    <h4 class="track__title">Franklin's Tower</h4>
-                    <h5 class="track__artist">Grateful Dead</h5>
-                    <audio class="track__audio" controls src="./audio/fracos_2024-03-06/06-franklins-tower.mp3"></audio>
-                </div>
+            <div class="recordings-container">
+                <article class="recording">
+                    <h3 class="section__subheading recording__title">Live at Fraco's - <time
+                            datetime="2024-03-06">3/6/2024</time></h3>
+                    <img class="recordings__image" src="./images/fracos-2024-03-06.jpeg"
+                        alt="The Band on stage at Fraco's bar in Littleton">
 
-            </article>
+                    <!-- START AUDIO COMPONENT -->
+                    <!-- SECRETS BY BILLY STRINGS -->
+                    <div class="audio">
+                        <audio class="audio__file" src="./audio/fracos_2024-03-06/01-secrets.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">Secrets</h1>
+                            <h2 class="track-artist">Billy Strings</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+
+                    <!-- START AUDIO COMPONENT -->
+                    <div class="audio">
+                        <audio class="audio__file" src="./audio/fracos_2024-03-06/02-musics-hot-use-me.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">The Music's Hot / Use Me</h1>
+                            <h2 class="track-artist">The Chris Robinson Brotherhood / Bill Withers</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+
+                    <!-- START AUDIO COMPONENT -->
+                    <div class="audio">
+                        <audio class="audio__file" src="./audio/fracos_2024-03-06/03-part-of-the-process.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">Part of the Process</h1>
+                            <h2 class="track-artist">Morcheeba</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+
+                    <!-- START AUDIO COMPONENT -->
+                    <div class="audio">
+                        <audio class="audio__file"
+                            src="./audio/fracos_2024-03-06/04-acdc-bag-come-together.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">ACDC Bag / Come Together</h1>
+                            <h2 class="track-artist">Phish / The Beatles</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+
+                    <!-- START AUDIO COMPONENT -->
+                    <div class="audio">
+                        <audio class="audio__file" src="./audio/fracos_2024-03-06/05-show-me-how.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">Show Me How</h1>
+                            <h2 class="track-artist">Men I Trust</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+
+                    <!-- START AUDIO COMPONENT -->
+                    <div class="audio">
+                        <audio class="audio__file" src="./audio/fracos_2024-03-06/06-franklins-tower.mp3"></audio>
+                        <div class="audio__controls">
+                            <button class="button button--play"><img src="./icons/play-icon.svg" /></button>
+                            <button class="button button--pause hidden">
+                                <img src="./icons/pause-icon.svg" />
+                            </button>
+                            <button class="button button--volume-down"><img src="./icons/minus-icon.svg" /></button>
+                            <button class="button button--volume-up"><img src="./icons/plus-icon.svg" /></button>
+                        </div>
+                        <div class="audio__track-info">
+                            <h1 class="track-title">Franklin's Tower</h1>
+                            <h2 class="track-artist">The Grateful Dead</h2>
+                        </div>
+                    </div>
+                    <!-- END AUDIO COMPONENT -->
+                </article>
+
+            </div>
         </section>
 
         <section id="mailing-list" class="section">
@@ -144,5 +238,7 @@
             href="https://icons8.com">Icons8</a>
     </footer>
 </body>
+
+<script src="./scripts/index.js"></script>
 
 </html>
