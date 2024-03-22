@@ -1,7 +1,10 @@
 @import url("./base.css");
 
 .hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+  background-image: linear-gradient(
+      rgba(109, 29, 201, 0.4),
+      rgba(109, 29, 201, 0.3)
+    ),
     url("../images/solar-flare.jpeg");
 
   /* Set a specific height */
@@ -37,6 +40,23 @@
   vertical-align: middle;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in-fast {
+  animation: fadeIn 300ms;
+}
+
+.fade-in-slow {
+  animation: fadeIn 2s;
+}
+
 @media (width < 1150px) {
   .hero__heading {
     font-size: 120px;
@@ -55,4 +75,12 @@
   .hero__subheading {
     font-size: 26px;
   }
+}
+
+section {
+  padding: 0 60px;
+}
+
+.section__heading {
+  font-size: 32px;
 }
