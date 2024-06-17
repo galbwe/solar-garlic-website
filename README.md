@@ -4,12 +4,9 @@ Website for Solar Garlic, a Denver jam band.
 
 # Local Development
 
-## With vscode
-
-To get started developing the site with vscode, you will need:
+To get started developing the site, you will need:
 
 1. To install go: https://go.dev/doc/install
-1. Git installed and an optional git extension for vscode, such as [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens).
 1. [GNU make](https://www.gnu.org/software/make/) installed on your system
 1. [reflex](https://github.com/cespare/reflex) installed to hot reload the source code on file changes
 
