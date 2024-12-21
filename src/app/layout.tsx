@@ -39,7 +39,9 @@ export default function RootLayout({
             {title: "Contact", href: "/contact"},
             ]
           }/> 
-        {children}
+        <div className="px-20 py-10">
+          {children}
+        </div>
       </body>
     </html>
   );
