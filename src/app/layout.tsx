@@ -25,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full w-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-purple`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-screen bg-purple`}
       >
         <Nav 
           title="Solar Garlic"
@@ -39,7 +39,7 @@ export default function RootLayout({
             {title: "Contact", href: "/contact"},
             ]
           }/> 
-        <div className="px-20 py-10">
+        <div className="xl:px-20 py-10 w-full">
           {children}
         </div>
       </body>
