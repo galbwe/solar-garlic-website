@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import {NAV_ITEMS} from '@/constants';
 import Nav from "@/components/Nav";
 
 const geistSans = Geist({
@@ -31,14 +32,7 @@ export default function RootLayout({
       >
         <Nav 
           title="Solar Garlic"
-          items={[
-            {title: "Home", href: "/"},
-            {title: "Events", href: "/events"},
-            {title: "Music", href: "/music"},
-            {title: "About", href: "/about"},
-            {title: "Contact", href: "/contact"},
-            ]
-          }/> 
+          items={NAV_ITEMS}/> 
         <div className="xl:px-20 py-10 w-full">
           {children}
         </div>

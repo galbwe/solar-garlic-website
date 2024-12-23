@@ -16,7 +16,12 @@ export default {
           dark: "#0D0216",
           light: "#431E61"
         },
-        yellow: "#FFCB2E",
+        yellow: {
+          light: "#FBDB7A",
+          DEFAULT: "#FFCB2E",
+          dark: "#FFBF00",
+        },
+        accent: "#830C0C",
       },
     },
   },

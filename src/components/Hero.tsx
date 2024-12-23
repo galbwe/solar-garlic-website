@@ -2,6 +2,8 @@ import mountainStars from '../../public/mountain-stars.jpg'
 import sunIcon from '../../public/sun.svg'
 import garlicIcon from '../../public/garlic.svg'
 import Image from 'next/image'
+import NavLinks from './NavLinks'
+import { NAV_ITEMS } from '@/constants'
 
 interface HeroProps {
     title: string,
@@ -11,15 +13,19 @@ interface HeroProps {
 export default function Hero(
     {title}: HeroProps
 ) {
+
+    const navItems = NAV_ITEMS.filter(item => item.href != "/")
+
     return (
         <>
             <section className="flex flex-col justify-center items-center w-full h-full">
-                <h1 className="text-9xl text-yellow">{title}</h1>
-                <div className="flex flex-row gap-6">
-                <Image src={sunIcon} alt='A sun icon' height={120} width={120}/>
-                <Image src={garlicIcon} alt='A garlic icon' height={120} width={120} />
+                <div className="rounded-md p-10 bg-purple-dark/70 flex flex-col justify-center items-center gap-3">
+                    <h1 className="text-9xl text-yellow">{title}</h1>
+                    <div className="flex flex-row gap-6">
+                    </div>
+                    <NavLinks items={navItems} linkSize="text-4xl"/>
                 </div>
-            </section>
+           </section>
             {/* opaque overlay */}
             <div className="-z-40 min-h-full min-w-96 w-full h-auto fixed top-0 left-0 bg-purple-dark opacity-40"/>
             {/* full screen background image */}
