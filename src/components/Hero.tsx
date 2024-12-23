@@ -1,4 +1,5 @@
 import mountainStars from '../../public/mountain-stars.jpg'
+import lionsLair01 from '../../public/solar-garlic-lions-lair-01.jpg'
 import sunIcon from '../../public/sun.svg'
 import garlicIcon from '../../public/garlic.svg'
 import Image from 'next/image'
@@ -29,7 +30,7 @@ export default function Hero(
             {/* opaque overlay */}
             <div className="-z-40 min-h-full min-w-96 w-full h-auto fixed top-0 left-0 bg-purple-dark opacity-40"/>
             {/* full screen background image */}
-            <Image className="-z-50 min-h-full min-w-96 w-full h-auto fixed top-0 left-0" src={mountainStars} alt='A starry night in the mountains.' />
+            <Image className="-z-50 min-h-full min-w-96 w-full h-auto fixed top-0 left-0" src={lionsLair01} alt='A starry night in the mountains.' />
         </>
     )
 

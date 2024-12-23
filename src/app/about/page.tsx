@@ -1,4 +1,5 @@
 import fracosImage from '../../../public/solar-garlic-fracos-01.jpg'
+import bandPhoto from '../../../public/band-photo-01.jpg'
 import Image from "next/image"
 
 export default function About() {
@@ -25,7 +26,7 @@ export default function About() {
                     The band is excited to introduce new music and return to the stage in 2025. See you out there!
                 </p>
             </section>
-            <Image className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded border-2 border-purple-light" src={fracosImage} alt="Solar Garlic on stage at Fracos bar in Littleton."/>
+            <Image className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded border-2 border-purple-light" src={bandPhoto} height={460} width={460} alt="Solar Garlic on stage at Fracos bar in Littleton."/>
         </div>
     )
 }
