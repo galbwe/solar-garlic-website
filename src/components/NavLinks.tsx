@@ -16,7 +16,7 @@ export default function NavLinks({items, linkSize = "text-xl"}: NavLinksProps) {
     ))
 
     return (
-        <ul className="flex flex-row gap-8">
+        <ul className="flex flex-row gap-4 lg:gap-8">
             {listItems}
         </ul>
 
