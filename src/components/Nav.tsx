@@ -6,6 +6,7 @@ import {
     NavItem
 } from '@/types'
 import NavLinks from '@/components/NavLinks'
+import SocialLinks from './SocialLinks'
 
 
 interface NavProps {
@@ -28,7 +29,8 @@ export default function Nav({title, items}: NavProps) {
                 <h2>{title}</h2>
                 <Image src={garlicIcon} alt="Garlic icon" height={25} width={25} />
             </Link>    
-            <NavLinks items={items} />
+            <NavLinks items={items} linkSize='text-2xl'/>
+            <SocialLinks />
         </nav>
     )
 }

@@ -1,0 +1,57 @@
+import { parseJSON, format } from 'date-fns'
+import { tz } from '@date-fns/tz'
+
+import {Event} from '@/types'
+
+
+// TODO: add a link / button to automatically create a google calendar event
+
+
+interface EventCardProps {
+    event: Event
+}
+
+export default function EventCard({event}: EventCardProps) {
+
+    const {title, venue, venueUrl, address, addressUrl, bands, show, cover, timezone = 'America/Denver'} = event
+    
+    const datetime = parseJSON(show, {in: tz(timezone)})
+    const dateFormatted = format(datetime, 'EEEE LLLL do')
+    const showTime = format(datetime, 'haaa')
+
+    return (
+        <div className="bg-purple-dark flex flex-col p-8 rounded min-w-full">
+            <div className="border-b-purple-light border-b-2 flex flex-col">
+                <h2 className="text-4xl text-yellow">{title}</h2>
+                <p className="text-2xl text-white">{dateFormatted}</p>
+            </div>
+            <div className="flex flex-col gap-1 text-xl p-x-4 pt-4">
+                <a className="hover:text-yellow hover:underline" href={venueUrl} target='_blank'>{venue}</a>
+                <a className="hover:text-yellow hover:underline" href={addressUrl} target='_blank'>{address}</a>
+                <p>show {showTime}</p>
+                {
+                    bands.length > 0 && (
+                        <p>With {formatBandList(bands)}</p>
+                    )
+                }
+                {
+                    !!cover && (
+                        <p>${cover} cover</p>
+                    ) 
+                }
+            </div>
+        </div>
+    )
+}
+
+function formatBandList(bands: Array<string>): string {
+    if (bands.length == 0) {
+        return ''
+    } else if (bands.length == 1) {
+        return bands[0]
+    } else if (bands.length == 2) {
+        return bands.join(" and ")
+    }
+    return bands.slice(0, -1).join(", ") + " and " + bands[bands.length - 1]
+
+}

@@ -20,7 +20,7 @@ export default function Hero(
     return (
         <>
             <section className="flex flex-col justify-center items-center w-full h-full">
-                <div className="rounded-md p-10 bg-purple-dark/70 flex flex-col justify-center items-center gap-3">
+                <div className="rounded p-10 bg-purple-dark/70 flex flex-col justify-center items-center gap-3">
                     <h1 className="text-9xl text-yellow">{title}</h1>
                     <div className="flex flex-row gap-6">
                     </div>
