@@ -41,11 +41,11 @@ export default function Nav({title, items}: NavProps) {
                 <h2>{title}</h2>
                 <Image src={garlicIcon} alt="Garlic icon" height={25} width={25} />
             </Link>    
-            <NavLinks items={items} linkSize='text-2xl' onClick={closeMenu}/>
+            <NavLinks items={items} linkSize='text-2xl'/>
             <SocialLinks/>
         </nav>
         {/* nav for mobile */}
-        <div className="lg:hidden flex flex-col">
+        <nav className="lg:hidden flex flex-col">
             <div className="flex flex-row justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light">
                 <Link href="/" className="text-2xl text-yellow flex flex-row gap-2">
                     <Image src={sunIcon} alt="Sun icon" height={25} width={25}/>
@@ -61,12 +61,12 @@ export default function Nav({title, items}: NavProps) {
                 }
             </div>
             {isMenuOpen && (
-                <nav className="bg-purple-dark border-b-2 border-b-purple-light p-4">
+                <div className="bg-purple-dark border-b-2 border-b-purple-light p-4">
                         {/* // menu drawer with nav links */}
                         <NavLinks mobile items={items} linkSize="text-4xl" onClick={closeMenu}/>
-                </nav>
+                </div>
             )}
-        </div>
+        </nav>
         </>
     )
 }

@@ -20,7 +20,7 @@ export default function EventCard({event}: EventCardProps) {
     const showTime = format(datetime, 'haaa')
 
     return (
-        <div className="bg-purple-dark flex flex-col p-8 rounded min-w-full">
+        <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full">
             <div className="border-b-purple-light border-b-2 flex flex-col">
                 <h2 className="text-4xl text-yellow">{title}</h2>
                 <p className="text-2xl text-white">{dateFormatted}</p>
