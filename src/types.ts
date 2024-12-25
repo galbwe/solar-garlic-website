@@ -3,7 +3,6 @@ export interface NavItem {
     href: string,
 }
 
-
 export interface Event {
     title: string
     venue: string
@@ -15,4 +14,12 @@ export interface Event {
     show: string
     timezone?: string
     cover?: number
+}
+
+
+export interface Video {
+    title: string
+    date: string
+    url: string
+    timezone?: string
 }
