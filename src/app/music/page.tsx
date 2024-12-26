@@ -7,11 +7,8 @@ import Image from 'next/image'
 
 import YoutubePlayer from "@/components/YoutubePlayer"
 import { PAST_EVENTS } from "@/constants"
-import youtubeIcon from "../../../public/youtube.svg"
 import chevronDown from "../../../public/chevron-down.svg"
 import chevronLeft from "../../../public/chevron-left.svg"
-
-import {Video, Event} from "@/types"
 
 export default function MusicPage() {
     const events = PAST_EVENTS ?? []
@@ -75,7 +72,16 @@ export default function MusicPage() {
                                                     return (
                                                         <li 
                                                             key={`event-video-${i}-${j}`} 
-                                                            className={`border-b-2 border-b-purple-light cursor-pointer px-3 py-1 flex flex-col bg-${bgColor}`}
+                                                            className={`
+                                                                border-b-2 
+                                                                border-b-purple-light 
+                                                                cursor-pointer 
+                                                                px-3 
+                                                                py-1 
+                                                                flex 
+                                                                flex-col 
+                                                                bg-${bgColor}
+                                                            `}
                                                             onClick={() => {
                                                                 setAutoplay(true)
                                                                 setSelectedVideo(v)
@@ -109,38 +115,13 @@ export default function MusicPage() {
                     items-center
                 `}>
                     <h1 className="text-7xl py-5 text-yellow">Music</h1>
-                    {
-                        selectedVideo ? (
-                            <div className="flex flex-col justify-center items-center">
-                                <YoutubePlayer
-                                    width={1444}
-                                    height={788}
-                                    src={selectedVideo.url}
-                                    autoplay={autoplay}
-                                />
-                            </div>
-                        ) : (
-                            // placeholder if no videos loaded
-                            // link to the band's YouTube Channel as a fallback
-                            <a href="https://www.youtube.com/@Solar_Garlic_Band" target="_blank">
-                                <div
-                                    style={{width: "1444px", height: "788px"}} 
-                                    className={`
-                                        bg-purple-dark 
-                                        border-2 
-                                        border-purple-light 
-                                        rounded 
-                                        flex 
-                                        justify-center 
-                                        items-center`
-                                    }
-                                >
-                                    <Image width={100} height={100} src={youtubeIcon} alt={"Youtube Icon"}/>
-                                </div>
-                            </a>
-                       )
-                    }
-
+                    <YoutubePlayer
+                        width={1444}
+                        height={788}
+                        src={selectedVideo?.url}
+                        autoplay={autoplay}
+                        fallbackUrl='https://www.youtube.com/@Solar_Garlic_Band'
+                    />
                 </div>
             </div>
         </section>
