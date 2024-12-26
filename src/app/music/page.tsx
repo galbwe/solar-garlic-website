@@ -24,10 +24,17 @@ export default function MusicPage() {
     // TODO: get list of past events from an api endpoint
 
     return (
-        <section className="mt-8 h-full px-2 md:px-4 lg:px-8 flex flex-col items-center">
-            <h1 className="text-8xl text-yellow">Music</h1>
-            <div className="flex flex-row h-5/6 w-full">
-                <ul className="rounded border-2 border-purple-light flex flex-col min-w-96 w-1/3 bg-purple-dark overflow-scroll">
+        <section className="h-screen max-h-screen flex flex-col items-center">
+            <div className="flex flex-row h-screen max-h-screen w-screen">
+                <ul className={`
+                    border-r-2 
+                    border-r-purple-light 
+                    flex flex-col 
+                    min-w-96 
+                    max-w-1/3 
+                    h-full
+                    bg-purple-dark overflow-scroll
+                `}>
                     {
                         events.map((e, i) => {
                             const datetime = parseJSON(e.show, {in: tz(e.timezone)})
@@ -94,26 +101,47 @@ export default function MusicPage() {
                         })
                     }
                 </ul>
-                {
-                    selectedVideo ? (
-                        <div className="h-full w-full flex flex-col justify-center items-center">
-                            <YoutubePlayer
-                                width={1000}
-                                height={563}
-                                src={selectedVideo.url}
-                                autoplay={autoplay}
-                            />
-                        </div>
-                    ) : (
-                        // placeholder if no videos loaded
-                        <div
-                            style={{width: "1000px", height: "563px"}} 
-                            className="bg-purple-dark border-2 border-purple-light rounded h-full w-full flex flex-col justify-center items-center flex justify-center items-center" 
-                        >
-                            <Image width={100} height={100} src={youtubeIcon} alt={"Youtube Icon"}/>
-                        </div>
-                    )
-                }
+                <div className={`
+                    w-full
+                    flex
+                    flex-col
+                    justify-start
+                    items-center
+                `}>
+                    <h1 className="text-7xl py-5 text-yellow">Music</h1>
+                    {
+                        selectedVideo ? (
+                            <div className="flex flex-col justify-center items-center">
+                                <YoutubePlayer
+                                    width={1444}
+                                    height={788}
+                                    src={selectedVideo.url}
+                                    autoplay={autoplay}
+                                />
+                            </div>
+                        ) : (
+                            // placeholder if no videos loaded
+                            // link to the band's YouTube Channel as a fallback
+                            <a href="https://www.youtube.com/@Solar_Garlic_Band" target="_blank">
+                                <div
+                                    style={{width: "1444px", height: "788px"}} 
+                                    className={`
+                                        bg-purple-dark 
+                                        border-2 
+                                        border-purple-light 
+                                        rounded 
+                                        flex 
+                                        justify-center 
+                                        items-center`
+                                    }
+                                >
+                                    <Image width={100} height={100} src={youtubeIcon} alt={"Youtube Icon"}/>
+                                </div>
+                            </a>
+                       )
+                    }
+
+                </div>
             </div>
         </section>
     )
