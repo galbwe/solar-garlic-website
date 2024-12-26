@@ -36,7 +36,7 @@ export const EVENTS = [
 export const PAST_EVENTS = [
     {
         title: "Solar Garlic Live at The Roxy",
-        venue: "the Roxy on Broadway",
+        venue: "The Roxy on Broadway",
         show: "2024-11-30T04:00:00",
         timezone: 'America/Denver',
         videos: [
@@ -45,18 +45,39 @@ export const PAST_EVENTS = [
                 artist: "Grateful Dead",
                 original: false,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=_eR9V5wC08z_H7Bz",
-                timezone: 'America/Denver',
             },
             {
-                title: "Live at the Roxy on Broadway - Set 2",
-                url: "https://www.youtube.com/embed/mAO2DMSR228?si=wmsDQwCMaJwlwRhR",
-                timezone: 'America/Denver',
+                title: "Measure of Love",
+                artist: "Solar Garlic",
+                original: true,
+                url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=sOezmeCjiF4VXxG1&amp;start=435",
             },
             {
-                title: "Live at the Roxy on Broadway - Set 3",
-                url: "https://www.youtube.com/embed/64J5J2thvMU?si=fZS_kvTPqIBb2sFz",
-                timezone: 'America/Denver',
+                title: "Funky Bitch",
+                artist: "Phish",
+                original: false,
+                url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=630",
             },
         ],
-    }
+    },
+    {
+        title: "Solar Garlic Live at Fracos",
+        venue: "Fracos",
+        show: "2024-06-07T05:00:00",
+        timezone: 'America/Denver',
+        videos: [
+            {
+                title: "ACDC Bag / Come Together",
+                artist: "Phish / The Beatles",
+                original: false,
+                url: "https://www.youtube.com/embed/kyRLgLgkq5A?si=T-5B9SG0po9j4TxW",
+            },
+            {
+                title: "Franklin's Tower",
+                artist: "The Grateful Dead",
+                original: false,
+                url: "https://www.youtube.com/embed/eHtjRkWy2Mc?si=kFsNgLZFbZgSl2Mh",
+            }
+        ]
+    },
 ]

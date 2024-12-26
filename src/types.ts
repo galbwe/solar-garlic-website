@@ -23,6 +23,4 @@ export interface Video {
     artist?: string
     original?: boolean
     url: string
-    timezone?: string
-    eventIndex?: number
 }
