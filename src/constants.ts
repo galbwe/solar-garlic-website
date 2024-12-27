@@ -1,3 +1,5 @@
+import { v4 as uuid4 } from 'uuid'
+
 export const NAV_ITEMS = [
     {title: "Home", href: "/"},
     {title: "Events", href: "/events"},
@@ -10,6 +12,7 @@ export const NAV_ITEMS = [
 // TODO: move events to an api call
 export const EVENTS = [
     {
+        id: uuid4(),
         title: "Four O'Fern",
         venue: "Bar 404",
         venueUrl: "https://bar404broadway.com/",
@@ -20,6 +23,7 @@ export const EVENTS = [
         timezone: 'America/Denver',
     },
     {
+        id: uuid4(),
         title: "Solar Garlic Live at The Roxy",
         venue: "The Roxy on Broadway",
         venueUrl: "https://broadwayroxy.com/",
@@ -35,114 +39,134 @@ export const EVENTS = [
 
 export const PAST_EVENTS = [
     {
+        id: uuid4(),
         title: "Solar Garlic Live at The Roxy",
         venue: "The Roxy on Broadway",
         show: "2024-11-30T04:00:00",
         timezone: 'America/Denver',
         videos: [
             {
+
+                id: uuid4(),
                 title: "Turn On Your Love Light",
                 artist: "Grateful Dead",
                 original: false,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=_eR9V5wC08z_H7Bz",
             },
             {
+                id: uuid4(),
                 title: "Measure of Love",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=sOezmeCjiF4VXxG1&amp;start=435",
             },
             {
+                id: uuid4(),
                 title: "Funky Bitch",
                 artist: "Phish",
                 original: false,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=630",
             },
             {
+                id: uuid4(),
                 title: "Sweet Sunshine",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=960",
             },
             {
+                id: uuid4(),
                 title: "Spooky",
                 artist: "Classics IV",
                 original: false,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=1260",
             },
             {
+                id: uuid4(),
                 title: "Mountain",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=1785",
             },
             {
+                id: uuid4(),
                 title: "Chinacat Sunflower / I Know You Rider",
                 artist: "Grateful Dead",
                 original: false,
                 url: "https://www.youtube.com/embed/rNgdOjsgs3Q?si=QKpM_IOCoeotHeA0&amp;start=2045",
             },
             {
+                id: uuid4(),
                 title: "Shining Lights",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/mAO2DMSR228?si=S0JNkbY1ROaAuXi9&amp;start=60"
             },
             {
+                id: uuid4(),
                 title: "Cat In The Window",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/mAO2DMSR228?si=S0JNkbY1ROaAuXi9&amp;start=695"
             },
             {
+                id: uuid4(),
                 title: "Show Me How",
                 artist: "Men I Trust",
                 original: false,
                 url: "https://www.youtube.com/embed/mAO2DMSR228?si=S0JNkbY1ROaAuXi9&amp;start=1062"
             },
             {
+                id: uuid4(),
                 title: "Scarlet Begonias / Fire On The Mountain",
                 artist: "Grateful Dead",
                 original: false,
                 url: "https://www.youtube.com/embed/mAO2DMSR228?si=S0JNkbY1ROaAuXi9&amp;start=1345"
             },
             {
+                id: uuid4(),
                 title: "Maybe",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/mAO2DMSR228?si=S0JNkbY1ROaAuXi9&amp;start=2400"
             },
             {
+                id: uuid4(),
                 title: "Music's Hot",
                 artist: "Chris Robinson Brotherhood",
                 original: false,
                 url: "https://www.youtube.com/embed/64J5J2thvMU?si=Gqs6E2XK-c4emcuu&amp;start=0",
             },
             {
+                id: uuid4(),
                 title: "Blue Skies",
                 artist: "Irving Berlin",
                 original: false,
                 url: "https://www.youtube.com/embed/64J5J2thvMU?si=Gqs6E2XK-c4emcuu&amp;start=450",
             },
             {
+                id: uuid4(),
                 title: "17th Avenue",
                 artist: "Solar Garlic",
                 original: true,
                 url: "https://www.youtube.com/embed/64J5J2thvMU?si=Gqs6E2XK-c4emcuu&amp;start=850",
             },
             {
+                id: uuid4(),
                 title: "ACDC Bag / Come Together",
                 artist: "Phish / Beatles",
                 original: false,
                 url: "https://www.youtube.com/embed/64J5J2thvMU?si=Gqs6E2XK-c4emcuu&amp;start=1370",
             },
             {
+                id: uuid4(),
                 title: "Part of the Process",
                 artist: "Morcheeba",
                 original: false,
                 url: "https://www.youtube.com/embed/64J5J2thvMU?si=Gqs6E2XK-c4emcuu&amp;start=2005",
             },
             {
+                id: uuid4(),
                 title: "After Midnight / Funky Duck",
                 artist: "Grateful Dead / Vulfpeck",
                 original: false,
@@ -151,30 +175,35 @@ export const PAST_EVENTS = [
         ],
     },
     {
+        id: uuid4(),
         title: "Solar Garlic Live at Fracos",
         venue: "Fracos",
         show: "2024-06-07T05:00:00",
         timezone: 'America/Denver',
         videos: [
             {
+                id: uuid4(),
                 title: "ACDC Bag / Come Together",
                 artist: "Phish / Beatles",
                 original: false,
                 url: "https://www.youtube.com/embed/kyRLgLgkq5A?si=T-5B9SG0po9j4TxW",
             },
             {
+                id: uuid4(),
                 title: "Franklin's Tower",
                 artist: "Grateful Dead",
                 original: false,
                 url: "https://www.youtube.com/embed/eHtjRkWy2Mc?si=kFsNgLZFbZgSl2Mh",
             },
             {
+                id: uuid4(),
                 title: "Part of the Process",
                 artist: "Morcheeba",
                 original: false,
                 url: "https://www.youtube.com/embed/VKwHHeYWgWI?si=IYdYQSzqSgKaQ548",
             },
             {
+                id: uuid4(),
                 title: "Doin' Things Right",
                 artist: "Billy Strings",
                 original: false,

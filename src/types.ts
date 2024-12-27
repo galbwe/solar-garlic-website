@@ -4,6 +4,7 @@ export interface NavItem {
 }
 
 export interface Event {
+    id: string
     title: string
     venue: string
     venueUrl?: string
@@ -19,6 +20,7 @@ export interface Event {
 
 
 export interface Video {
+    id: string
     title: string
     artist?: string
     original?: boolean
