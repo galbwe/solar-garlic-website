@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import {NAV_ITEMS} from '@/constants';
+import { NAV_ITEMS } from "@/constants";
 import Nav from "@/components/Nav";
 
 const geistSans = Geist({
@@ -17,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Solar Garlic",
-  description: "Solar Garlic is a funky jam band playing around Denver Colorado",
+  description:
+    "Solar Garlic is a funky jam band playing around Denver Colorado",
 };
 
 export default function RootLayout({
@@ -30,11 +31,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple w-screen h-screen`}
       >
-        <Nav 
-          title="Solar Garlic"
-          items={NAV_ITEMS}
-        /> 
-        
+        <Nav title="Solar Garlic" items={NAV_ITEMS} />
+
         {children}
       </body>
     </html>
