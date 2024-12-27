@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
-import {Event, Video} from '@/types'
+import {AccordionGroup, AccordionOption, Event, Video} from '@/types'
 import chevronDown from "../../public/chevron-down.svg"
 import chevronLeft from "../../public/chevron-left.svg"
 
@@ -11,30 +11,15 @@ import chevronLeft from "../../public/chevron-left.svg"
 interface AccordionProps<G, O> {
     groups: Array<AccordionGroup<G, O>>
     onGroupClick?: () => void
-    onOptionClick?: (option: AccordionOption) => void
+    onOptionClick?: (option: AccordionOption<O>) => void
 
 }
-interface AccordionOption<O> {
-    id: string
-    title: string
-    subtext: string
-    data?: O 
-}
-
-interface AccordionGroup<G, O> {
-    id: string
-    title: string
-    subtext: string
-    options: Array<AccordionOption<O>>
-    data?: G
-}
-
 
 export default function Accordion({
     groups,
     onGroupClick = () => {},
     onOptionClick = ({}) => {},
-}: AccordionProps) {
+}: AccordionProps<Event, Video>) {
 
     const [selectedGroup, setSelectedGroup] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -87,12 +72,12 @@ export default function Accordion({
                                     group && selectedGroup && selectedGroup.id === group.id && (
                                         group.options.map((option, j) => {
                                             const bgColor = j % 2 == 0 ? 'purple' : 'purple-dark';
+                                            const border = option && selectedOption && option.id === selectedOption.id ? 'border-y-2 border-y-yellow' : 'border-b-2 border-b-purple-light';
                                             return (
                                                 <li 
                                                     key={`event-video-${i}-${j}`} 
                                                     className={`
-                                                        border-b-2 
-                                                        border-b-purple-light 
+                                                        ${border}
                                                         cursor-pointer 
                                                         px-3 
                                                         py-1 

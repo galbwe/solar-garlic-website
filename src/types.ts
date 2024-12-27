@@ -1,6 +1,16 @@
-export interface NavItem {
-    title: string,
-    href: string,
+export interface AccordionGroup<G, O> {
+    id: string
+    title: string
+    subtext: string
+    options: Array<AccordionOption<O>>
+    data?: G
+}
+
+export interface AccordionOption<O> {
+    id: string
+    title: string
+    subtext: string
+    data?: O 
 }
 
 export interface Event {
@@ -16,6 +26,11 @@ export interface Event {
     timezone?: string
     cover?: number
     videos?: Array<Video>
+}
+
+export interface NavItem {
+    title: string,
+    href: string,
 }
 
 
