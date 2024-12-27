@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { parseJSON, format } from "date-fns";
 import { tz } from "@date-fns/tz";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "@/../tailwind.config";
 
 import YoutubePlayer from "@/components/YoutubePlayer";
 import { PAST_EVENTS } from "@/constants";
@@ -11,6 +13,28 @@ import Accordion from "@/components/Accordion";
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 
 export default function MusicPage() {
+  const fullConfig = resolveConfig(tailwindConfig);
+  const screens = fullConfig.theme.screens;
+  const breakpoints = useMemo(() => getBreakpoints(screens), [screens]);
+  const [breakpoint, setBreakpoint] = useState("");
+
+  // change the current breakpoint when the window size changes
+  // TODO: move this logic to a hook
+  useEffect(() => {
+    const handleResize = () => {
+      const newBreakpoint = getCurrentBreakpoint(breakpoints);
+      if (newBreakpoint != breakpoint) {
+        setBreakpoint(newBreakpoint);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint, breakpoints]);
+
+  const [playerWidth, playerHeight] = getPlayerDimensions(breakpoint);
+
+  // TODO: get list of past events from an api endpoint
   const events = PAST_EVENTS ?? [];
   const defaultEvent = events && events.length > 0 ? events[0] : null;
   const defaultVideo =
@@ -21,8 +45,6 @@ export default function MusicPage() {
     defaultVideo,
   );
   const [autoplay, setAutoplay] = useState<boolean>(false);
-
-  // TODO: get list of past events from an api endpoint
 
   return (
     <section className="h-screen max-h-screen flex flex-col items-center">
@@ -45,8 +67,8 @@ export default function MusicPage() {
         >
           <h1 className="text-7xl py-5 text-yellow">Music</h1>
           <YoutubePlayer
-            width={1444}
-            height={788}
+            width={playerWidth}
+            height={playerHeight}
             src={selectedVideo?.url}
             autoplay={autoplay}
             fallbackUrl="https://www.youtube.com/@Solar_Garlic_Band"
@@ -81,4 +103,40 @@ function getAccordionGroup({
     subtext: displayDate,
     options: (videos ?? []).map(getAccordionOption),
   };
+}
+
+function getCurrentBreakpoint(breakpoints) {
+  let breakpoint = "sm";
+  const width = window.innerWidth;
+  for (const b in breakpoints) {
+    if (width >= breakpoints[b]) {
+      breakpoint = b;
+    }
+  }
+  return breakpoint;
+}
+
+function getPlayerDimensions(breakpoint: string): Array<number> {
+  switch (breakpoint) {
+    case "sm":
+      return [300, 100];
+    case "md":
+      return [500, 200];
+    case "lg":
+      return [600, 250];
+    case "xl":
+      return [900, 491];
+    case "2xl":
+      return [1150, 628];
+    default:
+      return [0, 0];
+  }
+}
+
+function getBreakpoints(screens) {
+  const breakpoints = {};
+  for (const k in screens) {
+    breakpoints[k] = parseInt(screens[k].replace("px", ""));
+  }
+  return breakpoints;
 }

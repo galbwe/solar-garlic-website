@@ -26,6 +26,18 @@ export default function YoutubePlayer({
     } else if (!autoplay && Number(urlParams.get("autoplay")) === 1) {
       youtubeUrl = youtubeUrl.replace("autoplay=1", "autoplay=0");
     }
+    // enable the js api in url params if it is not present
+    if (Number(urlParams.get("enablejsapi")) !== 1) {
+      youtubeUrl = `${youtubeUrl}&enablejsapi=1`;
+    }
+
+    // disable related videos
+    youtubeUrl = youtubeUrl.replace("&rel=1", "");
+    youtubeUrl = `${youtubeUrl}&rel=0`;
+
+    // use white controls instead of red to stay closer to the sites theme
+    youtubeUrl = youtubeUrl.replace("&color=red", "");
+    youtubeUrl = `${youtubeUrl}&color=white`;
 
     return (
       <iframe
