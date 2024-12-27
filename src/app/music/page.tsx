@@ -8,6 +8,8 @@ import YoutubePlayer from "@/components/YoutubePlayer";
 import { PAST_EVENTS } from "@/constants";
 import Accordion from "@/components/Accordion";
 
+import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
+
 export default function MusicPage() {
   const events = PAST_EVENTS ?? [];
   const defaultEvent = events && events.length > 0 ? events[0] : null;
@@ -15,8 +17,10 @@ export default function MusicPage() {
     defaultEvent && defaultEvent.videos && defaultEvent.videos.length > 0
       ? defaultEvent.videos[0]
       : null;
-  const [selectedVideo, setSelectedVideo] = useState(defaultVideo);
-  const [autoplay, setAutoplay] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<Video | null>(
+    defaultVideo,
+  );
+  const [autoplay, setAutoplay] = useState<boolean>(false);
 
   // TODO: get list of past events from an api endpoint
 
@@ -27,7 +31,7 @@ export default function MusicPage() {
           groups={events.map(getAccordionGroup)}
           onOptionClick={(option) => {
             setAutoplay(true);
-            setSelectedVideo(option.data);
+            setSelectedVideo(option?.data || null);
           }}
         />
         <div
@@ -53,7 +57,7 @@ export default function MusicPage() {
   );
 }
 
-function getAccordionOption(video) {
+function getAccordionOption(video: Video): AccordionOption<Video> {
   return {
     id: video.id,
     title: video.title,
@@ -62,13 +66,19 @@ function getAccordionOption(video) {
   };
 }
 
-function getAccordionGroup({ id, venue, show, timezone, videos }) {
+function getAccordionGroup({
+  id,
+  venue,
+  show,
+  videos,
+  timezone = "America/Denver",
+}: Event): AccordionGroup<Event, Video> {
   const datetime = parseJSON(show, { in: tz(timezone) });
   const displayDate = format(datetime, "LLLL do, yyyy");
   return {
     id: id,
     title: venue,
     subtext: displayDate,
-    options: videos.map(getAccordionOption),
+    options: (videos ?? []).map(getAccordionOption),
   };
 }

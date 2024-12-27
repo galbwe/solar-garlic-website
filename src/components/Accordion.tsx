@@ -18,8 +18,12 @@ export default function Accordion({
   onGroupClick = () => {},
   onOptionClick = ({}) => {},
 }: AccordionProps<Event, Video>) {
-  const [selectedGroup, setSelectedGroup] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState<AccordionGroup<
+    Event,
+    Video
+  > | null>(null);
+  const [selectedOption, setSelectedOption] =
+    useState<AccordionOption<Video> | null>(null);
 
   return (
     <ul
@@ -83,14 +87,14 @@ export default function Accordion({
                     <li
                       key={`event-video-${i}-${j}`}
                       className={`
-                                                        ${border}
-                                                        cursor-pointer 
-                                                        px-3 
-                                                        py-1 
-                                                        flex 
-                                                        flex-col 
-                                                        bg-${bgColor}
-                                                    `}
+                          ${border}
+                          cursor-pointer 
+                          px-3 
+                          py-1 
+                          flex 
+                          flex-col 
+                          bg-${bgColor}
+                      `}
                       onClick={() => {
                         setSelectedOption(option);
                         onOptionClick(option);
