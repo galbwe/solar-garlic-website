@@ -8,7 +8,7 @@ import emailIcon from "../../public/email.svg";
 
 export default function SocialLinks() {
   return (
-    <div className="flex flex-row justify-center items-center gap-8 sr-only xl:not-sr-only">
+    <div className="flex flex-row justify-center items-center gap-6 sr-only xl:not-sr-only">
       <a href="https://www.instagram.com/solar_garlic_band/" target="_blank">
         <Image src={instagramIcon} alt="Instagram icon" />
       </a>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 import sunIcon from "../../public/sun.svg";
 import garlicIcon from "../../public/garlic.svg";
 import hamburgerIcon from "../../public/hamburger.svg";
 import closeIcon from "../../public/close.svg";
-import Link from "next/link";
-import Image from "next/image";
 import { NavItem } from "@/types";
 import NavLinks from "@/components/NavLinks";
 import SocialLinks from "@/components/SocialLinks";
@@ -30,8 +30,8 @@ export default function Nav({ title, items }: NavProps) {
 
   return (
     <>
-      {/* nav for large breakpoint and up */}
-      <nav className="hidden lg:flex justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light">
+      {/* nav for xl breakpoint and up */}
+      <nav className="hidden xl:flex justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light">
         <Link href="/" className="text-2xl text-yellow flex flex-row gap-2">
           <Image src={sunIcon} alt="Sun icon" height={25} width={25} />
           <h2>{title}</h2>
@@ -41,7 +41,7 @@ export default function Nav({ title, items }: NavProps) {
         <SocialLinks />
       </nav>
       {/* nav for mobile */}
-      <nav className="lg:hidden flex flex-col">
+      <nav className="xl:hidden flex flex-col">
         <div className="flex flex-row justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light">
           <Link href="/" className="text-2xl text-yellow flex flex-row gap-2">
             <Image src={sunIcon} alt="Sun icon" height={25} width={25} />

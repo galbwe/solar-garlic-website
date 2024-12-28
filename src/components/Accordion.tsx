@@ -31,8 +31,11 @@ export default function Accordion({
             border-r-2 
             border-r-purple-light 
             flex flex-col 
-            min-w-96 
-            max-w-1/3 
+            w-full
+            max-w-full
+            lg:min-w-1/3
+            lg:w-1/3
+            lg:max-w-1/3 
             h-full
             bg-purple-dark
             overflow-scroll

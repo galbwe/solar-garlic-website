@@ -1,37 +1,20 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
 import { parseJSON, format } from "date-fns";
 import { tz } from "@date-fns/tz";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "@/../tailwind.config";
 
 import YoutubePlayer from "@/components/YoutubePlayer";
 import { PAST_EVENTS } from "@/constants";
 import Accordion from "@/components/Accordion";
+import useBreakpoint from "@/hooks/useBreakpoint";
 
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 
 export default function MusicPage() {
-  const fullConfig = resolveConfig(tailwindConfig);
-  const screens = fullConfig.theme.screens;
-  const breakpoints = useMemo(() => getBreakpoints(screens), [screens]);
-  const [breakpoint, setBreakpoint] = useState("");
-
-  // change the current breakpoint when the window size changes
-  // TODO: move this logic to a hook
-  useEffect(() => {
-    const handleResize = () => {
-      const newBreakpoint = getCurrentBreakpoint(breakpoints);
-      if (newBreakpoint != breakpoint) {
-        setBreakpoint(newBreakpoint);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, [breakpoint, breakpoints]);
-
+  const { breakpoint, isBreakpointOrAbove, isBreakpointOrBelow } =
+    useBreakpoint();
+  console.log(breakpoint);
   const [playerWidth, playerHeight] = getPlayerDimensions(breakpoint);
 
   // TODO: get list of past events from an api endpoint
@@ -49,13 +32,15 @@ export default function MusicPage() {
   return (
     <section className="h-screen max-h-screen flex flex-col items-center">
       <div className="flex flex-row h-screen max-h-screen w-screen">
-        <Accordion
-          groups={events.map(getAccordionGroup)}
-          onOptionClick={(option) => {
-            setAutoplay(true);
-            setSelectedVideo(option?.data || null);
-          }}
-        />
+        {isBreakpointOrAbove("xl") && (
+          <Accordion
+            groups={events.map(getAccordionGroup)}
+            onOptionClick={(option) => {
+              setAutoplay(true);
+              setSelectedVideo(option?.data || null);
+            }}
+          />
+        )}
         <div
           className={`
                     w-full
@@ -63,9 +48,11 @@ export default function MusicPage() {
                     flex-col
                     justify-start
                     items-center
+                    gap-4
+                    xl:gap-0
                 `}
         >
-          <h1 className="text-7xl py-5 text-yellow">Music</h1>
+          <h1 className="text-5xl lg:text-7xl py-5 text-yellow">Music</h1>
           <YoutubePlayer
             width={playerWidth}
             height={playerHeight}
@@ -73,6 +60,15 @@ export default function MusicPage() {
             autoplay={autoplay}
             fallbackUrl="https://www.youtube.com/@Solar_Garlic_Band"
           />
+          {isBreakpointOrBelow("lg") && (
+            <Accordion
+              groups={events.map(getAccordionGroup)}
+              onOptionClick={(option) => {
+                setAutoplay(true);
+                setSelectedVideo(option?.data || null);
+              }}
+            />
+          )}
         </div>
       </div>
     </section>
@@ -105,38 +101,20 @@ function getAccordionGroup({
   };
 }
 
-function getCurrentBreakpoint(breakpoints) {
-  let breakpoint = "sm";
-  const width = window.innerWidth;
-  for (const b in breakpoints) {
-    if (width >= breakpoints[b]) {
-      breakpoint = b;
-    }
-  }
-  return breakpoint;
-}
-
+// TODO: make this a prop of VideoPlayer
 function getPlayerDimensions(breakpoint: string): Array<number> {
   switch (breakpoint) {
     case "sm":
-      return [300, 100];
+      return [320, 174];
     case "md":
-      return [500, 200];
+      return [375, 204];
     case "lg":
-      return [600, 250];
+      return [650, 355];
     case "xl":
-      return [900, 491];
+      return [500, 273];
     case "2xl":
-      return [1150, 628];
+      return [1050, 573];
     default:
       return [0, 0];
   }
-}
-
-function getBreakpoints(screens) {
-  const breakpoints = {};
-  for (const k in screens) {
-    breakpoints[k] = parseInt(screens[k].replace("px", ""));
-  }
-  return breakpoints;
 }
