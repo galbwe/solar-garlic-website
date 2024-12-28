@@ -28,15 +28,21 @@ export default function Accordion({
   return (
     <ul
       className={`
-            border-r-2 
+            accordion
+            border-r-0 xl:border-r-2 
             border-r-purple-light 
+            border-t-2 xl:border-t-0
+            border-t-purple-light
             flex flex-col 
             w-full
+            min-w-28
             max-w-full
-            lg:min-w-1/3
-            lg:w-1/3
-            lg:max-w-1/3 
-            h-full
+            min-h-1/4
+            max-h-1/2
+            xl:min-w-80
+            xl:w-80
+            xl:max-w-80
+            xl:h-full
             bg-purple-dark
             overflow-scroll
         `}

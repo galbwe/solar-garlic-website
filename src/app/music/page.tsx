@@ -12,11 +12,7 @@ import useBreakpoint from "@/hooks/useBreakpoint";
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 
 export default function MusicPage() {
-  const { breakpoint, isBreakpointOrAbove, isBreakpointOrBelow } =
-    useBreakpoint();
-  console.log(breakpoint);
-  const [playerWidth, playerHeight] = getPlayerDimensions(breakpoint);
-
+  const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
   // TODO: get list of past events from an api endpoint
   const events = PAST_EVENTS ?? [];
   const defaultEvent = events && events.length > 0 ? events[0] : null;
@@ -52,10 +48,8 @@ export default function MusicPage() {
                     xl:gap-0
                 `}
         >
-          <h1 className="text-5xl lg:text-7xl py-5 text-yellow">Music</h1>
+          <h1 className="hidden xl:flex xl:text-7xl py-5 text-yellow">Music</h1>
           <YoutubePlayer
-            width={playerWidth}
-            height={playerHeight}
             src={selectedVideo?.url}
             autoplay={autoplay}
             fallbackUrl="https://www.youtube.com/@Solar_Garlic_Band"
@@ -99,22 +93,4 @@ function getAccordionGroup({
     subtext: displayDate,
     options: (videos ?? []).map(getAccordionOption),
   };
-}
-
-// TODO: make this a prop of VideoPlayer
-function getPlayerDimensions(breakpoint: string): Array<number> {
-  switch (breakpoint) {
-    case "sm":
-      return [320, 174];
-    case "md":
-      return [375, 204];
-    case "lg":
-      return [650, 355];
-    case "xl":
-      return [500, 273];
-    case "2xl":
-      return [1050, 573];
-    default:
-      return [0, 0];
-  }
 }

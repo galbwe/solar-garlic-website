@@ -1,22 +1,21 @@
 import Image from "next/image";
 
 import youtubeIcon from "../../public/youtube.svg";
+import useBreakpoint from "@/hooks/useBreakpoint";
 
 interface YoutubePlayerProps {
-  height: number;
-  width: number;
   src?: string;
   autoplay?: boolean;
   fallbackUrl: string;
 }
 
 export default function YoutubePlayer({
-  width,
-  height,
   src,
   autoplay = false,
   fallbackUrl,
 }: YoutubePlayerProps) {
+  const { breakpoint } = useBreakpoint();
+  const [videoWidth, videoHeight] = getVideoSize(breakpoint);
   if (src) {
     // set the autoplay parameter in the youtube source url
     const urlParams = new URLSearchParams(src);
@@ -42,8 +41,10 @@ export default function YoutubePlayer({
     return (
       <iframe
         className="rounded border-2 border-purple-light"
-        width={`${width}`}
-        height={`${height}`}
+        style={{
+          width: videoWidth,
+          height: videoHeight,
+        }}
         src={youtubeUrl}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -58,7 +59,7 @@ export default function YoutubePlayer({
   return (
     <a href={fallbackUrl} target="_blank">
       <div
-        style={{ width: `${width}px`, height: `${height}px` }}
+        style={{ width: videoWidth, height: videoHeight }}
         className={`
                     bg-purple-dark 
                     border-2 
@@ -77,4 +78,21 @@ export default function YoutubePlayer({
       </div>
     </a>
   );
+}
+
+function getVideoSize(breakpoint: string): Array<string> {
+  switch (breakpoint) {
+    case "2xl":
+      return ["80%", "80%"];
+    case "xl":
+      return ["100%", "65%"];
+    case "lg":
+      return ["100%", "60%"];
+    case "md":
+      return ["100%", "50%"];
+    case "sm":
+      return ["100%", "35%"];
+    default:
+      return ["500", "300"];
+  }
 }

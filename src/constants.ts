@@ -2,8 +2,8 @@ import { v4 as uuid4 } from "uuid";
 
 export const NAV_ITEMS = [
   { title: "Home", href: "/" },
-  { title: "Events", href: "/events" },
   { title: "Music", href: "/music" },
+  { title: "Events", href: "/events" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
 ];
