@@ -1,5 +1,16 @@
 import { v4 as uuid4 } from "uuid";
 
+export const CONTACT_EMAIL = "solargarlicbanddenver@gmail.com";
+
+export const INSTAGRAM_HANDLE = "@solar_garlic_band";
+
+export const INSTAGRAM_URL = "https://www.instagram.com/solar_garlic_band/";
+
+export const FACEBOOK_URL =
+  "https://www.facebook.com/people/Solar-Garlic-Band/61557279204594/?mibextid=kFxxJD";
+
+export const FACEBOOK_ACCOUNT = "Solar-Garlic-Band";
+
 export const NAV_ITEMS = [
   { title: "Home", href: "/" },
   { title: "Music", href: "/music" },
