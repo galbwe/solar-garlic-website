@@ -1,10 +1,4 @@
-import {
-  CONTACT_EMAIL,
-  INSTAGRAM_URL,
-  INSTAGRAM_HANDLE,
-  FACEBOOK_ACCOUNT,
-  FACEBOOK_URL,
-} from "@/constants";
+import { CONTACT_INFO } from "@/constants";
 
 export default function Contact() {
   return (
@@ -14,33 +8,22 @@ export default function Contact() {
           Contact
         </h1>
         <ul className="w-11/12 xl:w-2/3">
-          <li className="flex flex-col md:flex-row flex-wrap h-15 md:h-10 justify-between">
-            <p className="text-yellow text-xl lg:text-2xl">Email:</p>
-            <a
-              className="hover:underline hover:text-yellow text-lg lg:text-xl"
-              href={`mailto:${CONTACT_EMAIL}`}
-            >
-              {CONTACT_EMAIL}
-            </a>
-          </li>
-          <li className="flex flex-col md:flex-row h-15 md:h-10 justify-between">
-            <p className="text-yellow text-xl lg:text-2xl">Instagram:</p>
-            <a
-              className="hover:underline hover:text-yellow text-lg lg:text-xl"
-              href={INSTAGRAM_URL}
-            >
-              {INSTAGRAM_HANDLE}
-            </a>
-          </li>
-          <li className="flex flex-col md:flex-row h-15 md:h-10 justify-between">
-            <p className="text-yellow text-xl lg:text-2xl">Facebook:</p>
-            <a
-              className="hover:underline hover:text-yellow text-lg lg:text-xl"
-              href={FACEBOOK_URL}
-            >
-              {FACEBOOK_ACCOUNT}
-            </a>
-          </li>
+          {CONTACT_INFO.map(({ label, value, href }) => {
+            return (
+              <li
+                key={`contact-${label}`}
+                className="flex flex-col md:flex-row flex-wrap h-15 md:h-10 justify-between"
+              >
+                <p className="text-yellow text-xl lg:text-2xl">{label}:</p>
+                <a
+                  className="hover:underline hover:text-yellow text-lg lg:text-xl"
+                  href={href}
+                >
+                  {value}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
