@@ -9,6 +9,8 @@ export const INSTAGRAM_URL = "https://www.instagram.com/solar_garlic_band/";
 export const FACEBOOK_URL =
   "https://www.facebook.com/people/Solar-Garlic-Band/61557279204594/?mibextid=kFxxJD";
 
+export const YOUTUBE_URL = "https://www.youtube.com/@solar_garlic_band";
+
 export const FACEBOOK_ACCOUNT = "Solar-Garlic-Band";
 
 export const NAV_ITEMS = [
