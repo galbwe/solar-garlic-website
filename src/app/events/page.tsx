@@ -4,13 +4,14 @@ import djGuysPhoto01 from "../../../public/solar-garlic-dj-guys-01.png";
 import EventCard from "@/components/EventCard";
 import SocialLinks from "@/components/SocialLinks";
 import { EVENTS } from "@/constants";
+import { teko } from "@/fonts";
 
 export default function EventPage() {
   const events = EVENTS;
 
   return (
     <section className="mt-8 px-2 md:px-4 lg:px-8 flex flex-col items-center">
-      <h1 className="text-8xl text-yellow">Events</h1>
+      <h1 className={`${teko.className} text-8xl text-yellow`}>Events</h1>
       <div className="flex flex-row flex-wrap justify-around items-center">
         <div className="flex flex-col gap-4 pt-8 items-center">
           {!!events ? (

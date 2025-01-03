@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { NAV_ITEMS } from "@/constants";
 import Nav from "@/components/Nav";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { notoSans } from "@/fonts";
 
 export const metadata: Metadata = {
   title: "Solar Garlic",
@@ -29,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple w-screen h-screen`}
+        className={`${notoSans.className} antialiased bg-purple w-screen h-screen`}
       >
         <Nav title="Solar Garlic" items={NAV_ITEMS} />
 

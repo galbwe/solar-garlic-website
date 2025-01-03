@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 import chevronDown from "../../public/chevron-down.svg";
 import chevronLeft from "../../public/chevron-left.svg";
+import { teko, notoSansDisplay } from "@/fonts";
 
 interface AccordionProps<G, O> {
   groups: Array<AccordionGroup<G, O>>;
@@ -63,7 +64,9 @@ export default function Accordion({
               }}
             >
               <div className="flex flex-col">
-                <h2 className="text-2xl text-yellow">{group.title}</h2>
+                <h2 className={`${teko.className} text-2xl text-yellow`}>
+                  {group.title}
+                </h2>
                 <p>{group.subtext}</p>
               </div>
               {group && selectedGroup && selectedGroup.id === group.id ? (
@@ -109,7 +112,11 @@ export default function Accordion({
                         onOptionClick(option);
                       }}
                     >
-                      <h2 className="text-lg text-yellow">{option.title}</h2>
+                      <h2
+                        className={`${notoSansDisplay.className} text-lg text-yellow`}
+                      >
+                        {option.title}
+                      </h2>
                       <p>{option.subtext}</p>
                     </li>
                   );

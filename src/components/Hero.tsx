@@ -6,6 +6,7 @@ import lionsLair01 from "../../public/solar-garlic-lions-lair-01.jpg";
 import lionsLair01Small from "../../public/solar-garlic-lions-lair-01-sm.jpg";
 import NavLinks from "./NavLinks";
 import { NAV_ITEMS } from "@/constants";
+import { teko } from "@/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
 import useBreakpoint from "@/hooks/useBreakpoint";
 
@@ -22,7 +23,9 @@ export default function Hero({ title }: HeroProps) {
   return (
     <>
       <section className="h-full flex flex-col justify-center items-center">
-        <div className="max-w-full rounded p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3">
+        <div
+          className={`${teko.className} max-w-full rounded p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3`}
+        >
           <h1 className="text-center text-8xl lg:text-8xl xl:text-9xl text-yellow">
             {title}
           </h1>

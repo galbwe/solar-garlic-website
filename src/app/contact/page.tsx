@@ -1,10 +1,13 @@
 import { CONTACT_INFO } from "@/constants";
+import { teko } from "@/fonts";
 
 export default function Contact() {
   return (
     <section className="w-full h-full flex flex-col justify-start items-center pt-8">
       <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-4 border-2 border-purple-light rounded">
-        <h1 className="text-yellow text-7xl self-center text-center">
+        <h1
+          className={`${teko.className} text-yellow text-7xl self-center text-center`}
+        >
           Contact
         </h1>
         <ul className="w-11/12 xl:w-2/3">

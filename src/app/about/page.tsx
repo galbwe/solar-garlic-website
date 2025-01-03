@@ -1,11 +1,16 @@
 import bandPhoto from "../../../public/band-photo-01.jpg";
 import Image from "next/image";
+import { teko } from "@/fonts";
 
 export default function About() {
   return (
     <div className="w-full flex flex-row flex-wrap justify-center items-center gap-1">
       <section className="mt-8 p-4 md:p-12 text-2xl w-5/6 lg:w-4/5 2xl:w-2/5 flex flex-col gap-3 bg-purple-dark rounded border-2 border-purple-light">
-        <h1 className="text-5xl md:text-7xl text-yellow pb-2">About</h1>
+        <h1
+          className={`${teko.className} text-5xl md:text-7xl text-yellow pb-2`}
+        >
+          About
+        </h1>
         <p>
           Solar Garlic is a Denver-based jam band mixing funk and indie vibes
           into their original music and covers. Brought together in late 2023

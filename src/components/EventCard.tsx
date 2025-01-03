@@ -1,6 +1,7 @@
 import { parseJSON, format } from "date-fns";
 import { tz } from "@date-fns/tz";
 
+import { teko, notoSansDisplay } from "@/fonts";
 import { Event } from "@/types";
 
 // TODO: add a link / button to automatically create a google calendar event
@@ -29,8 +30,10 @@ export default function EventCard({ event }: EventCardProps) {
   return (
     <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full">
       <div className="border-b-purple-light border-b-2 flex flex-col">
-        <h2 className="text-4xl text-yellow">{title}</h2>
-        <p className="text-2xl text-white">{dateFormatted}</p>
+        <h2 className={`${teko.className} text-4xl text-yellow`}>{title}</h2>
+        <p className={`${notoSansDisplay.className} text-2xl text-white`}>
+          {dateFormatted}
+        </p>
       </div>
       <div className="flex flex-col gap-1 text-xl p-x-4 pt-4">
         <a

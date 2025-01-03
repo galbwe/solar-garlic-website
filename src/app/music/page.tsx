@@ -8,6 +8,7 @@ import YoutubePlayer from "@/components/YoutubePlayer";
 import { PAST_EVENTS } from "@/constants";
 import Accordion from "@/components/Accordion";
 import useBreakpoint from "@/hooks/useBreakpoint";
+import { teko } from "@/fonts";
 
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 
@@ -48,7 +49,11 @@ export default function MusicPage() {
                     xl:gap-0
                 `}
         >
-          <h1 className="hidden xl:flex xl:text-7xl py-5 text-yellow">Music</h1>
+          <h1
+            className={`${teko.className} hidden xl:flex xl:text-7xl py-5 text-yellow`}
+          >
+            Music
+          </h1>
           <YoutubePlayer
             src={selectedVideo?.url}
             autoplay={autoplay}
