@@ -51,15 +51,15 @@ export default function EventCard({ event }: EventCardProps) {
           {address}
         </a>
         <p>show {showTime}</p>
-        {bands.length > 0 && <p>With {formatBandList(bands)}</p>}
+        {!bands && <p>With {formatBandList(bands)}</p>}
         {!!cover && <p>${cover} cover</p>}
       </div>
     </div>
   );
 }
 
-function formatBandList(bands: Array<string>): string {
-  if (bands.length == 0) {
+function formatBandList(bands?: Array<string>): string {
+  if (!bands) {
     return "";
   } else if (bands.length == 1) {
     return bands[0];

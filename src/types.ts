@@ -40,3 +40,19 @@ export interface Video {
   original?: boolean;
   url: string;
 }
+
+export interface Screens {
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
+}
+
+export interface Breakpoints {
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  "2xl": number;
+}

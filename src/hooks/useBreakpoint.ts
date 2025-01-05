@@ -3,12 +3,14 @@ import tailwindConfig from "@/../tailwind.config";
 
 import useWindowSize from "./useWindowSize";
 
+import { Screens, Breakpoints } from "@/types";
+
 export default function useBreakpoint() {
   const { width } = useWindowSize();
 
   const fullConfig = resolveConfig(tailwindConfig);
-  const screens = fullConfig.theme.screens;
-  const breakpoints = getBreakpoints(screens);
+  const screens: Screens = fullConfig.theme.screens;
+  const breakpoints: Breakpoints = getBreakpoints(screens);
   const breakpoint = getCurrentBreakpoint(breakpoints, width);
 
   // change the current breakpoint when the window size changes
@@ -64,20 +66,38 @@ export default function useBreakpoint() {
   };
 }
 
-function getBreakpoints(screens) {
-  const breakpoints = {};
-  for (const k in screens) {
-    breakpoints[k] = parseInt(screens[k].replace("px", ""));
-  }
-  return breakpoints;
+/**
+ * @param screens A mapping from next js breakpoints (sm, md, lg, etc, ...) to screen widths in pixels
+ * @return A mapping from next js breakpoints to the integer values corresponding to screen widths where breakpoints occur
+ */
+function getBreakpoints(screens: Screens): Breakpoints {
+  const convertPixelsToNumber = (pixels: string) =>
+    parseInt(pixels.replace("px", ""));
+  return {
+    sm: convertPixelsToNumber(screens.sm),
+    md: convertPixelsToNumber(screens.md),
+    lg: convertPixelsToNumber(screens.lg),
+    xl: convertPixelsToNumber(screens.xl),
+    "2xl": convertPixelsToNumber(screens["2xl"]),
+  };
 }
 
-function getCurrentBreakpoint(breakpoints, width) {
-  let breakpoint = "sm";
-  for (const b in breakpoints) {
-    if (width >= breakpoints[b]) {
-      breakpoint = b;
-    }
+/**
+ * @param breakpoints maps breakpoint names (sm, md, lg, etc., ...) to screen pixel width as an integer
+ * @param width the current screen width
+ * @return The name of the largest breakpoint with a width less than or equal to the current screen width
+ *
+ */
+function getCurrentBreakpoint(breakpoints: Breakpoints, width: number): string {
+  if (width >= breakpoints["2xl"]) {
+    return "2xl";
+  } else if (width >= breakpoints.xl) {
+    return "xl";
+  } else if (width >= breakpoints.lg) {
+    return "lg";
+  } else if (width >= breakpoints.md) {
+    return "md";
+  } else {
+    return "sm";
   }
-  return breakpoint;
 }
