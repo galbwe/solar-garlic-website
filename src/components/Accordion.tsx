@@ -45,7 +45,7 @@ export default function Accordion({
             xl:max-w-80
             xl:h-full
             bg-purple-dark
-            overflow-scroll
+            overflow-y-auto
         `}
     >
       {groups.map((group, i) => {
