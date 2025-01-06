@@ -4,8 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import sunIcon from "../../public/sun.svg";
-import garlicIcon from "../../public/garlic.svg";
+import logo from "../../public/solar-garlic-logo.jpg";
 import hamburgerIcon from "../../public/hamburger.svg";
 import closeIcon from "../../public/close.svg";
 import { NavItem } from "@/types";
@@ -14,14 +13,13 @@ import SocialLinks from "@/components/SocialLinks";
 import { teko } from "@/fonts";
 
 interface NavProps {
-  title: string;
   items: Array<NavItem>;
   breakpoint?: number;
 }
 
 // TODO: change purple and yellow to more generic names for colors according to a theme
 
-export default function Nav({ title, items }: NavProps) {
+export default function Nav({ items }: NavProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const openMenu = () => setIsMenuOpen(true);
@@ -33,23 +31,25 @@ export default function Nav({ title, items }: NavProps) {
     <>
       {/* nav for xl breakpoint and up */}
       <nav
-        className={`hidden xl:flex justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light ${teko.className}`}
+        className={`hidden xl:flex justify-between items-center h-24 pr-8 bg-purple-dark border-b-2 border-b-purple-light ${teko.className}`}
       >
-        <Link href="/" className="text-2xl text-yellow flex flex-row gap-2">
-          <Image src={sunIcon} alt="Sun icon" height={25} width={25} />
-          <h2 className={`${teko.className}`}>{title}</h2>
-          <Image src={garlicIcon} alt="Garlic icon" height={25} width={25} />
+        <Link
+          href="/"
+          className="text-2xl text-yellow flex flex-row gap-2 h-full"
+        >
+          <Image src={logo} alt="Solar Garlic Logo" height={50} width={100} />
         </Link>
         <NavLinks items={items} linkSize="text-4xl" />
         <SocialLinks />
       </nav>
       {/* nav for mobile */}
       <nav className={`xl:hidden flex flex-col ${teko.className}`}>
-        <div className="flex flex-row justify-between items-center h-20 p-8 bg-purple-dark border-b-2 border-b-purple-light">
-          <Link href="/" className="text-2xl text-yellow flex flex-row gap-2">
-            <Image src={sunIcon} alt="Sun icon" height={25} width={25} />
-            <h2 className={`${teko.className}`}>{title}</h2>
-            <Image src={garlicIcon} alt="Garlic icon" height={25} width={25} />
+        <div className="flex flex-row justify-between items-center h-24 px-8 bg-purple-dark border-b-2 border-b-purple-light">
+          <Link
+            href="/"
+            className="text-2xl text-yellow flex flex-row gap-2 h-full ml-2"
+          >
+            <Image src={logo} alt="Solar Garlic Logo" height={50} width={100} />
           </Link>
           {isMenuOpen ? (
             <Image
