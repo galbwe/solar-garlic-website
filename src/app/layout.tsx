@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${notoSans.className} antialiased bg-purple w-screen h-screen`}
       >
-        <Nav title="Solar Garlic" items={NAV_ITEMS} />
+        <Nav items={NAV_ITEMS} />
 
         {children}
       </body>
