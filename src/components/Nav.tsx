@@ -40,7 +40,7 @@ export default function Nav({ title, items }: NavProps) {
           <h2 className={`${teko.className}`}>{title}</h2>
           <Image src={garlicIcon} alt="Garlic icon" height={25} width={25} />
         </Link>
-        <NavLinks items={items} linkSize="text-2xl" />
+        <NavLinks items={items} linkSize="text-4xl" />
         <SocialLinks />
       </nav>
       {/* nav for mobile */}
