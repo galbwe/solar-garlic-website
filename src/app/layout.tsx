@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notoSans.className} antialiased bg-purple w-screen h-screen`}
+        className={`${notoSans.className} antialiased bg-purple w-screen h-screen text-white`}
       >
         <Nav items={NAV_ITEMS} />
 
