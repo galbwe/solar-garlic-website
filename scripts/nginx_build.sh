@@ -1,0 +1,1 @@
+docker build --file ./nginx/Dockerfile -t solar-garlic-nginx:2025-01-10 ./nginx

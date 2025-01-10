@@ -10,8 +10,8 @@
     "fmt": "prettier --write src",
     "fmt:check": "prettier --check src",
     "docker:build": "./scripts/docker_build.sh",
-    "docker:run": "./scripts/docker_run.sh",
-    "docker:login": "aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 339712990370.dkr.ecr.us-west-1.amazonaws.com",
+    "docker:run": "./scripts/docker_run_local.sh",
+    "docker:login": "./scripts/docker_login.sh",
     "docker:push": "./scripts/docker_push.sh"
   },
   "dependencies": {

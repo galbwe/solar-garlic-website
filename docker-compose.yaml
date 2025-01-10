@@ -1,0 +1,14 @@
+services:
+  nextjs:
+    image: solar-garlic-next:1736491621-77bad02
+    container_name: nextjs
+    restart: always
+  nginx:
+    image: solar-garlic-nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - ./nginx/ssl:/etc/nginx/ssl:ro
