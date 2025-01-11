@@ -17,8 +17,7 @@ interface HeroProps {
 export default function Hero({ title }: HeroProps) {
   const navItems = NAV_ITEMS.filter((item) => item.href != "/");
 
-  const { width } = useWindowSize();
-  const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
+  const { isBreakpointOrAbove } = useBreakpoint();
 
   return (
     <>
@@ -29,62 +28,80 @@ export default function Hero({ title }: HeroProps) {
           <h1 className="text-center text-8xl lg:text-8xl xl:text-9xl text-yellow">
             {title}
           </h1>
-          {/* desktop nav links */}
-          <div className="hidden lg:flex">
-            <NavLinks items={navItems} linkSize="text-4xl" />
-          </div>
-          {/* mobile nav links */}
-          <div className="lg:hidden">
-            <NavLinks mobile items={navItems} linkSize="text-4xl" />
-          </div>
+          {isBreakpointOrAbove("lg") ? (
+            <div className="flex">
+              <NavLinks items={navItems} linkSize="text-4xl" />
+            </div>
+          ) : (
+            <div className="flex">
+              <NavLinks mobile items={navItems} linkSize="text-4xl" />
+            </div>
+          )}
         </div>
       </section>
-      {/* opaque overlay */}
-      <div
-        className={`
-        -z-40 
-        min-h-full 
-        min-w-96 
-        w-full 
-        h-auto 
-        fixed 
-        top-0 
-        left-0 
-        bg-purple-dark 
-        opacity-80 
-        lg:opacity-40`}
-      />
-      {/* full screen background image */}
-      {isBreakpointOrAbove("lg") && isBreakpointOrBelow("xl") && (
-        <Image
-          fill
-          className="-z-50"
-          src={lionsLair01}
-          alt="Solar Garlic on stage at The Lion's Lair."
-        />
-      )}
-      {isBreakpointOrAbove("2xl") && (
-        <Image
-          width={width <= 1800 ? 1080 : 1400}
-          height={width <= 1800 ? 813 : 1054}
-          className={`
-                -z-50 
-                fixed
-                ${width <= 1800 ? "left-48" : "left-1/4"}
-                top-0
-              `}
-          src={lionsLair01}
-          alt="Solar Garlic on stage at the Lion's Lair."
-        />
-      )}
-      {isBreakpointOrBelow("md") && (
-        <Image
-          fill
-          className="-z-50"
-          src={lionsLair01Small}
-          alt="Solar Garlic on stage at The Lion's Lair."
-        />
-      )}
+      <OpaqueOverlay />
+      <HeroImage />
     </>
+  );
+}
+
+function OpaqueOverlay() {
+  return (
+    <div
+      className={`
+    -z-40 
+    min-h-full 
+    min-w-96 
+    w-full 
+    h-auto 
+    fixed 
+    top-0 
+    left-0 
+    bg-purple-dark 
+    opacity-80 
+    lg:opacity-40`}
+    />
+  );
+}
+
+function HeroImage() {
+  const { width } = useWindowSize();
+  const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
+
+  if (isBreakpointOrAbove("lg") && isBreakpointOrBelow("xl")) {
+    return (
+      <Image
+        fill
+        className="-z-50"
+        src={lionsLair01}
+        alt="Solar Garlic on stage at The Lion's Lair."
+      />
+    );
+  }
+
+  if (isBreakpointOrAbove("2xl")) {
+    return (
+      <Image
+        width={width <= 1800 ? 1080 : 1400}
+        height={width <= 1800 ? 813 : 1054}
+        className={`
+              -z-50 
+              fixed
+              ${width <= 1800 ? "left-48" : "left-1/4"}
+              top-0
+            `}
+        src={lionsLair01}
+        alt="Solar Garlic on stage at the Lion's Lair."
+      />
+    );
+  }
+
+  return (
+    <Image
+      fill
+      className="-z-50"
+      src={lionsLair01Small}
+      alt="Solar Garlic on stage at The Lion's Lair."
+    />
   );
 }
