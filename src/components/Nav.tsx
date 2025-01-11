@@ -34,16 +34,18 @@ export default function Nav({ items, breakpoint }: NavProps) {
 function NavDesktop({ items }: NavProps) {
   return (
     <nav
-      className={`xl:flex justify-between items-center h-24 pr-8 bg-purple-dark border-b-2 border-b-purple-light ${teko.className}`}
+      className={`flex justify-between items-center h-24 pr-6 bg-purple-dark border-b-2 border-b-purple-light ${teko.className}`}
     >
       <Link
         href="/"
-        className="text-2xl text-yellow flex flex-row gap-2 h-full"
+        className="text-2xl text-yellow flex flex-row gap-2 h-full self-start"
       >
         <Image src={logo} alt="Solar Garlic Logo" height={50} width={100} />
       </Link>
-      <NavLinks items={items} linkSize="text-4xl" />
-      <SocialLinks />
+      <div className="flex flex-row gap-6 justify-end items-center">
+        <NavLinks items={items} linkSize="text-3xl" />
+        <SocialLinks />
+      </div>
     </nav>
   );
 }
