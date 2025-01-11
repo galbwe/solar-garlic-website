@@ -28,14 +28,16 @@ export default function EventCard({ event }: EventCardProps) {
   const showTime = format(datetime, "haaa");
 
   return (
-    <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full">
+    <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full xl:min-h-96">
       <div className="border-b-purple-light border-b-2 flex flex-col">
-        <h2 className={`${teko.className} text-4xl text-yellow`}>{title}</h2>
-        <p className={`${notoSansDisplay.className} text-2xl text-white`}>
+        <h2 className={`${teko.className} text-4xl xl:text-5xl text-yellow`}>
+          {title}
+        </h2>
+        <p className={`${notoSansDisplay.className} text-2xl xl:text-3xl`}>
           {dateFormatted}
         </p>
       </div>
-      <div className="flex flex-col gap-1 text-xl p-x-4 pt-4">
+      <div className="flex flex-col gap-1 xl:gap-3 text-xl xl:text-3xl p-x-4 pt-4">
         <a
           className="hover:text-yellow hover:underline"
           href={venueUrl}
@@ -51,7 +53,7 @@ export default function EventCard({ event }: EventCardProps) {
           {address}
         </a>
         <p>show {showTime}</p>
-        {!bands && <p>With {formatBandList(bands)}</p>}
+        {!!bands && <p>With {formatBandList(bands)}</p>}
         {!!cover && <p>${cover} cover</p>}
       </div>
     </div>
