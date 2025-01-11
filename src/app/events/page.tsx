@@ -13,7 +13,7 @@ import useBreakpoint from "@/hooks/useBreakpoint";
 import type { Event } from "@/types";
 
 export default function EventPage() {
-  // const events = getFutureEvents(EVENTS);
+  const events = getFutureEvents(EVENTS);
 
   const { isBreakpointOrBelow } = useBreakpoint();
 
