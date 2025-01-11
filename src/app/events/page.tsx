@@ -13,7 +13,7 @@ import useBreakpoint from "@/hooks/useBreakpoint";
 import type { Event } from "@/types";
 
 export default function EventPage() {
-  const events = getFutureEvents(EVENTS);
+  // const events = getFutureEvents(EVENTS);
 
   const { isBreakpointOrBelow } = useBreakpoint();
 
@@ -28,10 +28,9 @@ export default function EventPage() {
             <>
               <p className="max-w-80 text-4xl self-start">No upcoming shows.</p>
               <p className="max-w-80 text-xl self-start">
-                Check us out on social or join our mailing list to find out
-                about our next show.
+                Check us out on social to find out about our next show.
               </p>
-              <SocialLinks />
+              <SocialLinks width={40} height={40} />
             </>
           )}
         </div>

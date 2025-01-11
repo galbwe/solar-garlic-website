@@ -11,20 +11,40 @@ import {
   YOUTUBE_URL,
 } from "@/constants";
 
-export default function SocialLinks() {
+interface SocialLinksProps {
+  width: number;
+  height: number;
+}
+
+export default function SocialLinks({ width, height }: SocialLinksProps) {
   return (
-    <div className="flex flex-row justify-center items-center gap-6 sr-only xl:not-sr-only">
+    <div className="flex flex-row justify-center items-center gap-4 sr-only xl:not-sr-only">
       <a href={INSTAGRAM_URL} target="_blank">
-        <Image src={instagramIcon} alt="Instagram icon" />
+        <Image
+          src={instagramIcon}
+          alt="Instagram icon"
+          width={width}
+          height={height}
+        />
       </a>
       <a href={FACEBOOK_URL} target="_blank">
-        <Image src={facebookIcon} alt="Facebook icon" />
+        <Image
+          src={facebookIcon}
+          alt="Facebook icon"
+          width={width}
+          height={height}
+        />
       </a>
       <a href={YOUTUBE_URL} target="_blank">
-        <Image width={50} height={50} src={youtubeIcon} alt="Youtube icon" />
+        <Image
+          src={youtubeIcon}
+          alt="Youtube icon"
+          width={width}
+          height={height}
+        />
       </a>
       <a href={`mailto:${CONTACT_EMAIL}`}>
-        <Image width={50} height={50} src={emailIcon} alt="Email icon" />
+        <Image src={emailIcon} alt="Email icon" width={width} height={height} />
       </a>
     </div>
   );

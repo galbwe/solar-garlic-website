@@ -32,5 +32,5 @@ export default function NavLinks({
     return <ul className="flex flex-col items-center gap-4">{listItems}</ul>;
   }
 
-  return <ul className="flex flex-row gap-4">{listItems}</ul>;
+  return <ul className="flex flex-row gap-3">{listItems}</ul>;
 }

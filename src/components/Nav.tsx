@@ -44,7 +44,7 @@ function NavDesktop({ items }: NavProps) {
       </Link>
       <div className="flex flex-row gap-6 justify-end items-center">
         <NavLinks items={items} linkSize="text-3xl" />
-        <SocialLinks />
+        <SocialLinks width={40} height={40} />
       </div>
     </nav>
   );
