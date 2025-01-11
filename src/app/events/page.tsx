@@ -5,9 +5,12 @@ import EventCard from "@/components/EventCard";
 import SocialLinks from "@/components/SocialLinks";
 import { EVENTS } from "@/constants";
 import { teko } from "@/fonts";
+import { compareAsc, constructNow, parseJSON } from "date-fns";
+
+import type { Event } from "@/types";
 
 export default function EventPage() {
-  const events = EVENTS;
+  const events = getFutureEvents(EVENTS);
 
   return (
     <section className="mt-8 px-2 md:px-4 lg:px-8 flex flex-col items-center">
@@ -39,4 +42,13 @@ export default function EventPage() {
       </div>
     </section>
   );
+}
+
+// TODO: move to a utility module
+function getFutureEvents(events: Array<Event>): Array<Event> {
+  return events.filter((event) => {
+    const eventDate = parseJSON(event.show);
+    const now = constructNow(eventDate);
+    return compareAsc(now, eventDate) <= 0;
+  });
 }
