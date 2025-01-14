@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from "uuid";
 
-export const CONTACT_EMAIL = "solar.garlic.band@gmail.com";
+export const CONTACT_EMAIL = "solar.garlic.denver@gmail.com";
 
 export const INSTAGRAM_HANDLE = "@solar_garlic_band";
 
@@ -23,17 +23,6 @@ export const NAV_ITEMS = [
 
 // TODO: move events to an api call
 export const EVENTS = [
-  {
-    id: uuid4(),
-    title: "Four O'Fern",
-    venue: "Bar 404",
-    venueUrl: "https://bar404broadway.com/",
-    address: "404 N Broadway, Denver, CO 80203",
-    addressUrl: "https://maps.app.goo.gl/cxKqTNhCoTXejBeX9",
-    bands: ["May Be Fern"],
-    show: "2025-01-11T02:00:00",
-    timezone: "America/Denver",
-  },
   {
     id: uuid4(),
     title: "Solar Garlic Live at The Roxy",
@@ -217,6 +206,48 @@ export const PAST_EVENTS = [
         artist: "Billy Strings",
         original: false,
         url: "https://www.youtube.com/embed/TYp2V7d76HQ?si=x-pVMT4ZHvetQHoX",
+      },
+      {
+        id: uuid4(),
+        title: "Spooky",
+        artist: "Classics IV",
+        original: false,
+        url: "https://www.youtube.com/embed/UX8kohoSQvI?si=J9so3rs0C7rxk8ZN",
+      },
+      {
+        id: uuid4(),
+        title: "The Music's Hot",
+        artist: "Chris Robinson Brotherhood",
+        original: false,
+        url: "https://www.youtube.com/embed/-E7zzIV2IRg?si=QHR_tL1phoELwL7c",
+      },
+      {
+        id: uuid4(),
+        title: "Sweet Sunshine",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/f-DuJ4H9Gb4?si=QZF85nPkFF3xttLu",
+      },
+      {
+        id: uuid4(),
+        title: "Chinacat Sunflower / I Know You Rider",
+        artist: "Grateful Dead",
+        original: false,
+        url: "https://www.youtube.com/embed/Mp8zka2i8vI?si=mA_ZqBdi4FJknRU1",
+      },
+      {
+        id: uuid4(),
+        title: "After Midnight / Funky Duck",
+        artist: "Grateful Dead / Vulfpeck",
+        original: false,
+        url: "https://www.youtube.com/embed/qa35_wDSwGw?si=bU6rFjVx-OE5oh6m",
+      },
+      {
+        id: uuid4(),
+        title: "Show Me How",
+        artist: "Men I Trust",
+        original: false,
+        url: "https://www.youtube.com/embed/BlGxgeEysEE?si=Kn2_LegfsGSQlizO",
       },
     ],
   },
