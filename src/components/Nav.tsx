@@ -58,7 +58,7 @@ function NavMobile({ items }: NavProps) {
 
   return (
     <nav className={`flex flex-col ${teko.className}`}>
-      <div className="pl-0 pr-3 flex flex-row justify-between items-center h-24 bg-purple-dark border-b-2 border-b-purple-light">
+      <div className="pl-0 pr-6 xl:pr-3 flex flex-row justify-between items-center h-24 bg-purple-dark border-b-2 border-b-purple-light">
         <Link
           href="/"
           className="text-2xl text-yellow flex flex-row gap-2 h-full"
@@ -77,8 +77,8 @@ function NavMobile({ items }: NavProps) {
           <Image
             onClick={openMenu}
             src={hamburgerIcon}
-            height={30}
-            width={30}
+            height={35}
+            width={35}
             alt="Hamburger icon"
           />
         )}
