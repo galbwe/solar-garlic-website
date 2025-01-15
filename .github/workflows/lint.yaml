@@ -1,0 +1,22 @@
+name: Lint Workflow
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+      - name: Node Install
+        run: npm ci
+      - name: Check formatting
+        run: npm run fmt:check
+      - name: Lint
+        run: npm run lint
+      - name: Check build
+        run: npm run build
