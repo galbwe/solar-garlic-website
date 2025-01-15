@@ -18,5 +18,6 @@ jobs:
         run: npm run fmt:check
       - name: Lint
         run: npm run lint
-      - name: Check build
-        run: npm run build
+      - name: Build
+        run: ./scripts/docker_build.sh  
+
