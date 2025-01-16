@@ -63,3 +63,26 @@ jobs:
       - name: Log out of Amazon ECR
         if: always()
         run: docker logout ${{ steps.login-ecr.outputs.registry }}
+      - name: Deploy
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          HOSTNAME: ${{secrets.SSH_HOST}}
+          USER_NAME: ${{secrets.USER_NAME}}
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: solargarlicband/website
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+
+          # script to execute on the ec2 instance
+          read -r -d '' SCRIPT << EOM
+          
+          cd /home/${USER_NAME}
+          ./scripts/docker_login.sh
+          ./scripts/docker_pull.sh ${IMAGE_TAG}
+          docker container rm -f nextjs
+          docker run --rm -d --name nextjs --network solar-garlic-band ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}
+
+          EOM
+
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${SSH_HOST} "${SCRIPT}"
