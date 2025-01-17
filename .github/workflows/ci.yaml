@@ -70,8 +70,5 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.USER_NAME}}
           port: ${{secrets.SSH_PORT}}
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: solargarlicband/website
-          IMAGE_TAG: ${{ github.sha }}
-        script: |
-          echo "Connected with ssh!"
+          script: |
+            echo "Connected with ssh!"
