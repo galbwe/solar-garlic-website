@@ -71,4 +71,5 @@ jobs:
           username: ${{secrets.USER_NAME}}
           port: ${{secrets.SSH_PORT}}
           script: |
-            echo "Connected with ssh!"
+            echo "Connected to ec2 over ssh ..."
+            # ./scripts/docker_login.sh
