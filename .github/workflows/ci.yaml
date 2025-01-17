@@ -64,12 +64,12 @@ jobs:
         if: always()
         run: docker logout ${{ steps.login-ecr.outputs.registry }}
       - name: Deploy
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{secrets.SSH_HOST}}
-          username: ${{secrets.USER_NAME}}
-          port: ${{secrets.SSH_PORT}}
-          script: |
+        env:
+            PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+            HOSTNAME: ${{secrets.SSH_HOST}}
+            USER_NAME: ${{secrets.USER_NAME}}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
             echo "Connected to ec2 over ssh ..."
-            # ./scripts/docker_login.sh
+          '
