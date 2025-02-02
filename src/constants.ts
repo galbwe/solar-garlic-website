@@ -25,14 +25,18 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Solar Garlic Live at The Roxy",
-    venue: "The Roxy on Broadway",
-    venueUrl: "https://broadwayroxy.com/",
-    address: "554 S Broadway, Denver, CO 80209",
-    addressUrl: "https://maps.app.goo.gl/VaQTYG6iJ4XB5NwD7",
-    bands: ["Ethan Alexander"],
-    show: "2025-02-02T04:00:00",
+    title: "Solar Garlic at Moe's BBQ",
+    venue: "Moe's Original BBQ",
+    venueUrl: "https://moesdenver.com/",
+    address: "3295 S Broadway, Englewood, CO 80113",
+    addressUrl: "https://maps.app.goo.gl/kvSXTifMBDGq5F3HA",
+    bands: ["Hot Shag", "Rubber Puppets"],
+    show: "2025-02-23T03:00:00",
+    doors: "2025-02-23T02:00:00",
     timezone: "America/Denver",
+    ticketsUrl:
+      "https://www.eventbrite.com/e/hot-shag-w-solar-garlic-rubber-puppets-tickets-1224181663309",
+    extraText: `For discounted advance tickets, contact ${CONTACT_EMAIL}`,
   },
 ];
 

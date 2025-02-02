@@ -26,6 +26,8 @@ export interface Event {
   timezone?: string;
   cover?: number;
   videos?: Array<Video>;
+  ticketsUrl?: string;
+  extraText?: string;
 }
 
 export interface NavItem {

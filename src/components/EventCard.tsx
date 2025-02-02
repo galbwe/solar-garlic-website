@@ -19,13 +19,20 @@ export default function EventCard({ event }: EventCardProps) {
     addressUrl,
     bands,
     show,
+    doors,
     cover,
+    ticketsUrl,
+    extraText,
     timezone = "America/Denver",
   } = event;
 
   const datetime = parseJSON(show, { in: tz(timezone) });
   const dateFormatted = format(datetime, "EEEE LLLL do");
   const showTime = format(datetime, "haaa");
+
+  const doorsTime = doors
+    ? format(parseJSON(doors, { in: tz(timezone) }), "haaa")
+    : null;
 
   return (
     <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full xl:min-h-96">
@@ -52,9 +59,21 @@ export default function EventCard({ event }: EventCardProps) {
         >
           {address}
         </a>
-        <p>show {showTime}</p>
+
+        {!!doors && <p>Doors {doorsTime}</p>}
+        <p>Show {showTime}</p>
         {!!bands && <p>With {formatBandList(bands)}</p>}
         {!!cover && <p>${cover} cover</p>}
+        {!!ticketsUrl && (
+          <a
+            className="hover:text-yellow hover:underline"
+            href={ticketsUrl}
+            target="_blank"
+          >
+            {address}
+          </a>
+        )}
+        {!!extraText && <p className="text-md">{extraText}</p>}
       </div>
     </div>
   );
