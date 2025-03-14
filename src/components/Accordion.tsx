@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
 import chevronDown from "../../public/chevron-down.svg";
-import chevronLeft from "../../public/chevron-left.svg";
+import chevronRight from "../../public/chevron-right.svg";
 import { teko, notoSansDisplay } from "@/fonts";
 
 interface AccordionProps<G, O> {
@@ -78,8 +78,8 @@ export default function Accordion({
                 />
               ) : (
                 <Image
-                  src={chevronLeft}
-                  alt="Chevron left icon"
+                  src={chevronRight}
+                  alt="Chevron right icon"
                   width={16}
                   height={16}
                 />

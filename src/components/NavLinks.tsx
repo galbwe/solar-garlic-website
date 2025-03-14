@@ -29,7 +29,7 @@ export default function NavLinks({
   ));
 
   if (mobile) {
-    return <ul className="flex flex-col items-center gap-4">{listItems}</ul>;
+    return <ul className="flex flex-col items-start gap-4">{listItems}</ul>;
   }
 
   return <ul className="flex flex-row gap-3">{listItems}</ul>;

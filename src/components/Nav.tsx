@@ -84,7 +84,7 @@ function NavMobile({ items }: NavProps) {
         )}
       </div>
       {isMenuOpen && (
-        <div className="bg-purple-dark border-b-2 border-b-purple-light p-4">
+        <div className="bg-purple-dark border-b-2 border-b-purple-light flex justify-center p-4">
           {/* // menu drawer with nav links */}
           <NavLinks
             mobile
