@@ -21,19 +21,21 @@ export default function EventPage() {
     <section className="mt-8 px-2 md:px-4 lg:px-8 flex flex-col items-center">
       <h1 className={`${teko.className} text-8xl text-yellow`}>Events</h1>
       <div className="flex flex-row flex-wrap justify-center items-center xl:items-start w-full">
-        <div className="flex flex-col gap-4 pt-8 items-center xl:items-start xl:w-5/12 xl:h-full">
-          {!!events ? (
-            events.map((e) => <EventCard key={e.title} event={e} />)
-          ) : (
-            <>
-              <p className="max-w-80 text-4xl self-start">No upcoming shows.</p>
-              <p className="max-w-80 text-xl self-start">
-                Check us out on social to find out about our next show.
-              </p>
-              <SocialLinks width={40} height={40} />
-            </>
-          )}
-        </div>
+        {!!events && events.length > 0 ? (
+          <div className="flex flex-col gap-4 pt-8 items-center xl:items-start xl:w-5/12 xl:h-full">
+            {events.map((e) => (
+              <EventCard key={e.title} event={e} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4 justify-center items-center xl:h-700px p-4 mt-6 rounded bg-purple-dark">
+            <h2 className="text-4xl">No upcoming shows.</h2>
+            <p className="text-xl">
+              Check us out on social to find out about our next show.
+            </p>
+            <SocialLinks width={40} height={40} />
+          </div>
+        )}
         <div className="p-8">
           <Image
             className="rounded border-b-2 border-b-purple-light"
