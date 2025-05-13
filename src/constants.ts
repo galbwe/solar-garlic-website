@@ -30,22 +30,10 @@ export const EVENTS = [
     venueUrl: "https://moesdenver.com/",
     address: "3295 S Broadway, Englewood, CO 80113",
     addressUrl: "https://maps.app.goo.gl/kvSXTifMBDGq5F3HA",
-    bands: ["Bobby Bills and the River", "Firing Line", "Sid Williamson"],
-    show: "2025-03-23T01:00:00",
+    bands: ["Brittany Bridgewater & The Sparks", "Black Market Translation"],
+    show: "2025-07-26T01:00:00",
     timezone: "America/Denver",
-    ticketsUrl:
-      "https://www.eventbrite.com/e/solar-garlic-w-bobby-bills-and-the-river-firing-line-sid-williamson-tickets-1245417620629",
     extraText: `For discounted advance tickets, contact ${CONTACT_EMAIL}`,
-  },
-  {
-    id: uuid4(),
-    title: "Solar Garlic at Your Mom's House",
-    venue: "Your Mom's House",
-    venueUrl: "https://yourmomshousedenver.com/",
-    address: "608 E 13th Ave, Denver, CO 80203",
-    addressUrl: "https://maps.app.goo.gl/PiJqYVNmRjEXwkfy5",
-    show: "2025-03-25T01:00:00",
-    timezone: "America/Denver",
   },
 ];
 
