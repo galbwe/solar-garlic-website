@@ -1,8 +1,11 @@
 import { parseJSON, format } from "date-fns";
 import { tz } from "@date-fns/tz";
 
+import Image from "next/image";
+
 import { teko, notoSansDisplay } from "@/fonts";
 import { Event } from "@/types";
+import locationIconWhite from "../../public/location-icon-white.svg";
 
 // TODO: add a link / button to automatically create a google calendar event
 
@@ -36,7 +39,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   return (
     <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full xl:min-h-96">
-      <div className="border-b-purple-light border-b-2 flex flex-col">
+      <div className="border-b-purple-light border-b-2 flex flex-row justify-between">
         <h2 className={`${teko.className} text-4xl xl:text-5xl text-yellow`}>
           {title}
         </h2>
@@ -44,25 +47,37 @@ export default function EventCard({ event }: EventCardProps) {
           {dateFormatted}
         </p>
       </div>
-      <div className="flex flex-col gap-1 xl:gap-3 text-xl xl:text-3xl p-x-4 pt-4">
+      <div className="flex flex-col gap-2 xl:gap-4 text-xl xl:text-3xl p-x-4 pt-4">
+        <div className="flex flex-row justify-between">
+          <a
+            className="hover:text-yellow hover:underline"
+            href={venueUrl}
+            target="_blank"
+          >
+            {venue}
+          </a>
+
+          <p>
+            {!!doors && <span>Doors {doorsTime}, </span>}Show {showTime}
+          </p>
+        </div>
         <a
-          className="hover:text-yellow hover:underline"
-          href={venueUrl}
-          target="_blank"
-        >
-          {venue}
-        </a>
-        <a
-          className="hover:text-yellow hover:underline"
+          className="hover:text-yellow hover:underline font-light"
           href={addressUrl}
           target="_blank"
         >
-          {address}
+          <div className="flex flex-row gap-2">
+            <Image
+              src={locationIconWhite}
+              alt="Location icon"
+              width={30}
+              height={30}
+            />
+            {address}
+          </div>
         </a>
 
-        {!!doors && <p>Doors {doorsTime}</p>}
-        <p>Show {showTime}</p>
-        {!!bands && <p>With {formatBandList(bands)}</p>}
+        {!!bands && <BandList bands={bands} />}
         {!!cover && <p>${cover} cover</p>}
         {!!ticketsUrl && (
           <a
@@ -73,19 +88,44 @@ export default function EventCard({ event }: EventCardProps) {
             {address}
           </a>
         )}
-        {!!extraText && <p className="text-md">{extraText}</p>}
+        {!!extraText && <p className="text-md font-light">{extraText}</p>}
       </div>
     </div>
   );
 }
 
-function formatBandList(bands?: Array<string>): string {
+function BandList({ bands }: { bands: Array<string> }) {
   if (!bands) {
-    return "";
+    return <></>;
   } else if (bands.length == 1) {
-    return bands[0];
+    return (
+      <p>
+        With <BandName band={bands[0]} />
+      </p>
+    );
   } else if (bands.length == 2) {
-    return bands.join(" and ");
+    return (
+      <p>
+        With <BandName band={bands[0]} /> and <BandName band={bands[1]} />
+      </p>
+    );
+  } else {
+    return (
+      <p>
+        With <BandName band={bands[0]} />
+        {bands.slice(1, -1).map((band) => {
+          return (
+            <>
+              , <BandName band={band} />
+            </>
+          );
+        })}{" "}
+        and <BandName band={bands[bands.length - 1]} />
+      </p>
+    );
   }
-  return bands.slice(0, -1).join(", ") + " and " + bands[bands.length - 1];
+}
+
+function BandName({ band }: { band: string }) {
+  return <span className={"font-semibold"}>{band}</span>;
 }
