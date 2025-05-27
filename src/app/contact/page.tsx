@@ -55,8 +55,8 @@ export default function Contact() {
   };
 
   return (
-    <section className="w-full h-full flex flex-col justify-start items-center pt-8">
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-4 border-2 border-purple-light rounded">
+    <section className="w-full h-full flex flex-col justify-start items-center pt-8 gap-2">
+      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded">
         <h1
           className={`${teko.className} text-yellow text-7xl self-center text-center`}
         >
@@ -81,28 +81,32 @@ export default function Contact() {
           })}
         </ul>
       </div>
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-4 border-2 border-purple-light rounded">
-        <h2
-          className={`${teko.className} text-yellow text-5xl self-center text-center`}
-        >
-          Join Our Mailing List
-        </h2>
+      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded">
         <form
           onSubmit={handleSubscribeToMailingList}
-          className="space-y-4 w-full"
+          className="space-y-4 w-1/2 flex flex-col items-start"
         >
+          <h2
+            className={`${teko.className} text-yellow text-7xl self-center w-full text-justify`}
+          >
+            Join Our Mailing List
+          </h2>
+          <p className="text-2xl mb-6">
+            Enter your email to get the latest updates on Solar Garlic shows and
+            releases!
+          </p>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="jammer@funkytimes.com"
             value={email}
             onChange={handleEmailChange}
             required
-            className="block w-full p-2 border text-black"
+            className="block w-full p-2 border text-black h-14"
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="text-2xl font-bold bg-red-500 text-white px-4 py-2 rounded w-full h-14"
           >
             Sign Up
           </button>
