@@ -32,15 +32,14 @@ export default function Contact() {
         setStatus({
           type: "success",
           message:
-            "Now one more step ... Please check your email and click the verification link to finish signing up.",
+            "Now for one last step... Please check your inbox for a verifcation email and click the link to finish signing up.",
         });
         setEmail("");
       } else {
         console.error("Error creating email. Received error status code.");
         setStatus({
           type: "error",
-          message:
-            "Uh oh, there was a problem subscribing that email. Please try again.",
+          message: "Something didn't work quite as expected. Please try again.",
         });
       }
     } catch (err) {
@@ -106,13 +105,26 @@ export default function Contact() {
           />
           <button
             type="submit"
-            className="text-2xl font-bold bg-red-500 text-white px-4 py-2 rounded w-full h-14"
+            className="text-2xl font-bold bg-blue-500 text-white px-4 py-2 rounded w-full h-14"
           >
             Sign Up
           </button>
           {
             // TODO: add styling depending on status type
-            status?.message && <p>{status.message}</p>
+            status?.message &&
+              (status.type === "success" ? (
+                <>
+                  <p className="text-4xl text-yellow">Success!</p>
+                  <p className="text-2xl text-white">{status.message}</p>
+                </>
+              ) : status.type === "error" ? (
+                <>
+                  <p className="text-4xl text-red-500">Oh No!</p>
+                  <p className="text-2xl text-white-500">{status.message}</p>
+                </>
+              ) : (
+                <></>
+              ))
           }
         </form>
       </div>
