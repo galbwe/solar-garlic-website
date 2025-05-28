@@ -81,17 +81,17 @@ export default function Contact() {
           })}
         </ul>
       </div>
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded">
+      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 px-4 lg:px-0 py-6 border-2 border-purple-light rounded">
         <form
           onSubmit={handleSubscribeToMailingList}
-          className="space-y-4 w-1/2 flex flex-col items-start"
+          className="space-y-4 w-full lg:w-2/3 flex flex-col items-start"
         >
           <h2
-            className={`${teko.className} text-yellow text-7xl self-center w-full text-justify`}
+            className={`${teko.className} text-yellow text-5xl lg:text-7xl self-center w-full text-center lg:text-start`}
           >
             Join Our Mailing List
           </h2>
-          <p className="text-2xl mb-6">
+          <p className="text-lg lg:text-2xl text-center lg:text-start mb-6">
             Enter your email to get the latest updates on Solar Garlic shows and
             releases!
           </p>
