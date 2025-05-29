@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { CONTACT_INFO } from "@/constants";
+import { API_HOST } from "@/environment";
 import { teko } from "@/fonts";
 
 export default function Contact() {
@@ -20,7 +21,7 @@ export default function Contact() {
 
     try {
       // TODO: get the api host from environment variables
-      const res = await fetch("http://localhost:8080/api/v1/emails", {
+      const res = await fetch(`${API_HOST}/api/v1/emails`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +29,6 @@ export default function Contact() {
         body: JSON.stringify({ email }),
       });
       if (res.ok) {
-        console.log("Success creating email ...");
         setStatus({
           type: "success",
           message:
@@ -36,14 +36,12 @@ export default function Contact() {
         });
         setEmail("");
       } else {
-        console.error("Error creating email. Received error status code.");
         setStatus({
           type: "error",
           message: "Something didn't work quite as expected. Please try again.",
         });
       }
     } catch (err) {
-      console.error("Error creating email");
       console.error(err);
       setStatus({
         type: "error",
