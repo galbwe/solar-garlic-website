@@ -13,7 +13,6 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setEmail(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleSubscribeToMailingList = async (e: React.FormEvent) => {
