@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import lionsLair01 from "../../public/solar-garlic-lions-lair-01.jpg";
 import lionsLair01Small from "../../public/solar-garlic-lions-lair-01-sm.jpg";
@@ -37,6 +38,13 @@ export default function Hero({ title }: HeroProps) {
               <NavLinks mobile items={navItems} linkSize="text-4xl" />
             </div>
           )}
+
+          <Link
+            href="/contact"
+            className="text-4xl lg:text-5xl hover:underline text-blue-300 mt-5"
+          >
+            Join Our Mailing List
+          </Link>
         </div>
       </section>
       <OpaqueOverlay />

@@ -4,4 +4,4 @@ IMAGE_ID=$(docker image ls | grep solar-garlic-next | tr -s ' ' | cut -f2,3 -d '
 CONTAINER_NAME=${1:-solar-garlic-next}
 PORT=${2:-3000}
 
-docker run -p $PORT:3000 -d --name $CONTAINER_NAME $IMAGE_ID
+docker run -p $PORT:3000 --env-file .env.local -d --name $CONTAINER_NAME --network solar-garlic $IMAGE_ID
