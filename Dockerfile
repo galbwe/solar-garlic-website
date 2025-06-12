@@ -13,6 +13,9 @@ RUN npm ci;
 
 # Rebuild the source code only when needed
 FROM base AS builder
+
+ARG NEXT_PUBLIC_API_HOST="https://solargarlicband.com"
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -22,7 +25,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN NEXT_PUBLIC_API_HOST=https://solargarlicband.com npm run build;
+RUN NEXT_PUBLIC_API_HOST=${NEXT_PUBLIC_API_HOST} npm run build;
 
 # Production image, copy all the files and run next
 FROM base AS runner
