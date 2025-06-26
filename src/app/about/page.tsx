@@ -30,7 +30,8 @@ export default function About() {
             and vocals
           </li>
           <li>
-            <span className="font-bold">Haley Brueckman</span> on drums{" "}
+            <span className="font-bold">Haley Brueckman</span> on drums and
+            vocals
           </li>
           <li>
             <span className="font-bold">Wes Galbraith</span> on bass and vocals

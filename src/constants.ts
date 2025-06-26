@@ -25,6 +25,18 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
+    title: "Solar Garlic at The Lion's Lair",
+    venue: "The Lion's Lair",
+    venueUrl: "https://www.lionslairco.com/",
+    address: "2022 E Colfax Ave. Denver, CO 80206",
+    addressUrl: "https://maps.app.goo.gl/UnezxCxpX3xhXWvAA",
+    bands: ["J Ezra"],
+    show: "2025-07-18T03:00:00",
+    timezone: "America/Denver",
+    extraText: `For $10 advance tickets, contact ${CONTACT_EMAIL}`,
+  },
+  {
+    id: uuid4(),
     title: "Solar Garlic at Moe's BBQ",
     venue: "Moe's Original BBQ",
     venueUrl: "https://moesdenver.com/",
