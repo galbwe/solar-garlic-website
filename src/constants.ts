@@ -25,18 +25,6 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Solar Garlic at The Lion's Lair",
-    venue: "The Lion's Lair",
-    venueUrl: "https://www.lionslairco.com/",
-    address: "2022 E Colfax Ave. Denver, CO 80206",
-    addressUrl: "https://maps.app.goo.gl/UnezxCxpX3xhXWvAA",
-    bands: ["J Ezra"],
-    show: "2025-07-18T03:00:00",
-    timezone: "America/Denver",
-    extraText: `For $10 advance tickets, contact ${CONTACT_EMAIL}`,
-  },
-  {
-    id: uuid4(),
     title: "Solar Garlic at Moe's BBQ",
     venue: "Moe's Original BBQ",
     venueUrl: "https://moesdenver.com/",
@@ -50,6 +38,50 @@ export const EVENTS = [
 ];
 
 export const PAST_EVENTS = [
+  {
+    id: uuid4(),
+    title: "Solar Garlic at The Lion's Lair",
+    venue: "The Lion's Lair",
+    show: "2025-07-18T03:00:00",
+    timezone: "America/Denver",
+    videos: [
+      {
+        id: uuid4(),
+        title: "All Fall Down",
+        artist: "John Hartford",
+        original: false,
+        url: "https://www.youtube.com/embed/7jgSNcS773E?si=T0f5Bhzkq3cfXbbk&amp",
+      },
+      {
+        id: uuid4(),
+        title: "Shining Lights",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/7jgSNcS773E?si=T0f5Bhzkq3cfXbbk&amp;start=321",
+      },
+      {
+        id: uuid4(),
+        title: "Everything's Right",
+        artist: "Phish",
+        original: false,
+        url: "https://www.youtube.com/embed/7jgSNcS773E?si=T0f5Bhzkq3cfXbbk&amp;start=747",
+      },
+      {
+        id: uuid4(),
+        title: "What Does It Mean?",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/7jgSNcS773E?si=T0f5Bhzkq3cfXbbk&amp;start=1746",
+      },
+      {
+        id: uuid4(),
+        title: "17th Avenue",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/7jgSNcS773E?si=T0f5Bhzkq3cfXbbk&amp;start=2139",
+      },
+    ],
+  },
   {
     id: uuid4(),
     title: "Solar Garlic Live at The Roxy",
