@@ -28,7 +28,7 @@ export default function EventPage() {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col gap-4 justify-center items-center xl:h-700px p-4 mt-6 rounded bg-purple-dark">
+          <div className="flex flex-col gap-4 justify-center items-center xl:h-700px p-4 mt-6 rounded-sm bg-purple-dark">
             <h2 className="text-4xl">No upcoming shows.</h2>
             <p className="text-xl">
               Check us out on social to find out about our next show.
@@ -38,7 +38,7 @@ export default function EventPage() {
         )}
         <div className="p-8">
           <Image
-            className="rounded border-b-2 border-b-purple-light"
+            className="rounded-sm border-b-2 border-b-purple-light"
             width={isBreakpointOrBelow("lg") ? 480 : 700}
             height={isBreakpointOrBelow("lg") ? 480 : 700}
             src={djGuysPhoto01}

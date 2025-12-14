@@ -1,15 +1,15 @@
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "@/../tailwind.config";
-
 import useWindowSize from "./useWindowSize";
+import { SCREENS } from "@/constants";
 
 import { Screens, Breakpoints } from "@/types";
 
 export default function useBreakpoint() {
   const { width } = useWindowSize();
 
-  const fullConfig = resolveConfig(tailwindConfig);
-  const screens: Screens = fullConfig.theme.screens;
+  // const fullConfig = resolveConfig(tailwindConfig);
+  // const screens: Screens = fullConfig.theme.screens;
+
+  const screens = SCREENS;
   const breakpoints: Breakpoints = getBreakpoints(screens);
   const breakpoint = getCurrentBreakpoint(breakpoints, width);
 

@@ -313,3 +313,11 @@ export const CONTACT_INFO = [
     href: FACEBOOK_URL,
   },
 ];
+
+export const SCREENS = {
+  sm: "320px",
+  md: "425px",
+  lg: "768px",
+  xl: "1024px",
+  "2xl": "2000px",
+};

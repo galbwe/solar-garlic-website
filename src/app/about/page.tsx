@@ -5,7 +5,7 @@ import { teko } from "@/fonts";
 export default function About() {
   return (
     <div className="w-screen flex flex-row flex-wrap justify-center items-center xl:gap-6 xl:mt-12">
-      <section className=" mt-4 xl:mt-8 p-4 md:p-12 text-2xl w-full lg:w-4/5 xl:w-3/5 2xl:w-2/5 flex flex-col gap-3 bg-purple-dark lg:rounded border-y-2 lg:border-2 border-purple-light">
+      <section className=" mt-4 xl:mt-8 p-4 md:p-12 text-2xl w-full lg:w-4/5 xl:w-3/5 2xl:w-2/5 flex flex-col gap-3 bg-purple-dark lg:rounded-sm border-y-2 lg:border-2 border-purple-light">
         <h1
           className={`${teko.className} text-5xl md:text-7xl text-yellow pb-0 xl:pb-2`}
         >
@@ -43,7 +43,7 @@ export default function About() {
         </p>
       </section>
       <Image
-        className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded border-2 border-purple-light"
+        className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
         src={bandPhoto}
         height={460}
         width={460}

@@ -39,7 +39,7 @@ export default function Accordion({
             min-w-28
             max-w-full
             min-h-1/4
-            max-h-1/2
+            max-h-full
             xl:min-w-80
             xl:w-80
             xl:max-w-80

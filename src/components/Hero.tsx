@@ -24,7 +24,7 @@ export default function Hero({ title }: HeroProps) {
     <>
       <section className="h-full flex flex-col justify-center items-center">
         <div
-          className={`${teko.className} max-w-full rounded p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3`}
+          className={`${teko.className} max-w-full rounded-sm p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3`}
         >
           <h1 className="text-center text-8xl lg:text-8xl xl:text-9xl text-yellow">
             {title}

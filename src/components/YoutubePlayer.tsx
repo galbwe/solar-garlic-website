@@ -40,7 +40,7 @@ export default function YoutubePlayer({
 
     return (
       <iframe
-        className="rounded border-2 border-purple-light"
+        className="rounded-sm border-2 border-purple-light"
         style={{
           width: videoWidth,
           height: videoHeight,

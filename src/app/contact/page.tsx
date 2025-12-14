@@ -52,7 +52,7 @@ export default function Contact() {
 
   return (
     <section className="w-full h-full flex flex-col justify-start items-center pt-8 gap-2">
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded">
+      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded-sm">
         <h1
           className={`${teko.className} text-yellow text-7xl self-center text-center`}
         >
@@ -77,7 +77,7 @@ export default function Contact() {
           })}
         </ul>
       </div>
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 px-4 lg:px-0 py-6 border-2 border-purple-light rounded">
+      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 px-4 lg:px-0 py-6 border-2 border-purple-light rounded-sm">
         <form
           onSubmit={handleSubscribeToMailingList}
           className="space-y-4 w-full lg:w-2/3 flex flex-col items-start"
@@ -98,11 +98,11 @@ export default function Contact() {
             value={email}
             onChange={handleEmailChange}
             required
-            className="block w-full p-2 border text-black h-14"
+            className="block w-full p-2 border text-black bg-white h-14"
           />
           <button
             type="submit"
-            className="text-2xl font-bold bg-blue-500 text-white px-4 py-2 rounded w-full h-14"
+            className="text-2xl font-bold bg-blue-500 text-white px-4 py-2 rounded-sm w-full h-14"
           >
             Sign Up
           </button>

@@ -38,7 +38,7 @@ export default function EventCard({ event }: EventCardProps) {
     : null;
 
   return (
-    <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded min-w-full xl:min-h-96">
+    <div className="border-2 border-purple-light bg-purple-dark flex flex-col p-8 rounded-sm min-w-full xl:min-h-96">
       <div className="border-b-purple-light border-b-2 flex flex-row justify-between">
         <h2 className={`${teko.className} text-4xl xl:text-5xl text-yellow`}>
           {title}
