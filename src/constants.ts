@@ -25,15 +25,14 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Solar Garlic at Moe's BBQ",
-    venue: "Moe's Original BBQ",
-    venueUrl: "https://moesdenver.com/",
-    address: "3295 S Broadway, Englewood, CO 80113",
-    addressUrl: "https://maps.app.goo.gl/kvSXTifMBDGq5F3HA",
-    bands: ["Brittany Bridgewater & The Sparks", "Black Market Translation"],
-    show: "2025-07-26T01:00:00",
+    title: "Goosetown Tavern",
+    venue: "Goosetown Tavern",
+    venueUrl: "https://goosetowntavern.com/",
+    address: "3242 E Colfax Ave, Denver, CO 80206",
+    addressUrl: "https://maps.app.goo.gl/DcV55DyvC26iRhJQ6",
+    bands: ["Bicycle Day", "The Aughts"],
+    show: "2025-12-21T02:00:00",
     timezone: "America/Denver",
-    extraText: `For discounted advance tickets, contact ${CONTACT_EMAIL}`,
   },
 ];
 
