@@ -31,7 +31,7 @@ export const EVENTS = [
     address: "3242 E Colfax Ave, Denver, CO 80206",
     addressUrl: "https://maps.app.goo.gl/DcV55DyvC26iRhJQ6",
     bands: ["Bicycle Day", "The Aughts"],
-    show: "2025-12-21T02:00:00",
+    show: "2025-12-21T03:00:00",
     timezone: "America/Denver",
   },
 ];
