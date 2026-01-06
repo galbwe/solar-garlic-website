@@ -12,7 +12,8 @@
     "docker:build": "./scripts/docker_build.sh",
     "docker:run": "./scripts/docker_run_local.sh",
     "docker:login": "./scripts/docker_login.sh",
-    "docker:push": "./scripts/docker_push.sh"
+    "docker:push": "./scripts/docker_push.sh",
+    "compile": "tsc --noEmit --pretty"
   },
   "dependencies": {
     "@date-fns/tz": "^1.2.0",

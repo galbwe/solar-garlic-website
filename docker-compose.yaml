@@ -3,6 +3,18 @@ services:
     image: solar-garlic-next:1736491621-77bad02
     container_name: nextjs
     restart: always
+  ghost-cms:
+    image: ghost:6.10.3
+    container_name: ghost-cms
+    ports:
+      - "3001:2368"
+    restart: always
+    volumes:
+      - ./ghost:/var/lib/ghost/content
+    environment:
+      - NODE_ENV=development
+      - database__connection__filename=/var/lib/ghost/content/data/ghost.db
+      - url=http://localhost:3001
   nginx:
     image: solar-garlic-nginx:latest
     container_name: nginx
