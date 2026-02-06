@@ -52,7 +52,7 @@ export default function Contact() {
 
   return (
     <section className="w-full h-full flex flex-col justify-start items-center pt-8 gap-2">
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded-sm">
+      <div className="bg-purple w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 py-6 border-2 border-purple-light rounded-sm">
         <h1
           className={`${teko.className} text-yellow text-7xl self-center text-center`}
         >
@@ -77,7 +77,7 @@ export default function Contact() {
           })}
         </ul>
       </div>
-      <div className="bg-purple-dark w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 px-4 lg:px-0 py-6 border-2 border-purple-light rounded-sm">
+      <div className="bg-purple w-full max-w-5xl xl:w-2/3 flex flex-col justify-start items-center gap-6 px-4 lg:px-0 py-6 border-2 border-purple-light rounded-sm">
         <form
           onSubmit={handleSubscribeToMailingList}
           className="space-y-4 w-full lg:w-2/3 flex flex-col items-start"

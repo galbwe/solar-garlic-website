@@ -61,7 +61,7 @@ export default function YoutubePlayer({
       <div
         style={{ width: videoWidth, height: videoHeight }}
         className={`
-                    bg-purple-dark 
+                    bg-purple 
                     border-2 
                     border-purple-light 
                     rounded 

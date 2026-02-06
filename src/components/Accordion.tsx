@@ -44,7 +44,7 @@ export default function Accordion({
             xl:w-80
             xl:max-w-80
             xl:h-full
-            bg-purple-dark
+            bg-purple
             overflow-y-auto
         `}
     >

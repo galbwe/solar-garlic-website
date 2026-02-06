@@ -28,7 +28,7 @@ export default function EventPage() {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col gap-4 justify-center items-center xl:h-700px p-4 mt-6 rounded-sm bg-purple-dark">
+          <div className="flex flex-col gap-4 justify-center items-center xl:h-700px p-4 mt-6 rounded-sm bg-purple">
             <h2 className="text-4xl">No upcoming shows.</h2>
             <p className="text-xl">
               Check us out on social to find out about our next show.

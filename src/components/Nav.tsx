@@ -34,7 +34,7 @@ export default function Nav({ items, breakpoint }: NavProps) {
 function NavDesktop({ items }: NavProps) {
   return (
     <nav
-      className={`flex justify-between items-center h-24 pr-6 bg-purple-dark border-b-2 border-b-purple-light ${teko.className}`}
+      className={`flex justify-between items-center h-24 pr-6 bg-purple border-b-2 border-b-purple-light ${teko.className}`}
     >
       <Link
         href="/"
@@ -58,7 +58,7 @@ function NavMobile({ items }: NavProps) {
 
   return (
     <nav className={`flex flex-col ${teko.className}`}>
-      <div className="pl-0 pr-6 xl:pr-3 flex flex-row justify-between items-center h-24 bg-purple-dark border-b-2 border-b-purple-light">
+      <div className="pl-0 pr-6 xl:pr-3 flex flex-row justify-between items-center h-24 bg-purple border-b-2 border-b-purple-light">
         <Link
           href="/"
           className="text-2xl text-yellow flex flex-row gap-2 h-full"
@@ -84,7 +84,7 @@ function NavMobile({ items }: NavProps) {
         )}
       </div>
       {isMenuOpen && (
-        <div className="bg-purple-dark border-b-2 border-b-purple-light flex justify-center p-4">
+        <div className="bg-purple border-b-2 border-b-purple-light flex justify-center p-4">
           {/* // menu drawer with nav links */}
           <NavLinks
             mobile
