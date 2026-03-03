@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint src/",
     "fmt": "prettier --write src",
     "fmt:check": "prettier --check src",
     "docker:build": "./scripts/docker_build.sh",

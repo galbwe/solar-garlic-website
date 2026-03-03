@@ -20,7 +20,9 @@ jobs:
       - name: Check formatting
         run: npm run fmt:check
       - name: Lint
-        run: npm run lint
+        run: |
+          mkdir -p lint
+          npm run lint
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
