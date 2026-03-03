@@ -5,55 +5,72 @@ on:
     branches: [main]
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main'
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v6
-  #     - name: Use Node.js
-  #       uses: actions/setup-node@v6
-  #       with:
-  #         node-version: '24.x'
-  #     - name: Node Install
-  #       run: npm ci
-  #     - name: Check formatting
-  #       run: npm run fmt:check
-  #     - name: Lint
-  #       run: |
-  #         mkdir -p lint
-  #         npm run lint
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v6.0.0
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: us-west-1
-  #     - name: Log in to Amazon ECR
-  #       id: login-ecr
-  #       uses: aws-actions/amazon-ecr-login@v2
-  #       with:
-  #         mask-password: 'false'
-  #     - name: Build
-  #       env:
-  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #         ECR_REPOSITORY: solargarlicband/website
-  #         IMAGE_TAG: ${{ github.sha }}
-  #       run: |
-  #         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-  #     - name: Log out of Amazon ECR
-  #       if: always()
-  #       run: docker logout ${{ steps.login-ecr.outputs.registry }}
-  deploy:
+  Deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    # needs: build
     steps:
-      - name: Docker Pull
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+      - name: Node Install
+        run: npm ci
+      - name: Check formatting
+        run: npm run fmt:check
+      - name: Lint
+        run: |
+          mkdir -p lint
+          npm run lint
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v6.0.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-1
+      - name: Runner ECR Login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          mask-password: 'false'
+      - name: Build
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: solargarlicband/website
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      - name: Log out of Amazon ECR
+        if: always()
+        run: docker logout ${{ steps.login-ecr.outputs.registry }}
+      - name: Create PEM
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem  
+      - name: EC2 ECR Login
+        run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
-          'cd && echo "It worked!" > hello.txt'
+          "aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin ${{steps.login-ecr.outputs.registry}}"
+      - name: Docker Pull
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
+          "docker image pull ${{ steps.login-ecr.outputs.registry }}/solargarlicband/website:${{ github.sha }}"
+      - name: Get Image Ids
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
+          "docker image ls --filter "reference=*/solargarlicband/website" -q | head -n1 > website-image-id.txt && docker image ls --filter "reference=*/solargarlicband/mailing-list" -q | head -n1 > mailing-list-image-id.txt"
+      - name: Deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
+          "export WEB_IMAGE_ID=$(cat website-image-id.txt) && export MAILING_LIST_IMAGE_ID=$(cat mailing-list-image-id.txt) && ./scripts/deploy.sh $WEB_IMAGE_ID $MAILING_LIST_IMAGE_ID"
+      - name: Remove Image Ids
+        if: always()
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \ 
+          "rm website-image-id.txt && rm mailing-list-image-id.txt"
+      - name: Remove PEM
+        if: always()
+        run: |
           rm key.pem
