@@ -64,12 +64,7 @@ jobs:
       - name: Deploy
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
-          "export WEB_IMAGE_ID=$(cat website-image-id.txt) && export MAILING_LIST_IMAGE_ID=$(cat mailing-list-image-id.txt) && ./scripts/deploy.sh $WEB_IMAGE_ID $MAILING_LIST_IMAGE_ID"
-      - name: Remove Image Ids
-        if: always()
-        run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \ 
-          "rm website-image-id.txt && rm mailing-list-image-id.txt"
+          "./scripts/deploy.sh"
       - name: Remove PEM
         if: always()
         run: |
