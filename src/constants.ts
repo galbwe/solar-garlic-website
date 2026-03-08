@@ -30,8 +30,8 @@ export const EVENTS = [
     venueUrl: "https://moesdenver.com/",
     address: "3295 S Broadway, Englewood, CO 80113",
     addressUrl: "https://maps.app.goo.gl/KiA6v7vgLZYaBEW37",
-    bands: ["Bicycle Day"],
-    show: "2026-04-04T02:00:00",
+    bands: ["Bicycle Day", "Nikki Z. & The Vizzion"],
+    show: "2026-04-04T01:30:00",
     timezone: "America/Denver",
   },
   {
