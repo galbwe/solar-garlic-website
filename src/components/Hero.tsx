@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import lionsLair01 from "../../public/solar-garlic-lions-lair-01.jpg";
-import lionsLair01Small from "../../public/solar-garlic-lions-lair-01-sm.jpg";
+import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
+
+import armadilloRanch01 from "../../public/armadillo-ranch-01.jpg";
+
 import NavLinks from "./NavLinks";
 import { NAV_ITEMS } from "@/constants";
 import { teko } from "@/fonts";
@@ -22,9 +24,9 @@ export default function Hero({ title }: HeroProps) {
 
   return (
     <>
-      <section className="h-full flex flex-col justify-center items-center">
+      <section className="h-full flex flex-col justify-start items-center">
         <div
-          className={`${teko.className} max-w-full rounded-sm p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3`}
+          className={`${teko.className} max-w-full rounded-sm p-10 lg:bg-purple-dark/70 flex flex-col justify-center items-center gap-8 lg:gap-3 pt-40`}
         >
           <h1 className="text-center text-8xl lg:text-8xl xl:text-9xl text-yellow">
             {title}
@@ -81,8 +83,8 @@ function HeroImage() {
       <Image
         fill
         className="-z-50"
-        src={lionsLair01}
-        alt="Solar Garlic on stage at The Lion's Lair."
+        src={armadilloRanch01}
+        alt="Solar Garlic on stage"
       />
     );
   }
@@ -98,8 +100,8 @@ function HeroImage() {
               ${width <= 1800 ? "left-48" : "left-1/4"}
               top-0
             `}
-        src={lionsLair01}
-        alt="Solar Garlic on stage at the Lion's Lair."
+        src={armadilloRanch01}
+        alt="Solar Garlic on stage"
       />
     );
   }
@@ -108,7 +110,8 @@ function HeroImage() {
     <Image
       fill
       className="-z-50"
-      src={lionsLair01Small}
+      // TODO: get a small image for armadillo ranch
+      src={armadilloRanch01sm}
       alt="Solar Garlic on stage at The Lion's Lair."
     />
   );
