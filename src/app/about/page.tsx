@@ -1,13 +1,18 @@
+"use client";
+
 import bandPhoto from "../../../public/band-photo-02.jpg";
 import davie from "../../../public/davie.jpg";
 import hazel from "../../../public/hazel.jpg";
 import sabrina from "../../../public/sabrina.jpg";
 import wes from "../../../public/wes.jpg";
+import useBreakpoint from "@/hooks/useBreakpoint";
 
 import Image from "next/image";
 import { teko } from "@/fonts";
 
 export default function About() {
+  const { isBreakpointOrAbove } = useBreakpoint();
+
   return (
     <div className="w-screen flex flex-col justify-center items-center xl:gap-6 xl:mt-12 pb-40">
       <h1
@@ -15,8 +20,8 @@ export default function About() {
       >
         About
       </h1>
-      <section className="flex flex-row-reverse max-w-4/5 justify-center gap-4">
-        <div className=" max-w-1/3 p-4 md:p-12 text-2xl bg-purple lg:rounded-sm border-y-2 lg:border-2 border-purple-light">
+      <section className="flex flex-row max-w-full xl:max-w-4/5 justify-center gap-4">
+        <div className=" max-w-full xl:max-w-1/3 p-4 md:p-12 text-2xl bg-purple lg:rounded-sm border-y-2 lg:border-2 border-purple-light">
           <p>
             Solar Garlic is a Denver-based jam band mixing funk and indie vibes
             into their original music and covers. Brought together in late 2023
@@ -31,12 +36,14 @@ export default function About() {
             in 2026. See you out there!
           </p>
         </div>
-        <Image
-          className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
-          src={bandPhoto}
-          width={900}
-          alt="Solar Garlic at a rehearsal"
-        />
+        {!!isBreakpointOrAbove("xl") && (
+          <Image
+            className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
+            src={bandPhoto}
+            width={1000}
+            alt="Solar Garlic at a rehearsal"
+          />
+        )}
       </section>
 
       <section className="mt-15 flex flex-col max-w-4/5 justify-center items-center gap-10">
