@@ -21,7 +21,7 @@ export default function About() {
         About
       </h1>
       <section className="flex flex-row max-w-full xl:max-w-4/5 justify-center gap-4">
-        <div className=" max-w-full xl:max-w-1/3 p-4 md:p-12 text-2xl bg-purple lg:rounded-sm border-y-2 lg:border-2 border-purple-light">
+        <div className="w-full xl:w-1/3 p-4 md:p-12 text-2xl bg-purple lg:rounded-sm border-y-2 lg:border-2 border-purple-light">
           <p>
             Solar Garlic is a Denver-based jam band mixing funk and indie vibes
             into their original music and covers. Brought together in late 2023
@@ -37,12 +37,15 @@ export default function About() {
           </p>
         </div>
         {!!isBreakpointOrAbove("xl") && (
-          <Image
-            className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
-            src={bandPhoto}
-            width={1000}
-            alt="Solar Garlic at a rehearsal"
-          />
+          <div className="xl:w-2/3">
+            <Image
+              className="w-full h-full aspect-video object-cover rounded-sm border-2 border-purple-light"
+              src={bandPhoto}
+              width={1200}
+              height={675}
+              alt="Solar Garlic at a rehearsal"
+            />
+          </div>
         )}
       </section>
 
