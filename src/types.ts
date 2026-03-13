@@ -13,6 +13,16 @@ export interface AccordionOption<O> {
   data?: O;
 }
 
+export interface TicketInfoLink {
+  text: string;
+  url: string;
+}
+
+export interface TicketInfo {
+  text: string;
+  links: Array<TicketInfoLink>;
+}
+
 export interface Event {
   id: string;
   title: string;
@@ -28,6 +38,7 @@ export interface Event {
   videos?: Array<Video>;
   ticketsUrl?: string;
   extraText?: string;
+  ticketInfo?: TicketInfo;
 }
 
 export interface NavItem {

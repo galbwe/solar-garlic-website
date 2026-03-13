@@ -33,6 +33,15 @@ export const EVENTS = [
     bands: ["Bicycle Day", "Nikki Z. & The Vizzion"],
     show: "2026-04-04T01:30:00",
     timezone: "America/Denver",
+    ticketInfo: {
+      text: "The band is making a list of names that will get you in the door. To get on the list, venmo $10 to our guitarist @sabrina1995 with your name. You can also pay $15-20 at the venue the day of the show.",
+      links: [
+        {
+          text: "@sabrina1995",
+          url: "https://account.venmo.com/u/Sabrina1995",
+        },
+      ],
+    },
   },
   {
     id: uuid4(),

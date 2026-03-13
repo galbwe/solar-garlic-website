@@ -1,7 +1,10 @@
+"use client";
+
 import { parseJSON, format } from "date-fns";
 import { tz } from "@date-fns/tz";
 
 import Image from "next/image";
+import { useState } from "react";
 
 import { teko, notoSansDisplay } from "@/fonts";
 import { Event } from "@/types";
@@ -27,7 +30,21 @@ export default function EventCard({ event }: EventCardProps) {
     ticketsUrl,
     extraText,
     timezone = "America/Denver",
+    ticketInfo,
   } = event;
+
+  const [showTicketInfo, setShowTicketInfo] = useState<boolean>(false);
+
+  let ticketInfoHtml = "";
+  if (!!ticketInfo && showTicketInfo) {
+    ticketInfoHtml = ticketInfo.text;
+    for (const link of ticketInfo.links) {
+      ticketInfoHtml = ticketInfoHtml.replace(
+        link.text,
+        `<a style="color: #FFCB2E" href="${link.url}" target="blank_">${link.text}</a>`,
+      );
+    }
+  }
 
   const datetime = parseJSON(show, { in: tz(timezone) });
   const dateFormatted = format(datetime, "EEEE LLLL do");
@@ -38,7 +55,7 @@ export default function EventCard({ event }: EventCardProps) {
     : null;
 
   return (
-    <div className="border-2 border-purple-light bg-purple flex flex-col p-8 rounded-sm min-w-full xl:min-h-96">
+    <div className="border-2 border-purple-light bg-purple flex flex-col p-6 xl:p-8 rounded-sm min-w-full xl:min-h-96">
       <div className="border-b-purple-light border-b-2 flex flex-row justify-between">
         <h2 className={`${teko.className} text-4xl xl:text-5xl text-yellow`}>
           {title}
@@ -89,6 +106,25 @@ export default function EventCard({ event }: EventCardProps) {
           </a>
         )}
         {!!extraText && <p className="text-md font-light">{extraText}</p>}
+
+        {!!ticketInfo && !showTicketInfo && (
+          <div className="w-full flex flex-row justify-center">
+            <button
+              type="submit"
+              className="cursor-pointer text-2xl font-bold bg-blue-500 text-white px-4 py-2 mt-4 rounded-sm w-full xl:w-1/2 h-14"
+              onClick={() => setShowTicketInfo(true)}
+            >
+              Get Tickets
+            </button>
+          </div>
+        )}
+
+        {!!ticketInfo && showTicketInfo && (
+          <p
+            className="mt-4 text-xl xl:text-2xl bg-purple-light p-2 xl:p-4"
+            dangerouslySetInnerHTML={{ __html: ticketInfoHtml }}
+          />
+        )}
       </div>
     </div>
   );
