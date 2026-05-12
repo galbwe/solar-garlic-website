@@ -97,7 +97,7 @@ export default function About() {
             />
           </li>
           <li>
-            <span className="font-bold">Mel</span> on keys
+            <span className="font-bold">Melody Weigel</span> on keys
             <Image
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={mel}
