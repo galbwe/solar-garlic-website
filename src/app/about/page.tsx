@@ -5,6 +5,7 @@ import davie from "../../../public/davie.jpg";
 import hazel from "../../../public/hazel.jpg";
 import sabrina from "../../../public/sabrina.jpg";
 import wes from "../../../public/wes.jpg";
+import mel from "../../../public/mel.jpg";
 import useBreakpoint from "@/hooks/useBreakpoint";
 
 import Image from "next/image";
@@ -67,8 +68,8 @@ export default function About() {
             />
           </li>
           <li>
-            <span className="font-bold">Sabrina Scherma</span> on guitar, keys,
-            and vocals
+            <span className="font-bold">Sabrina Scherma</span> on guitar and
+            vocals
             <Image
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={sabrina}
@@ -93,6 +94,15 @@ export default function About() {
               src={wes}
               width={600}
               alt="Wes Galbraith"
+            />
+          </li>
+          <li>
+            <span className="font-bold">Mel</span> on keys
+            <Image
+              className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
+              src={mel}
+              width={600}
+              alt="Mel"
             />
           </li>
         </ul>
