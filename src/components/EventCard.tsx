@@ -48,7 +48,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   const datetime = parseJSON(show, { in: tz(timezone) });
   const dateFormatted = format(datetime, "EEEE LLLL do");
-  const showTime = format(datetime, "haaa");
+  const showTime = format(datetime, "h:maaa");
 
   const doorsTime = doors
     ? format(parseJSON(doors, { in: tz(timezone) }), "haaa")

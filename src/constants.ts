@@ -25,34 +25,16 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Moe's BBQ",
-    venue: "Moe's BBQ",
-    venueUrl: "https://moesdenver.com/",
-    address: "3295 S Broadway, Englewood, CO 80113",
-    addressUrl: "https://maps.app.goo.gl/KiA6v7vgLZYaBEW37",
-    bands: ["Bicycle Day", "Nikki Z. & The Vizzion"],
-    show: "2026-04-04T01:30:00",
+    title: "Take me to the RIVER",
+    venue: "RIVER - RINO",
+    venueUrl: "https://www.riverbar.art/",
+    address: "3759 Chestnut Pl, Denver, CO 80216",
+    addressUrl:
+      "https://www.google.com/maps/place/RIVER/@39.7742721,-104.980188,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c79eb9a3d1e91:0x22c775533f34362!8m2!3d39.774268!4d-104.9776131!16s%2Fg%2F11nnqm725t!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
+    bands: ["Stranger"],
+    show: "2026-05-30T04:30:00",
     timezone: "America/Denver",
-    ticketInfo: {
-      text: "The band is making a list of names that will get you in the door. To get on the list, venmo $10 to our guitarist @sabrina1995 with your name. You can also pay $15-20 at the venue the day of the show.",
-      links: [
-        {
-          text: "@sabrina1995",
-          url: "https://account.venmo.com/u/Sabrina1995",
-        },
-      ],
-    },
-  },
-  {
-    id: uuid4(),
-    title: "The Lion's Lair",
-    venue: "The Lion's Lair",
-    venueUrl: "https://www.lionslairco.com/",
-    address: "2022 E Colfax Ave, Denver, CO 80206",
-    addressUrl: "https://maps.app.goo.gl/DPZbzec7n5QX3a75A",
-    // bands: [],
-    show: "2026-04-24T02:00:00",
-    timezone: "America/Denver",
+    extraText: "No Cover",
   },
 ];
 
