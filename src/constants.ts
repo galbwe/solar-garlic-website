@@ -31,7 +31,7 @@ export const EVENTS = [
     address: "3759 Chestnut Pl, Denver, CO 80216",
     addressUrl:
       "https://www.google.com/maps/place/RIVER/@39.7742721,-104.980188,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c79eb9a3d1e91:0x22c775533f34362!8m2!3d39.774268!4d-104.9776131!16s%2Fg%2F11nnqm725t!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
-    bands: ["Stranger"],
+    bands: ["Stranger", "ssab"],
     show: "2026-05-30T04:30:00",
     timezone: "America/Denver",
     extraText: "No Cover",
