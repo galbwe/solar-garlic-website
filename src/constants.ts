@@ -45,7 +45,7 @@ export const EVENTS = [
     addressUrl:
       "https://www.google.com/maps/place/Goosetown+Tavern+BBQ/@39.7399862,-104.9511798,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7eadbae6507f:0x7a0bab38d825e055!8m2!3d39.7399821!4d-104.9486049!16s%2Fg%2F1v3lqfr1!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUxMi4wIKXMDSoASAFQAw%3D%3D",
     // bands: [],
-    show: "2026-08-23T01:00:00",
+    show: "2026-08-30T01:00:00",
     timezone: "America/Denver",
   },
 ];
