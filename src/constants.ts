@@ -38,15 +38,29 @@ export const EVENTS = [
   },
   {
     id: uuid4(),
-    title: "Solar Garlic at Goosetown",
-    venue: "Goosetown Tavern",
-    venueUrl: "https://goosetowntavern.com/",
-    address: "3242 E Colfax Ave, Denver, CO 80206",
+    title: "Holy $h*@ guys we're playing Cervantes",
+    venue: "Cervantes' Other Side",
+    venueUrl: "https://cervantesmasterpiece.com/",
+    address: "2637 Welton Street. Denver, Colorado 80205",
     addressUrl:
-      "https://www.google.com/maps/place/Goosetown+Tavern+BBQ/@39.7399862,-104.9511798,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7eadbae6507f:0x7a0bab38d825e055!8m2!3d39.7399821!4d-104.9486049!16s%2Fg%2F1v3lqfr1!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUxMi4wIKXMDSoASAFQAw%3D%3D",
-    // bands: [],
-    show: "2026-08-30T01:00:00",
+      "https://www.google.com/maps/place/2637+Welton+St,+Denver,+CO+80205/@39.7545449,-104.9788457,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7923f6552fb3:0x8e8ac5170e1b2bd5!8m2!3d39.7545449!4d-104.9788457!16s%2Fg%2F11bw406vzs!5m1!1e2?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D",
+    show: "2026-09-14T02:00:00",
+    doors: "2026-09-14T01:00:00",
+    bands: ["Cytrus"],
     timezone: "America/Denver",
+    ticketInfo: {
+      text: "<p>Buy from the venue<\p><br/><p>Alternatively, venmo $20 to Sabrina at @ssab_music with your first and last name. They will put you on the venue's will call list. You can avoid paying a bunch of fees this way.<\p>",
+      links: [
+        {
+          text: "Buy from the venue",
+          url: "https://www.etix.com/ticket/p/81538355/cytrus-wsolar-garlic-denver-cervantesother-side?language=en&amp;country=US&amp;searchType=organization",
+        },
+        {
+          text: "@ssab_music",
+          url: "https://account.venmo.com/u/ssab_music",
+        },
+      ],
+    },
   },
 ];
 
