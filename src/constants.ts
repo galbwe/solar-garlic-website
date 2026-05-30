@@ -25,19 +25,6 @@ export const NAV_ITEMS = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Take me to the RIVER",
-    venue: "RIVER - RINO",
-    venueUrl: "https://www.riverbar.art/",
-    address: "3759 Chestnut Pl, Denver, CO 80216",
-    addressUrl:
-      "https://www.google.com/maps/place/RIVER/@39.7742721,-104.980188,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c79eb9a3d1e91:0x22c775533f34362!8m2!3d39.774268!4d-104.9776131!16s%2Fg%2F11nnqm725t!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D",
-    bands: ["Stranger", "ssab"],
-    show: "2026-05-30T04:30:00",
-    timezone: "America/Denver",
-    extraText: "No Cover",
-  },
-  {
-    id: uuid4(),
     title: "Holy $h*@ guys we're playing Cervantes",
     venue: "Cervantes' Other Side",
     venueUrl: "https://cervantesmasterpiece.com/",
@@ -65,6 +52,78 @@ export const EVENTS = [
 ];
 
 export const PAST_EVENTS = [
+  {
+    id: uuid4(),
+    title: "Take me to the RIVER",
+    venue: "RIVER",
+    show: "2026-05-30T04:30:00",
+    timezone: "America/Denver",
+    videos: [
+      {
+        id: uuid4(),
+        title: "Franklin's Tower",
+        artist: "The Grateful Dead",
+        orginal: false,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=338",
+      },
+      {
+        id: uuid4(),
+        title: "People of the Sun",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=756",
+      },
+      {
+        id: uuid4(),
+        title: "All Fall Down",
+        artist: "John Hartford",
+        original: false,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=1056",
+      },
+      {
+        id: uuid4(),
+        title: "Shining Lights",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=1650",
+      },
+      {
+        id: uuid4(),
+        title: "Sweet Sunshine",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=2292",
+      },
+      {
+        id: uuid4(),
+        title: "Measure of Love",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=2692",
+      },
+      {
+        id: uuid4(),
+        title: "Maybe",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=2909",
+      },
+      {
+        id: uuid4(),
+        title: "Cat In The Window",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=3627",
+      },
+      {
+        id: uuid4(),
+        title: "17th Avenue",
+        artist: "Solar Garlic",
+        original: true,
+        url: "https://www.youtube.com/embed/QCNytOCTFzM?si=c4gGIpoRHc6FyaVT&amp;start=4014",
+      },
+    ],
+  },
   {
     id: uuid4(),
     title: "Armadillo Ranch February 2026",
