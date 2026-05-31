@@ -8,7 +8,7 @@ import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
 import armadilloRanch01 from "../../public/armadillo-ranch-01.jpg";
 
 import NavLinks from "./NavLinks";
-import { NAV_ITEMS } from "@/constants";
+import { NAV_ITEMS, CERVANTES_TICKET_LINK } from "@/constants";
 import { teko } from "@/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
 import useBreakpoint from "@/hooks/useBreakpoint";
@@ -40,13 +40,17 @@ export default function Hero({ title }: HeroProps) {
               <NavLinks mobile items={navItems} linkSize="text-4xl" />
             </div>
           )}
-
-          <Link
-            href="/contact"
-            className="text-4xl lg:text-5xl hover:underline text-blue-300 mt-5"
-          >
-            Join Our Mailing List
-          </Link>
+          <div className="flex flex-col items-center gap-2 mt-2">
+            <p className="text-4xl">We&apos;re playing Cervantes!</p>
+            <p className="text-3xl">9/13/2026</p>
+            <Link
+              href={CERVANTES_TICKET_LINK}
+              target="_blank"
+              className="text-4xl mt-1 underline text-yellow"
+            >
+              Get Tickets
+            </Link>
+          </div>
         </div>
       </section>
       <OpaqueOverlay />

@@ -21,6 +21,9 @@ export const NAV_ITEMS = [
   { title: "Contact", href: "/contact" },
 ];
 
+export const CERVANTES_TICKET_LINK =
+  "https://www.etix.com/ticket/p/81538355/cytrus-wsolar-garlic-denver-cervantesother-side?language=en&amp;country=US&amp;searchType=organization";
+
 // TODO: move events to an api call
 export const EVENTS = [
   {
@@ -40,7 +43,7 @@ export const EVENTS = [
       links: [
         {
           text: "Buy from the venue",
-          url: "https://www.etix.com/ticket/p/81538355/cytrus-wsolar-garlic-denver-cervantesother-side?language=en&amp;country=US&amp;searchType=organization",
+          url: CERVANTES_TICKET_LINK,
         },
         {
           text: "@ssab_music",
