@@ -1,0 +1,19 @@
+name: Docker Maintenaince
+on:
+  schedule:
+    # Runs every month on the second day at 8am utc
+    - cron: '0 8 2 * *'
+  workflow_dispatch:
+jobs:
+  reclaim_docker_disk_space:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PEM
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
+          chmod 600 key.pem
+      - name: Docker Prune
+        run: |
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
+          docker system prune -af \
+          && docker volume prune -f
