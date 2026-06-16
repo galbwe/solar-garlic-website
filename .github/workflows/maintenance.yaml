@@ -1,4 +1,4 @@
-name: Reclaim Docker Disk Space
+name: Maintenance
 on:
   schedule:
     # Runs every month on the second day at 8am utc
