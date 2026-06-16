@@ -5,7 +5,7 @@ on:
     - cron: '0 8 2 * *'
   workflow_dispatch:
 jobs:
-  reclaim_docker_disk_space:
+  renew_ssl_cert:
     runs-on: ubuntu-latest
     steps:
       - name: Create PEM
@@ -14,8 +14,16 @@ jobs:
           chmod 600 key.pem
       - name: Renew SSL Cert
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@{{ secrets.SSH_HOST }} \
+          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
           renew-ssl-certs.sh
+  reclaim_docker_disk_space:
+    needs: renew_ssl_cert
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PEM
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
+          chmod 600 key.pem
       - name: Docker Prune
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
