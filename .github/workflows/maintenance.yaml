@@ -15,7 +15,7 @@ jobs:
       - name: Renew SSL Cert
         run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
-          renew-ssl-certs.sh
+          scripts/renew-ssl-certs.sh
   reclaim_docker_disk_space:
     needs: renew_ssl_cert
     runs-on: ubuntu-latest
