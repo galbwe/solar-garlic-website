@@ -1,10 +1,8 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [ main ]
   schedule:
-    # Runs every 6 hours on the 10th minute of the hour
-    - cron: '10 */6 * * *'
+    # Runs every 1 hour on the 43rd minute of the hour
+    - cron: '43 * * * *'
   # allows manually running workflows
   workflow_dispatch:
 jobs:
