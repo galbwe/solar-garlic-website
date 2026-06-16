@@ -5,19 +5,19 @@ on:
     - cron: '0 8 2 * *'
   workflow_dispatch:
 jobs:
-  renew_ssl_cert:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Create PEM
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
-          chmod 600 key.pem
-      - name: Renew SSL Cert
-        run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
-          scripts/renew-ssl-certs.sh
+  # TODO: get this running. It is currently timing out.
+  # renew_ssl_cert:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Create PEM
+  #       run: |
+  #         echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
+  #         chmod 600 key.pem
+  #     - name: Renew SSL Cert
+  #       run: |
+  #         ssh -o StrictHostKeyChecking=no -i key.pem ec2-user@${{ secrets.SSH_HOST }} \
+  #         scripts/renew-ssl-certs.sh
   reclaim_docker_disk_space:
-    needs: renew_ssl_cert
     runs-on: ubuntu-latest
     steps:
       - name: Create PEM
