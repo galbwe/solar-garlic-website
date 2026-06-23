@@ -1,0 +1,68 @@
+name: Playwright Tests (CI)
+
+# Run against a local Docker container on PRs to main and post-merge pushes to main.
+# The existing playwright.yml (scheduled, against production) is unaffected.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  playwright-ci:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t solar-garlic-app:ci .
+
+      - name: Start app container
+        run: |
+          docker run -d \
+            --name nextjs-app \
+            -p 3000:3000 \
+            solar-garlic-app:ci
+
+      - name: Wait for app to be ready
+        run: |
+          echo "Waiting for app to start..."
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:3000 > /dev/null 2>&1; then
+              echo "App is ready after $i attempts"
+              exit 0
+            fi
+            echo "Attempt $i: not ready yet, waiting 5s..."
+            sleep 5
+          done
+          echo "App failed to start within 150s"
+          docker logs nextjs-app
+          exit 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          BASE_URL: http://localhost:3000
+          CI: true
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report-ci
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Stop app container
+        if: always()
+        run: docker stop nextjs-app && docker rm nextjs-app || true
