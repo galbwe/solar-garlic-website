@@ -1,18 +1,21 @@
-import Image, { StaticImageData } from "next/image";
-import { CSSProperties, ComponentProps } from "react";
+import Image from "next/image";
+import { CSSProperties, ImgHTMLAttributes } from "react";
 
-interface OptimizedImageProps extends Omit<
-  ComponentProps<typeof Image>,
-  "src"
-> {
-  /** Base image path or imported static image (without extension) */
-  src: string | StaticImageData;
+interface OptimizedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+  /** Base image path or imported static image */
+  src: string | any;
   /** Alt text for accessibility (required) */
   alt: string;
   /** Optional CSS classes */
   className?: string;
   /** Optional inline styles */
   style?: CSSProperties;
+  /** Width for Next.js Image (required for static imports) */
+  width?: number;
+  /** Height for Next.js Image (required for static imports) */
+  height?: number;
+  /** Use Next.js Image for optimization (default: true) */
+  useNextImage?: boolean;
   /** Enable lazy loading (default: true) */
   loading?: "lazy" | "eager";
 }
@@ -20,19 +23,17 @@ interface OptimizedImageProps extends Omit<
 /**
  * OptimizedImage Component
  *
- * Serves modern image formats (AVIF, WebP) with fallback to JPG/PNG.
- * Automatically generates correct paths for all format variants.
+ * Intelligently serves images with Next.js Image optimization when possible,
+ * or uses picture element for format variants when needed.
+ *
+ * For static imports with width/height: uses Next.js Image (best optimization)
+ * For string paths: uses picture element with AVIF/WebP variants
  *
  * Usage:
  * ```tsx
  * import bandPhoto from "../../../public/band-photo-02.jpg";
  * <OptimizedImage src={bandPhoto} alt="Band photo" width={1200} height={675} />
  * ```
- *
- * This component will serve:
- * - AVIF to modern browsers (87%+ support)
- * - WebP to older browsers that don't support AVIF (94%+ support)
- * - JPG/PNG to legacy browsers
  */
 export default function OptimizedImage({
   src,
@@ -42,42 +43,67 @@ export default function OptimizedImage({
   loading = "lazy",
   width,
   height,
-  priority = false,
+  useNextImage = true,
   ...props
 }: OptimizedImageProps) {
-  // Handle both static imports and string paths
-  let srcPath: string;
+  // Check if src is a static import (object with src property) or string
+  const isStaticImport = typeof src === "object" && src.src;
+  const srcPath = isStaticImport ? src.src : src;
 
-  if (typeof src === "string") {
-    srcPath = src;
-  } else {
-    // For static imports (StaticImageData), use the .src string property
-    srcPath = src.src;
-  }
-
-  // Remove file extension to build variant paths
-  const basePath = srcPath.replace(/\.(jpg|png)$/i, "");
-
-  return (
-    <picture>
-      {/* AVIF: Best compression, modern browsers */}
-      <source srcSet={`${basePath}.avif`} type="image/avif" />
-
-      {/* WebP: Good compression, broad support */}
-      <source srcSet={`${basePath}.webp`} type="image/webp" />
-
-      {/* Fallback to original JPG/PNG */}
+  // If we have width/height and useNextImage is true, use Next.js Image
+  // This works for both static imports and string paths
+  if (useNextImage && width && height) {
+    return (
       <Image
-        src={srcPath}
+        src={src}
         alt={alt}
-        width={width as number}
-        height={height as number}
+        width={width}
+        height={height}
         className={className}
         style={style}
         loading={loading}
-        priority={priority}
         {...props}
       />
-    </picture>
+    );
+  }
+
+  // For string paths without explicit width/height, use picture element
+  // with format variants (AVIF, WebP) for better compression
+  if (typeof src === "string") {
+    // Remove file extension to build variant paths
+    const basePath = src.replace(/\.(jpg|png)$/i, "");
+
+    return (
+      <picture>
+        {/* AVIF: Best compression, modern browsers */}
+        <source srcSet={`${basePath}.avif`} type="image/avif" />
+
+        {/* WebP: Good compression, broad support */}
+        <source srcSet={`${basePath}.webp`} type="image/webp" />
+
+        {/* Fallback to original JPG/PNG */}
+        <img
+          src={src}
+          alt={alt}
+          className={className}
+          style={style}
+          loading={loading}
+          {...props}
+        />
+      </picture>
+    );
+  }
+
+  // Fallback: static import without explicit dimensions
+  // Use NextImage with default sizing
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      loading={loading}
+      {...props}
+    />
   );
 }

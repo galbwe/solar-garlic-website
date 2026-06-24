@@ -43,6 +43,7 @@ export default function EventPage() {
             height={isBreakpointOrBelow("lg") ? 480 : 700}
             src={djGuysPhoto01}
             alt="Solar Garlic jamming at a rehearsal"
+            useNextImage={true}
           />
         </div>
       </div>

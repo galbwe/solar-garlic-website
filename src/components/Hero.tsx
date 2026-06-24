@@ -85,10 +85,12 @@ function HeroImage() {
   if (isBreakpointOrAbove("lg") && isBreakpointOrBelow("xl")) {
     return (
       <OptimizedImage
-        fill
-        className="-z-50"
+        width={1200}
+        height={900}
+        className="-z-50 fixed top-0 left-0 w-full h-screen object-cover"
         src={armadilloRanch01}
         alt="Solar Garlic on stage"
+        useNextImage={true}
       />
     );
   }
@@ -106,17 +108,20 @@ function HeroImage() {
             `}
         src={armadilloRanch01}
         alt="Solar Garlic on stage"
+        useNextImage={true}
       />
     );
   }
 
   return (
     <OptimizedImage
-      fill
-      className="-z-50"
+      width={600}
+      height={600}
+      className="-z-50 fixed top-0 left-0 w-full h-screen object-cover"
       // TODO: get a small image for armadillo ranch
       src={armadilloRanch01sm}
       alt="Solar Garlic on stage at The Lion's Lair."
+      useNextImage={true}
     />
   );
 }

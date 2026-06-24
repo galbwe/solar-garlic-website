@@ -45,6 +45,7 @@ export default function About() {
               width={1200}
               height={675}
               alt="Solar Garlic at a rehearsal"
+              useNextImage={true}
             />
           </div>
         )}
@@ -64,7 +65,9 @@ export default function About() {
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={davie}
               width={600}
+              height={600}
               alt="Davie Pyle"
+              useNextImage={true}
             />
           </li>
           <li>
@@ -74,7 +77,9 @@ export default function About() {
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={sabrina}
               width={600}
+              height={600}
               alt="Sabrina Scherma"
+              useNextImage={true}
             />
           </li>
           <li>
@@ -84,7 +89,9 @@ export default function About() {
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={hazel}
               width={600}
+              height={600}
               alt="Hazel Brueckman"
+              useNextImage={true}
             />
           </li>
           <li>
@@ -93,7 +100,9 @@ export default function About() {
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={wes}
               width={600}
+              height={600}
               alt="Wes Galbraith"
+              useNextImage={true}
             />
           </li>
           <li>
@@ -102,7 +111,9 @@ export default function About() {
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={mel}
               width={600}
+              height={600}
               alt="Mel"
+              useNextImage={true}
             />
           </li>
         </ul>

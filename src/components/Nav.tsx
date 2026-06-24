@@ -46,6 +46,7 @@ function NavDesktop({ items }: NavProps) {
           alt="Solar Garlic Logo"
           height={50}
           width={100}
+          useNextImage={true}
         />
       </Link>
       <div className="flex flex-row gap-6 justify-end items-center">
@@ -74,6 +75,7 @@ function NavMobile({ items }: NavProps) {
             alt="Solar Garlic Logo"
             height={50}
             width={100}
+            useNextImage={true}
           />
         </Link>
         {isMenuOpen ? (
