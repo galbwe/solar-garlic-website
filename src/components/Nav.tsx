@@ -41,7 +41,12 @@ function NavDesktop({ items }: NavProps) {
         href="/"
         className="text-2xl text-yellow flex flex-row gap-2 h-full self-start"
       >
-        <OptimizedImage src={logo} alt="Solar Garlic Logo" height={50} width={100} />
+        <OptimizedImage
+          src={logo}
+          alt="Solar Garlic Logo"
+          height={50}
+          width={100}
+        />
       </Link>
       <div className="flex flex-row gap-6 justify-end items-center">
         <NavLinks items={items} linkSize="text-3xl" />
@@ -64,7 +69,12 @@ function NavMobile({ items }: NavProps) {
           href="/"
           className="text-2xl text-yellow flex flex-row gap-2 h-full"
         >
-          <OptimizedImage src={logo} alt="Solar Garlic Logo" height={50} width={100} />
+          <OptimizedImage
+            src={logo}
+            alt="Solar Garlic Logo"
+            height={50}
+            width={100}
+          />
         </Link>
         {isMenuOpen ? (
           <Image

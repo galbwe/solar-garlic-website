@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { CSSProperties, ComponentProps } from "react";
 
-interface OptimizedImageProps extends Omit<ComponentProps<typeof Image>, "src"> {
+interface OptimizedImageProps extends Omit<
+  ComponentProps<typeof Image>,
+  "src"
+> {
   /** Base image path or imported static image (without extension) */
   src: string | any;
   /** Alt text for accessibility (required) */
