@@ -18,24 +18,11 @@ test.describe('Social Media Links in Navigation', () => {
     // Verify the link exists
     await expect(instagramLink).toBeVisible();
 
+    // Verify it has the correct href attribute
+    await expect(instagramLink).toHaveAttribute('href', INSTAGRAM_URL);
+
     // Verify it opens in a new tab (target="_blank")
     await expect(instagramLink).toHaveAttribute('target', '_blank');
-
-    // Create a promise to listen for new page
-    const newPagePromise = context.waitForEvent('page');
-
-    // Click the Instagram link
-    await instagramLink.click();
-
-    // Get the new page
-    const newPage = await newPagePromise;
-    await newPage.waitForLoadState('load');
-
-    // Verify the new page navigated to the correct URL
-    expect(newPage.url()).toContain('instagram.com/solar_garlic_band');
-
-    // Clean up
-    await newPage.close();
   });
 
   test('should have Facebook link in the nav that opens in a new tab', async ({
@@ -52,24 +39,11 @@ test.describe('Social Media Links in Navigation', () => {
     // Verify the link exists
     await expect(facebookLink).toBeVisible();
 
+    // Verify it has the correct href attribute
+    await expect(facebookLink).toHaveAttribute('href', FACEBOOK_URL);
+
     // Verify it opens in a new tab (target="_blank")
     await expect(facebookLink).toHaveAttribute('target', '_blank');
-
-    // Create a promise to listen for new page
-    const newPagePromise = context.waitForEvent('page');
-
-    // Click the Facebook link
-    await facebookLink.click();
-
-    // Get the new page
-    const newPage = await newPagePromise;
-    await newPage.waitForLoadState('load');
-
-    // Verify the new page navigated to the correct URL
-    expect(newPage.url()).toContain('facebook.com');
-
-    // Clean up
-    await newPage.close();
   });
 
   test('should display social media links only on desktop viewports', async ({
