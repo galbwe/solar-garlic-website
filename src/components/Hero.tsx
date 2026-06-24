@@ -3,9 +3,8 @@
 import OptimizedImage from "./OptimizedImage";
 import Link from "next/link";
 
-import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
-
-import armadilloRanch01 from "../../public/armadillo-ranch-01.jpg";
+import armadilloRanch01sm from "@/images/armadillo-ranch-01-sm.jpg";
+import armadilloRanch01 from "@/images/armadillo-ranch-01.jpg";
 
 import NavLinks from "./NavLinks";
 import { NAV_ITEMS, CERVANTES_TICKET_LINK } from "@/constants";
