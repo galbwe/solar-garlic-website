@@ -1,8 +1,8 @@
 name: Playwright Tests
 on:
   schedule:
-    # Runs every 1 hour on the 43rd minute of the hour
-    - cron: '43 * * * *'
+    # Runs every 4 hours on the 43rd minute of the hour
+    - cron: '43 */4 * * *'
   # allows manually running workflows
   workflow_dispatch:
 jobs:
