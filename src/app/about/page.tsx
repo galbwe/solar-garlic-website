@@ -8,7 +8,7 @@ import wes from "../../../public/wes.jpg";
 import mel from "../../../public/mel.jpg";
 import useBreakpoint from "@/hooks/useBreakpoint";
 
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import { teko } from "@/fonts";
 
 export default function About() {
@@ -39,7 +39,7 @@ export default function About() {
         </div>
         {!!isBreakpointOrAbove("xl") && (
           <div className="xl:w-2/3">
-            <Image
+            <OptimizedImage
               className="w-full h-full aspect-video object-cover rounded-sm border-2 border-purple-light"
               src={bandPhoto}
               width={1200}
@@ -60,7 +60,7 @@ export default function About() {
         <ul className="gap-8 flex flex-row flex-wrap justify-center items-center text-2xl">
           <li>
             <span className="font-bold">Davie Pyle</span> on guitar and vocals
-            <Image
+            <OptimizedImage
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={davie}
               width={600}
@@ -70,7 +70,7 @@ export default function About() {
           <li>
             <span className="font-bold">Sabrina Scherma</span> on guitar and
             vocals
-            <Image
+            <OptimizedImage
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={sabrina}
               width={600}
@@ -80,7 +80,7 @@ export default function About() {
           <li>
             <span className="font-bold">Hazel Brueckman</span> on drums and
             vocals
-            <Image
+            <OptimizedImage
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={hazel}
               width={600}
@@ -89,7 +89,7 @@ export default function About() {
           </li>
           <li>
             <span className="font-bold">Wes Galbraith</span> on bass and vocals
-            <Image
+            <OptimizedImage
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={wes}
               width={600}
@@ -98,7 +98,7 @@ export default function About() {
           </li>
           <li>
             <span className="font-bold">Melody Weigel</span> on keys
-            <Image
+            <OptimizedImage
               className="mt-5 2xl:max-w-3xl 2xl:ml-5 rounded-sm border-2 border-purple-light"
               src={mel}
               width={600}

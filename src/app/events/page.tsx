@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 import { compareAsc, constructNow, parseJSON } from "date-fns";
 
 import djGuysPhoto01 from "../../../public/solar-garlic-dj-guys-01.png";
@@ -37,7 +37,7 @@ export default function EventPage() {
           </div>
         )}
         <div className="p-8">
-          <Image
+          <OptimizedImage
             className="rounded-sm border-b-2 border-b-purple-light"
             width={isBreakpointOrBelow("lg") ? 480 : 700}
             height={isBreakpointOrBelow("lg") ? 480 : 700}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import OptimizedImage from "@/components/OptimizedImage";
 
 import logo from "../../public/solar-garlic-logo.jpg";
 import hamburgerIcon from "../../public/hamburger.svg";
@@ -40,7 +41,7 @@ function NavDesktop({ items }: NavProps) {
         href="/"
         className="text-2xl text-yellow flex flex-row gap-2 h-full self-start"
       >
-        <Image src={logo} alt="Solar Garlic Logo" height={50} width={100} />
+        <OptimizedImage src={logo} alt="Solar Garlic Logo" height={50} width={100} />
       </Link>
       <div className="flex flex-row gap-6 justify-end items-center">
         <NavLinks items={items} linkSize="text-3xl" />
@@ -63,7 +64,7 @@ function NavMobile({ items }: NavProps) {
           href="/"
           className="text-2xl text-yellow flex flex-row gap-2 h-full"
         >
-          <Image src={logo} alt="Solar Garlic Logo" height={50} width={100} />
+          <OptimizedImage src={logo} alt="Solar Garlic Logo" height={50} width={100} />
         </Link>
         {isMenuOpen ? (
           <Image

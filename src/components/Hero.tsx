@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OptimizedImage from "./OptimizedImage";
 import Link from "next/link";
 
 import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
@@ -84,7 +84,7 @@ function HeroImage() {
 
   if (isBreakpointOrAbove("lg") && isBreakpointOrBelow("xl")) {
     return (
-      <Image
+      <OptimizedImage
         fill
         className="-z-50"
         src={armadilloRanch01}
@@ -95,7 +95,7 @@ function HeroImage() {
 
   if (isBreakpointOrAbove("2xl")) {
     return (
-      <Image
+      <OptimizedImage
         width={width <= 1800 ? 1080 : 1400}
         height={width <= 1800 ? 813 : 1054}
         className={`
@@ -111,7 +111,7 @@ function HeroImage() {
   }
 
   return (
-    <Image
+    <OptimizedImage
       fill
       className="-z-50"
       // TODO: get a small image for armadillo ranch
