@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { CSSProperties, ComponentProps } from "react";
 
 interface OptimizedImageProps extends Omit<
@@ -6,7 +6,7 @@ interface OptimizedImageProps extends Omit<
   "src"
 > {
   /** Base image path or imported static image (without extension) */
-  src: string | any;
+  src: string | StaticImageData;
   /** Alt text for accessibility (required) */
   alt: string;
   /** Optional CSS classes */
@@ -51,8 +51,8 @@ export default function OptimizedImage({
   if (typeof src === "string") {
     srcPath = src;
   } else {
-    // For static imports, use the src property
-    srcPath = src.src || src;
+    // For static imports (StaticImageData), use the .src string property
+    srcPath = src.src;
   }
 
   // Remove file extension to build variant paths
