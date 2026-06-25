@@ -3,16 +3,16 @@ import { Noto_Sans, Noto_Sans_Display, Teko } from "next/font/google";
 // Font Weight Inventory
 // ---------------------
 // notoSans (body / general text):
-//   300 — font-light  (venue links, extra card text in EventCard)
-//   400 — normal      (default body text)
-//   600 — font-semibold (band name in EventCard)
-//   700 — font-bold   (member names in About, submit/ticket buttons)
+//   300 — font-light     (light-weight accents)
+//   400 — normal         (default body text)
+//   600 — font-semibold  (medium-emphasis text)
+//   700 — font-bold      (high-emphasis text and buttons)
 //
-// notoSansDisplay (event dates and venue info in EventCard, Accordion):
-//   400 — normal      (display text; no explicit weight utilities applied)
+// notoSansDisplay (display / event metadata):
+//   400 — normal         (display text; no explicit weight utilities applied)
 //
-// teko (headings, Nav):
-//   400 — regular     (all heading elements; no font-weight utilities applied to Teko nodes)
+// teko (headings / navigation):
+//   400 — regular        (all heading elements; no font-weight utilities applied)
 
 export const notoSans = Noto_Sans({
   subsets: ["latin"],
