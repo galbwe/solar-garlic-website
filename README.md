@@ -29,6 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Fonts
+
+This project uses three Google Fonts loaded via `next/font/google` (see `src/fonts.ts`):
+
+| Font | Role | Weights loaded |
+|------|------|---------------|
+| **Noto Sans** | Body / general text | 300 (light), 400 (normal), 600 (semibold), 700 (bold) |
+| **Noto Sans Display** | Event dates & venue info | 400 (normal) |
+| **Teko** | Headings & navigation | 400 (regular) |
+
+Only the weights that are actually used in the codebase are loaded. If you add a new `font-{weight}` Tailwind utility on an element that inherits one of these fonts, update the `weight` array in `src/fonts.ts` accordingly to avoid invisible/fallback text.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
