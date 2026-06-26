@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { teko, notoSansDisplay } from "@/fonts";
-import { Event } from "@/types";
+import { Event, TicketInfo } from "@/types";
 import locationIconWhite from "../../public/location-icon-white.svg";
 
 // TODO: add a link / button to automatically create a google calendar event
@@ -34,17 +34,6 @@ export default function EventCard({ event }: EventCardProps) {
   } = event;
 
   const [showTicketInfo, setShowTicketInfo] = useState<boolean>(false);
-
-  let ticketInfoHtml = "";
-  if (!!ticketInfo && showTicketInfo) {
-    ticketInfoHtml = ticketInfo.text;
-    for (const link of ticketInfo.links) {
-      ticketInfoHtml = ticketInfoHtml.replace(
-        link.text,
-        `<a style="color: #FFCB2E" href="${link.url}" target="blank_">${link.text}</a>`,
-      );
-    }
-  }
 
   const datetime = parseJSON(show, { in: tz(timezone) });
   const dateFormatted = format(datetime, "EEEE LLLL do");
@@ -120,12 +109,32 @@ export default function EventCard({ event }: EventCardProps) {
         )}
 
         {!!ticketInfo && showTicketInfo && (
-          <p
-            className="mt-4 text-xl xl:text-2xl bg-purple-light p-2 xl:p-4"
-            dangerouslySetInnerHTML={{ __html: ticketInfoHtml }}
-          />
+          <TicketInfoPanel ticketInfo={ticketInfo} />
         )}
       </div>
+    </div>
+  );
+}
+
+function TicketInfoPanel({ ticketInfo }: { ticketInfo: TicketInfo }) {
+  return (
+    <div className="mt-4 text-xl xl:text-2xl bg-purple-light p-2 xl:p-4">
+      <p>{ticketInfo.text}</p>
+      <ul className="mt-2 flex flex-col gap-1">
+        {ticketInfo.links.map((link) => (
+          <li key={link.url}>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#FFCB2E" }}
+              className="underline hover:opacity-80"
+            >
+              {link.text}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
