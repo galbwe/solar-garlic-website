@@ -66,3 +66,10 @@ The container exposes port 3000. The Docker image is pushed to AWS ECR and deplo
 ### CI
 
 The GitHub Actions workflows (`pull_request.yaml`, `deploy.yaml`) both pin to `node-version: '24.x'`, which satisfies the `>=18.17.0` engine requirement declared in `package.json`.
+
+## Testing
+
+- Run `npm test` to run unit tests with vitest. 
+- Run `npx playwright test` to run end to end tests with playwright.
+- Run `npx playwright test --ui` to get error reports in a brower.
+
