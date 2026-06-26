@@ -39,7 +39,7 @@ export const EVENTS = [
     bands: ["Cytrus"],
     timezone: "America/Denver",
     ticketInfo: {
-      text: "<p>Buy from the venue<\p><br/><p>Alternatively, venmo $20 to Sabrina at @ssab_music with your first and last name. They will put you on the venue's will call list. You can avoid paying a bunch of fees this way.<\p>",
+      text: "Alternatively, venmo $20 to Sabrina (@ssab_music) with your first and last name. They will put you on the venue's will call list. You can avoid paying a bunch of fees this way.",
       links: [
         {
           text: "Buy from the venue",
