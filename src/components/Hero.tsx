@@ -46,6 +46,7 @@ export default function Hero({ title }: HeroProps) {
             <Link
               href={CERVANTES_TICKET_LINK}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-4xl mt-1 underline text-yellow"
             >
               Get Tickets

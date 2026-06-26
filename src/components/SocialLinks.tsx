@@ -19,7 +19,7 @@ interface SocialLinksProps {
 export default function SocialLinks({ width, height }: SocialLinksProps) {
   return (
     <div className="flex flex-row justify-center items-center gap-4 sr-only xl:not-sr-only">
-      <a href={INSTAGRAM_URL} target="_blank">
+      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
         <Image
           src={instagramIcon}
           alt="Instagram icon"
@@ -27,7 +27,7 @@ export default function SocialLinks({ width, height }: SocialLinksProps) {
           height={height}
         />
       </a>
-      <a href={FACEBOOK_URL} target="_blank">
+      <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
         <Image
           src={facebookIcon}
           alt="Facebook icon"
@@ -35,7 +35,7 @@ export default function SocialLinks({ width, height }: SocialLinksProps) {
           height={height}
         />
       </a>
-      <a href={YOUTUBE_URL} target="_blank">
+      <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer">
         <Image
           src={youtubeIcon}
           alt="Youtube icon"
