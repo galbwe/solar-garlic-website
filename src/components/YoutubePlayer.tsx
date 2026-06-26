@@ -57,7 +57,7 @@ export default function YoutubePlayer({
   // return a placeholder if no video source
   // link to the fallbackUrl, which should be the band's youtube channel
   return (
-    <a href={fallbackUrl} target="_blank">
+    <a href={fallbackUrl} target="_blank" rel="noopener noreferrer">
       <div
         style={{ width: videoWidth, height: videoHeight }}
         className={`

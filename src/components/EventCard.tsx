@@ -70,6 +70,7 @@ export default function EventCard({ event }: EventCardProps) {
             className="hover:text-yellow hover:underline"
             href={venueUrl}
             target="_blank"
+            rel="noopener noreferrer"
           >
             {venue}
           </a>
@@ -82,6 +83,7 @@ export default function EventCard({ event }: EventCardProps) {
           className="hover:text-yellow hover:underline font-light"
           href={addressUrl}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <div className="flex flex-row gap-2">
             <Image
@@ -101,6 +103,7 @@ export default function EventCard({ event }: EventCardProps) {
             className="hover:text-yellow hover:underline"
             href={ticketsUrl}
             target="_blank"
+            rel="noopener noreferrer"
           >
             {address}
           </a>
