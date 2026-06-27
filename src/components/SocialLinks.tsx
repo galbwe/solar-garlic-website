@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import spotifyIcon from "../../public/spotify.svg";
 import instagramIcon from "../../public/instagram.svg";
 import facebookIcon from "../../public/facebook.svg";
 import youtubeIcon from "../../public/youtube.svg";
@@ -8,6 +9,7 @@ import {
   CONTACT_EMAIL,
   FACEBOOK_URL,
   INSTAGRAM_URL,
+  SPOTIFY_URL,
   YOUTUBE_URL,
 } from "@/constants";
 
@@ -19,6 +21,14 @@ interface SocialLinksProps {
 export default function SocialLinks({ width, height }: SocialLinksProps) {
   return (
     <div className="flex flex-row justify-center items-center gap-4 sr-only xl:not-sr-only">
+      <a href={SPOTIFY_URL} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={spotifyIcon}
+          alt="Spotify icon"
+          width={width}
+          height={height}
+        />
+      </a>
       <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
         <Image
           src={instagramIcon}
