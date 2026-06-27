@@ -16,9 +16,14 @@ function getWindowSize(): WindowSize {
  * Values are `null` during SSR or before the first measurement.
  */
 export default function useWindowSize(): WindowSize {
-  const [size, setSize] = useState<WindowSize>(getWindowSize);
+  // Always start with null so the server and client initial renders match.
+  // Reading window.innerWidth in the lazy initializer causes a hydration
+  // mismatch because the server can't call getWindowSize() meaningfully.
+  const [size, setSize] = useState<WindowSize>({ width: null, height: null });
 
   useEffect(() => {
+    // Populate real dimensions after mount (client-only).
+    setSize(getWindowSize());
     const handleResize = () => setSize(getWindowSize());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
