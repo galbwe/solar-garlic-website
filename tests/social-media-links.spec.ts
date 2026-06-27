@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/solar_garlic_band/';
 const FACEBOOK_URL = 'https://www.facebook.com/people/Solar-Garlic-Band/61557279204594/?mibextid=kFxxJD';
+const SPOTIFY_URL = 'https://open.spotify.com/artist/4IZR8YGNefRlQcGTA0w8FU?si=IHxNK8jFSqmwY8JlwizKQQ';
 
 test.describe('Social Media Links in Navigation', () => {
   test('should have Instagram link in the nav that opens in a new tab', async ({
@@ -46,6 +47,27 @@ test.describe('Social Media Links in Navigation', () => {
     await expect(facebookLink).toHaveAttribute('target', '_blank');
   });
 
+  test('should have Spotify link in the nav that opens in a new tab', async ({
+    page,
+    context,
+  }) => {
+    // Navigate to the homepage
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Find the Spotify link
+    const spotifyLink = page.locator('a[href="' + SPOTIFY_URL + '"]');
+
+    // Verify the link exists
+    await expect(spotifyLink).toBeVisible();
+
+    // Verify it has the correct href attribute
+    await expect(spotifyLink).toHaveAttribute('href', SPOTIFY_URL);
+
+    // Verify it opens in a new tab (target="_blank")
+    await expect(spotifyLink).toHaveAttribute('target', '_blank');
+  });
+
   test('should display social media links only on desktop viewports', async ({
     page,
   }) => {
@@ -61,4 +83,6 @@ test.describe('Social Media Links in Navigation', () => {
     await expect(instagramLink).toBeVisible();
     await expect(facebookLink).toBeVisible();
   });
+
+
 });
