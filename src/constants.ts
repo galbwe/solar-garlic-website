@@ -2,6 +2,9 @@ import { v4 as uuid4 } from "uuid";
 
 export const CONTACT_EMAIL = "solar.garlic.denver@gmail.com";
 
+export const SPOTIFY_URL =
+  "https://open.spotify.com/artist/4IZR8YGNefRlQcGTA0w8FU?si=IHxNK8jFSqmwY8JlwizKQQ";
+
 export const INSTAGRAM_HANDLE = "@solar_garlic_band";
 
 export const INSTAGRAM_URL = "https://www.instagram.com/solar_garlic_band/";
