@@ -22,9 +22,9 @@ export default function useWindowSize(): WindowSize {
   const [size, setSize] = useState<WindowSize>({ width: null, height: null });
 
   useEffect(() => {
-    // Populate real dimensions after mount (client-only).
-    setSize(getWindowSize());
     const handleResize = () => setSize(getWindowSize());
+    // Populate real dimensions after mount (client-only).
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
