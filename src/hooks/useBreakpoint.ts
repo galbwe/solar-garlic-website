@@ -103,7 +103,10 @@ function getBreakpoints(screens: Screens): Breakpoints {
  * @return The name of the largest breakpoint with a width less than or equal to the current screen width
  *
  */
-function getCurrentBreakpoint(breakpoints: Breakpoints, width: number | null): string {
+function getCurrentBreakpoint(
+  breakpoints: Breakpoints,
+  width: number | null,
+): string {
   if (width === null) return "sm";
   if (width >= breakpoints["2xl"]) {
     return "2xl";
