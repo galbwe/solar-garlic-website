@@ -83,6 +83,18 @@ function HeroImage() {
   const { width } = useWindowSize();
   const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
 
+  // Render a fallback fill image until the window has been measured.
+  if (width === null) {
+    return (
+      <Image
+        fill
+        className="-z-50"
+        src={armadilloRanch01sm}
+        alt="Solar Garlic on stage at The Lion's Lair."
+      />
+    );
+  }
+
   if (isBreakpointOrAbove("lg") && isBreakpointOrBelow("xl")) {
     return (
       <Image
