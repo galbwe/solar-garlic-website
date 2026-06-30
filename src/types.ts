@@ -69,3 +69,11 @@ export interface Breakpoints {
   xl: number;
   "2xl": number;
 }
+
+export interface AudioDownload {
+  id: string;
+  title: string;
+  date: string;
+  file: string;
+  spotify: string;
+}

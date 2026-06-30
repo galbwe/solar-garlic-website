@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/music",
+    "src/app/videos",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

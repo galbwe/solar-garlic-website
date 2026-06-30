@@ -19,6 +19,7 @@ export const FACEBOOK_ACCOUNT = "Solar-Garlic-Band";
 export const NAV_ITEMS = [
   { title: "Home", href: "/" },
   { title: "Music", href: "/music" },
+  { title: "Videos", href: "/videos" },
   { title: "Events", href: "/events" },
   { title: "About", href: "/about" },
   { title: "Contact", href: "/contact" },
@@ -54,6 +55,17 @@ export const EVENTS = [
         },
       ],
     },
+  },
+];
+
+export const AUDIO_DOWNLOADS = [
+  {
+    id: uuid4(),
+    title: "Shining Lights",
+    date: "2026-06-26T00:00:00",
+    file: "shining-lights-2026-06-26.mp3",
+    spotify:
+      "https://open.spotify.com/album/7FOjSHKG6B72dAoJKD3K8g?si=5u2uBlqvSnqV45YtxfAxhA",
   },
 ];
 
