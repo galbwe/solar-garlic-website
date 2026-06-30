@@ -1,101 +1,71 @@
 "use client";
 
-import { useState } from "react";
-import { parseJSON, format } from "date-fns";
-import { tz } from "@date-fns/tz";
+import downloadIcon from "../../../public/download-icon.svg";
+import spotifyIcon from "../../../public/spotify.svg";
+import { AUDIO_DOWNLOADS } from "@/constants";
 
-import YoutubePlayer from "@/components/YoutubePlayer";
-import { PAST_EVENTS } from "@/constants";
-import Accordion from "@/components/Accordion";
-import useBreakpoint from "@/hooks/useBreakpoint";
+import Player from "@madzadev/audio-player";
+import "@madzadev/audio-player/dist/index.css";
+
+import { AudioDownload } from "@/types";
+import Link from "next/link";
+import Image from "next/image";
 import { teko } from "@/fonts";
 
-import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
-
-export default function MusicPage() {
-  const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
-  // TODO: get list of past events from an api endpoint
-  const events = PAST_EVENTS ?? [];
-  const defaultEvent = events && events.length > 0 ? events[0] : null;
-  const defaultVideo =
-    defaultEvent && defaultEvent.videos && defaultEvent.videos.length > 0
-      ? defaultEvent.videos[0]
-      : null;
-  const [selectedVideo, setSelectedVideo] = useState<Video | null>(
-    defaultVideo,
-  );
-  const [autoplay, setAutoplay] = useState<boolean>(false);
+export default function DownloadsPage() {
+  const download = AUDIO_DOWNLOADS[0];
+  const tracks = [
+    {
+      url: getDownloadUrl(download),
+      title: download.title,
+      tags: [],
+    },
+  ];
 
   return (
-    <section className="h-screen max-h-screen flex flex-col items-center">
-      <div className="flex flex-row h-screen max-h-screen w-screen">
-        {isBreakpointOrAbove("xl") && (
-          <Accordion
-            groups={events.map(getAccordionGroup)}
-            onOptionClick={(option) => {
-              setAutoplay(true);
-              setSelectedVideo(option?.data || null);
-            }}
-          />
-        )}
-        <div
-          className={`
-                    w-full
-                    flex
-                    flex-col
-                    justify-start
-                    items-center
-                    gap-4
-                    xl:gap-0
-                `}
-        >
-          <h1
-            className={`${teko.className} hidden xl:flex xl:text-7xl py-5 text-yellow`}
-          >
-            Music
-          </h1>
-          <YoutubePlayer
-            src={selectedVideo?.url}
-            autoplay={autoplay}
-            fallbackUrl="https://www.youtube.com/@Solar_Garlic_Band"
-          />
-          {isBreakpointOrBelow("lg") && (
-            <Accordion
-              groups={events.map(getAccordionGroup)}
-              onOptionClick={(option) => {
-                setAutoplay(true);
-                setSelectedVideo(option?.data || null);
-              }}
+    <section className="h-screen max-h-screen flex flex-col items-center gap-2">
+      <h1 className={`${teko.className} text-5xl xl:text-7xl text-yellow`}>
+        Music
+      </h1>
+      <div className="w-4/5 flex flex-col items-center gap-2 mt-20">
+        <Player
+          trackList={tracks}
+          includeTags={false}
+          includeSearch={false}
+          showPlaylist={false}
+          sortTracks={false}
+          autoPlayNextTrack={false}
+          customColorScheme={{
+            playerBackground: "#200932",
+            titleColor: "#ffcb2e",
+            progressSlider: "#ffcb2e",
+            bufferLoaded: "#431E61",
+            progressLeft: "#0D0216",
+            volumeSlider: "#ffcb2e",
+            volumeLeft: "#431E61",
+          }}
+        />
+        <div className="flex flex-row gap-4">
+          <Link download href={getDownloadUrl(download)}>
+            <button className="hover:cursor-pointer">
+              <Image width={60} height={60} src={downloadIcon} alt="Download" />
+            </button>
+          </Link>
+          <a href={download.spotify} target="_blank" rel="noopener noreferrer">
+            <Image
+              src={spotifyIcon}
+              alt="Spotify icon"
+              width={60}
+              height={60}
             />
-          )}
+          </a>
         </div>
       </div>
     </section>
   );
 }
 
-function getAccordionOption(video: Video): AccordionOption<Video> {
-  return {
-    id: video.id,
-    title: video.title,
-    subtext: video.original ? "Original" : `${video.artist} Cover`,
-    data: video,
-  };
-}
-
-function getAccordionGroup({
-  id,
-  venue,
-  show,
-  videos,
-  timezone = "America/Denver",
-}: Event): AccordionGroup<Event, Video> {
-  const datetime = parseJSON(show, { in: tz(timezone) });
-  const displayDate = format(datetime, "LLLL do, yyyy");
-  return {
-    id: id,
-    title: venue,
-    subtext: displayDate,
-    options: (videos ?? []).map(getAccordionOption),
-  };
+function getDownloadUrl(download: AudioDownload): string {
+  const rootPath = "/audio";
+  return `${rootPath}/${download.file}`;
 }
