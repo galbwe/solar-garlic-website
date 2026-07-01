@@ -11,6 +11,21 @@ export default function useBreakpoint() {
 
   const screens = SCREENS;
   const breakpoints: Breakpoints = getBreakpoints(screens);
+
+  // Return a safe default breakpoint during SSR / first paint before width is measured.
+  if (width === null) {
+    return {
+      breakpoint: "sm",
+      isSm: true,
+      isMd: false,
+      isLg: false,
+      isXl: false,
+      is2Xl: false,
+      isBreakpointOrAbove: (b: string) => b === "sm",
+      isBreakpointOrBelow: (b: string) => b !== "",
+    };
+  }
+
   const breakpoint = getCurrentBreakpoint(breakpoints, width);
 
   // change the current breakpoint when the window size changes
@@ -88,7 +103,11 @@ function getBreakpoints(screens: Screens): Breakpoints {
  * @return The name of the largest breakpoint with a width less than or equal to the current screen width
  *
  */
-function getCurrentBreakpoint(breakpoints: Breakpoints, width: number): string {
+function getCurrentBreakpoint(
+  breakpoints: Breakpoints,
+  width: number | null,
+): string {
+  if (width === null) return "sm";
   if (width >= breakpoints["2xl"]) {
     return "2xl";
   } else if (width >= breakpoints.xl) {
