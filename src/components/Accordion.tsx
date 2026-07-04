@@ -1,31 +1,27 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
-import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
+import { AccordionGroup, AccordionOption } from "@/types";
 import chevronDown from "../../public/chevron-down.svg";
 import chevronRight from "../../public/chevron-right.svg";
 import { teko, notoSansDisplay } from "@/fonts";
 
 interface AccordionProps<G, O> {
   groups: Array<AccordionGroup<G, O>>;
-  onGroupClick?: () => void;
+  selectedGroupId?: string | null;
+  selectedOptionId?: string | null;
+  onGroupClick?: (group: AccordionGroup<G, O>) => void;
   onOptionClick?: (option: AccordionOption<O>) => void;
 }
 
-export default function Accordion({
+export default function Accordion<G, O>({
   groups,
+  selectedGroupId = null,
+  selectedOptionId = null,
   onGroupClick = () => {},
-  onOptionClick = ({}) => {},
-}: AccordionProps<Event, Video>) {
-  const [selectedGroup, setSelectedGroup] = useState<AccordionGroup<
-    Event,
-    Video
-  > | null>(null);
-  const [selectedOption, setSelectedOption] =
-    useState<AccordionOption<Video> | null>(null);
-
+  onOptionClick = () => {},
+}: AccordionProps<G, O>) {
   return (
     <ul
       className={`
@@ -53,15 +49,7 @@ export default function Accordion({
           <li key={`event-card-${i}`}>
             <div
               className="flex flex-row cursor-pointer w-full justify-between px-3 py-3 border-b-2 border-b-purple-light"
-              onClick={() => {
-                if (selectedGroup && selectedGroup.id === group.id) {
-                  // unselect the group
-                  setSelectedGroup(null);
-                } else {
-                  setSelectedGroup(group);
-                }
-                onGroupClick();
-              }}
+              onClick={() => onGroupClick(group)}
             >
               <div className="flex flex-col">
                 <h2 className={`${teko.className} text-2xl text-yellow`}>
@@ -69,7 +57,7 @@ export default function Accordion({
                 </h2>
                 <p>{group.subtext}</p>
               </div>
-              {group && selectedGroup && selectedGroup.id === group.id ? (
+              {selectedGroupId === group.id ? (
                 <Image
                   src={chevronDown}
                   alt="Chevron down icon"
@@ -86,13 +74,11 @@ export default function Accordion({
               )}
             </div>
             <ul>
-              {group &&
-                selectedGroup &&
-                selectedGroup.id === group.id &&
+              {selectedGroupId === group.id &&
                 group.options.map((option, j) => {
                   const bgColor = j % 2 == 0 ? "purple" : "purple-dark";
                   const border =
-                    option && selectedOption && option.id === selectedOption.id
+                    selectedOptionId === option.id
                       ? "border-y-2 border-y-yellow"
                       : "border-b-2 border-b-purple-light";
                   return (
@@ -100,17 +86,14 @@ export default function Accordion({
                       key={`event-video-${i}-${j}`}
                       className={`
                           ${border}
-                          cursor-pointer 
-                          px-3 
-                          py-1 
-                          flex 
-                          flex-col 
+                          cursor-pointer
+                          px-3
+                          py-1
+                          flex
+                          flex-col
                           bg-${bgColor}
                       `}
-                      onClick={() => {
-                        setSelectedOption(option);
-                        onOptionClick(option);
-                      }}
+                      onClick={() => onOptionClick(option)}
                     >
                       <h2
                         className={`${notoSansDisplay.className} text-lg text-yellow`}
