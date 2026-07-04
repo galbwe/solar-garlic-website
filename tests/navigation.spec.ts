@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const NAV_ITEMS = [
   { title: 'Home', href: '/' },
   { title: 'Music', href: '/music' },
+  { title: 'Videos', href: '/videos' },
   { title: 'Events', href: '/events' },
   { title: 'About', href: '/about' },
   { title: 'Contact', href: '/contact' },

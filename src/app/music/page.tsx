@@ -1,41 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { parseJSON, format } from "date-fns";
-import { tz } from "@date-fns/tz";
+import { format } from "date-fns";
 
-import YoutubePlayer from "@/components/YoutubePlayer";
-import { PAST_EVENTS } from "@/constants";
+import { AUDIO_DOWNLOADS } from "@/constants";
 import Accordion from "@/components/Accordion";
+import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { teko } from "@/fonts";
 
-import { AccordionGroup, AccordionOption, Event, Video } from "@/types";
+import { AccordionGroup, AccordionOption, AudioDownload } from "@/types";
+
+const SONGS_GROUP_ID = "songs";
 
 export default function MusicPage() {
   const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
-  // TODO: get list of past events from an api endpoint
-  const events = PAST_EVENTS ?? [];
-  const defaultEvent = events && events.length > 0 ? events[0] : null;
-  const defaultVideo =
-    defaultEvent && defaultEvent.videos && defaultEvent.videos.length > 0
-      ? defaultEvent.videos[0]
-      : null;
-  const [selectedVideo, setSelectedVideo] = useState<Video | null>(
-    defaultVideo,
+  const songs = AUDIO_DOWNLOADS ?? [];
+  const defaultSong = songs.length > 0 ? songs[0] : null;
+
+  const [selectedSongId, setSelectedSongId] = useState<string | null>(
+    defaultSong?.id ?? null,
   );
-  const [autoplay, setAutoplay] = useState<boolean>(false);
+  const [selectedGroupId, setSelectedGroupId] = useState<string | null>(
+    SONGS_GROUP_ID,
+  );
+
+  const handleGroupClick = (group: AccordionGroup<null, AudioDownload>) => {
+    setSelectedGroupId((prev) => (prev === group.id ? null : group.id));
+  };
+  const handleOptionClick = (option: AccordionOption<AudioDownload>) => {
+    setSelectedSongId(option.id);
+  };
+
+  const songsGroup: AccordionGroup<null, AudioDownload> = {
+    id: SONGS_GROUP_ID,
+    title: "Songs",
+    subtext: "",
+    options: songs.map(getAccordionOption),
+  };
 
   return (
     <section className="h-screen max-h-screen flex flex-col items-center">
       <div className="flex flex-row h-screen max-h-screen w-screen">
         {isBreakpointOrAbove("xl") && (
           <Accordion
-            groups={events.map(getAccordionGroup)}
-            onOptionClick={(option) => {
-              setAutoplay(true);
-              setSelectedVideo(option?.data || null);
-            }}
+            groups={[songsGroup]}
+            selectedGroupId={selectedGroupId}
+            selectedOptionId={selectedSongId}
+            onGroupClick={handleGroupClick}
+            onOptionClick={handleOptionClick}
           />
         )}
         <div
@@ -54,18 +67,18 @@ export default function MusicPage() {
           >
             Music
           </h1>
-          <YoutubePlayer
-            src={selectedVideo?.url}
-            autoplay={autoplay}
-            fallbackUrl="https://www.youtube.com/@Solar_Garlic_Band"
+          <AudioPlayer
+            songs={songs}
+            selectedSongId={selectedSongId}
+            onSelectedSongIdChange={setSelectedSongId}
           />
           {isBreakpointOrBelow("lg") && (
             <Accordion
-              groups={events.map(getAccordionGroup)}
-              onOptionClick={(option) => {
-                setAutoplay(true);
-                setSelectedVideo(option?.data || null);
-              }}
+              groups={[songsGroup]}
+              selectedGroupId={selectedGroupId}
+              selectedOptionId={selectedSongId}
+              onGroupClick={handleGroupClick}
+              onOptionClick={handleOptionClick}
             />
           )}
         </div>
@@ -74,28 +87,13 @@ export default function MusicPage() {
   );
 }
 
-function getAccordionOption(video: Video): AccordionOption<Video> {
+function getAccordionOption(
+  song: AudioDownload,
+): AccordionOption<AudioDownload> {
   return {
-    id: video.id,
-    title: video.title,
-    subtext: video.original ? "Original" : `${video.artist} Cover`,
-    data: video,
-  };
-}
-
-function getAccordionGroup({
-  id,
-  venue,
-  show,
-  videos,
-  timezone = "America/Denver",
-}: Event): AccordionGroup<Event, Video> {
-  const datetime = parseJSON(show, { in: tz(timezone) });
-  const displayDate = format(datetime, "LLLL do, yyyy");
-  return {
-    id: id,
-    title: venue,
-    subtext: displayDate,
-    options: (videos ?? []).map(getAccordionOption),
+    id: song.id,
+    title: song.title,
+    subtext: format(new Date(song.date), "LLLL do, yyyy"),
+    data: song,
   };
 }
