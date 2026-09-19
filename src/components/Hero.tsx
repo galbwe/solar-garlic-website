@@ -40,18 +40,6 @@ export default function Hero({ title }: HeroProps) {
               <NavLinks mobile items={navItems} linkSize="text-4xl" />
             </div>
           )}
-          <div className="flex flex-col items-center gap-2 mt-2">
-            <p className="text-4xl">We&apos;re playing Cervantes!</p>
-            <p className="text-3xl">9/13/2026</p>
-            <Link
-              href={CERVANTES_TICKET_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-4xl mt-1 underline text-yellow"
-            >
-              Get Tickets
-            </Link>
-          </div>
         </div>
       </section>
       <OpaqueOverlay />
