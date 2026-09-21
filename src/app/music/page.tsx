@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 
-import { AUDIO_DOWNLOADS } from "@/constants";
+import { CERVANTES_RECORDINGS, SINGLES } from "@/constants";
 import Accordion from "@/components/Accordion";
 import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
 import useBreakpoint from "@/hooks/useBreakpoint";
@@ -11,18 +11,25 @@ import { teko } from "@/fonts";
 
 import { AccordionGroup, AccordionOption, AudioDownload } from "@/types";
 
-const SONGS_GROUP_ID = "songs";
+const SINGLES_GROUP_ID = "singles";
+const CERVANTES_GROUP_ID = "cervantes-2026-09-13";
 
 export default function MusicPage() {
   const { isBreakpointOrAbove, isBreakpointOrBelow } = useBreakpoint();
-  const songs = AUDIO_DOWNLOADS ?? [];
-  const defaultSong = songs.length > 0 ? songs[0] : null;
+  const singles = SINGLES ?? [];
+  const cervantesRecordings = CERVANTES_RECORDINGS ?? [];
+  const songs = [...singles, ...cervantesRecordings];
+  const defaults = songs.filter((song) => song.isDefault || false);
+  // we know the default will be in the cervantes group, so this is kinda overkill
+  const defaultSong =
+    defaults.length > 0 ? defaults[0] : songs.length > 0 ? songs[0] : null;
 
   const [selectedSongId, setSelectedSongId] = useState<string | null>(
     defaultSong?.id ?? null,
   );
   const [selectedGroupId, setSelectedGroupId] = useState<string | null>(
-    SONGS_GROUP_ID,
+    // TODO: do this dynamically instead of hard coding
+    CERVANTES_GROUP_ID,
   );
 
   const handleGroupClick = (group: AccordionGroup<null, AudioDownload>) => {
@@ -32,11 +39,18 @@ export default function MusicPage() {
     setSelectedSongId(option.id);
   };
 
-  const songsGroup: AccordionGroup<null, AudioDownload> = {
-    id: SONGS_GROUP_ID,
-    title: "Songs",
+  const cervantesGroup: AccordionGroup<null, AudioDownload> = {
+    id: CERVANTES_GROUP_ID,
+    title: "Live at Cervantes 9/13/26",
     subtext: "",
-    options: songs.map(getAccordionOption),
+    options: cervantesRecordings.map(getAccordionOption),
+  };
+
+  const singlesGroup: AccordionGroup<null, AudioDownload> = {
+    id: SINGLES_GROUP_ID,
+    title: "Singles",
+    subtext: "",
+    options: singles.map(getAccordionOption),
   };
 
   return (
@@ -44,7 +58,7 @@ export default function MusicPage() {
       <div className="flex flex-row h-screen max-h-screen w-screen">
         {isBreakpointOrAbove("xl") && (
           <Accordion
-            groups={[songsGroup]}
+            groups={[cervantesGroup, singlesGroup]}
             selectedGroupId={selectedGroupId}
             selectedOptionId={selectedSongId}
             onGroupClick={handleGroupClick}
@@ -74,7 +88,7 @@ export default function MusicPage() {
           />
           {isBreakpointOrBelow("lg") && (
             <Accordion
-              groups={[songsGroup]}
+              groups={[cervantesGroup, singlesGroup]}
               selectedGroupId={selectedGroupId}
               selectedOptionId={selectedSongId}
               onGroupClick={handleGroupClick}

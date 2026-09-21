@@ -76,4 +76,5 @@ export interface AudioDownload {
   date: string;
   file: string;
   spotify?: string;
+  isDefault?: boolean;
 }
