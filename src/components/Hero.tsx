@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
 
 import armadilloRanch01 from "../../public/armadillo-ranch-01.jpg";
 
 import NavLinks from "./NavLinks";
-import { NAV_ITEMS, CERVANTES_TICKET_LINK } from "@/constants";
+import { NAV_ITEMS } from "@/constants";
 import { teko } from "@/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
 import useBreakpoint from "@/hooks/useBreakpoint";

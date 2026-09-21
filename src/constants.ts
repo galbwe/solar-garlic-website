@@ -28,6 +28,37 @@ export const NAV_ITEMS = [
 export const AUDIO_DOWNLOADS = [
   {
     id: uuid4(),
+    title: "Sweet Sunshine - Live",
+    date: "2026-09-13T00:00:00",
+    file: "sweet-sunshine-2026-09-13.mp3",
+  },
+  {
+    id: uuid4(),
+    title: "Funky Bitch (Cover) - Live",
+    date: "2026-09-13T00:00:00",
+    file: "funky-bitch-2026-09-13.mp3",
+  },
+  {
+    id: uuid4(),
+    title: "Maybe - Live",
+    date: "2026-09-13T00:00:00",
+    file: "maybe-cervantes-2026-09-13.mp3",
+  },
+  {
+    id: uuid4(),
+    title:
+      "People of the Sun -> All Fall Down (Cover) -> Shining Lights - Live",
+    date: "2026-09-13T00:00:00",
+    file: "sun-down-lights-2026-09-13.mp3",
+  },
+  {
+    id: uuid4(),
+    title: "Cat In the Window -> 17th Avenue - Live",
+    date: "2026-09-13T00:00:00",
+    file: "cat-17-2026-09-13.mp3",
+  },
+  {
+    id: uuid4(),
     title: "Shining Lights",
     date: "2026-06-26T00:00:00",
     file: "shining-lights-2026-06-26.mp3",
@@ -36,38 +67,8 @@ export const AUDIO_DOWNLOADS = [
   },
 ];
 
-export const CERVANTES_TICKET_LINK =
-  "https://www.etix.com/ticket/p/81538355/cytrus-wsolar-garlic-denver-cervantesother-side?language=en&amp;country=US&amp;searchType=organization";
-
 // TODO: move events to an api call
-export const EVENTS = [
-  {
-    id: uuid4(),
-    title: "Holy $h*@ guys we're playing Cervantes",
-    venue: "Cervantes' Other Side",
-    venueUrl: "https://cervantesmasterpiece.com/",
-    address: "2637 Welton Street. Denver, Colorado 80205",
-    addressUrl:
-      "https://www.google.com/maps/place/2637+Welton+St,+Denver,+CO+80205/@39.7545449,-104.9788457,894m/data=!3m2!1e3!4b1!4m6!3m5!1s0x876c7923f6552fb3:0x8e8ac5170e1b2bd5!8m2!3d39.7545449!4d-104.9788457!16s%2Fg%2F11bw406vzs!5m1!1e2?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D",
-    show: "2026-09-14T02:00:00",
-    doors: "2026-09-14T01:00:00",
-    bands: ["Cytrus"],
-    timezone: "America/Denver",
-    ticketInfo: {
-      text: "Alternatively, venmo $20 to Sabrina (@ssab_music) with your first and last name. They will put you on the venue's will call list. You can avoid paying a bunch of fees this way.",
-      links: [
-        {
-          text: "Buy from the venue",
-          url: CERVANTES_TICKET_LINK,
-        },
-        {
-          text: "@ssab_music",
-          url: "https://account.venmo.com/u/ssab_music",
-        },
-      ],
-    },
-  },
-];
+export const EVENTS = [];
 
 export const PAST_EVENTS = [
   {
