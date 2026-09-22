@@ -31,12 +31,14 @@ export const CERVANTES_RECORDINGS = [
     title: "Sweet Sunshine",
     date: "2026-09-13T00:00:00",
     file: "sweet-sunshine-2026-09-13.mp3",
+    isDefault: false,
   },
   {
     id: uuid4(),
     title: "Funky Bitch (Cover)",
     date: "2026-09-13T00:00:00",
     file: "funky-bitch-2026-09-13.mp3",
+    isDefault: false,
   },
   {
     id: uuid4(),
@@ -50,12 +52,14 @@ export const CERVANTES_RECORDINGS = [
     title: "People of the Sun -> All Fall Down (Cover) -> Shining Lights",
     date: "2026-09-13T00:00:00",
     file: "sun-down-lights-2026-09-13.mp3",
+    isDefault: false,
   },
   {
     id: uuid4(),
     title: "Cat In the Window -> 17th Avenue",
     date: "2026-09-13T00:00:00",
     file: "cat-17-2026-09-13.mp3",
+    isDefault: false,
   },
 ];
 
@@ -67,6 +71,7 @@ export const SINGLES = [
     file: "shining-lights-2026-06-26.mp3",
     spotify:
       "https://open.spotify.com/album/7FOjSHKG6B72dAoJKD3K8g?si=5u2uBlqvSnqV45YtxfAxhA",
+    isDefault: false,
   },
 ];
 
