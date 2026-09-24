@@ -76,7 +76,20 @@ export const SINGLES = [
 ];
 
 // TODO: move events to an api call
-export const EVENTS = [];
+export const EVENTS = [
+  {
+    id: uuid4(),
+    title: "Spooks with a side o' Garlic",
+    venue: "Globe Hall",
+    venueUrl: "https://globehall.com/",
+    address: "4483 Logan St, Denver, CO 80216",
+    addressUrl: "https://maps.app.goo.gl/Aa3MUeN2XmJ2LqBu8",
+    bands: ["ETAM", "Oil Well"],
+    doors: "2026-10-30T01:00:00",
+    show: "2026-10-30T02:00:00",
+    timezone: "America/Denver",
+  },
+];
 
 export const PAST_EVENTS = [
   {
