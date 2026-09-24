@@ -1,3 +1,4 @@
+import { isWebpackDefaultLayer } from "next/dist/build/utils";
 import { v4 as uuid4 } from "uuid";
 
 export const CONTACT_EMAIL = "solar.garlic.denver@gmail.com";
@@ -44,22 +45,43 @@ export const CERVANTES_RECORDINGS = [
     id: uuid4(),
     title: "Maybe",
     date: "2026-09-13T00:00:00",
-    file: "maybe-cervantes-2026-09-13.mp3",
+    file: "maybe-2026-09-13.mp3",
     isDefault: true,
   },
   {
     id: uuid4(),
-    title: "People of the Sun -> All Fall Down (Cover) -> Shining Lights",
+    title: "People of the Sun",
     date: "2026-09-13T00:00:00",
-    file: "sun-down-lights-2026-09-13.mp3",
+    file: "people-of-the-sun-2026-09-13.mp3",
     isDefault: false,
   },
   {
     id: uuid4(),
-    title: "Cat In the Window -> 17th Avenue",
+    title: "All Fall Down (Cover)",
     date: "2026-09-13T00:00:00",
-    file: "cat-17-2026-09-13.mp3",
+    file: "all-fall-down-2026-09-13.mp3",
     isDefault: false,
+  },
+  {
+    id: uuid4(),
+    title: "Shining Lights",
+    date: "2026-09-13T00:00:00",
+    file: "shining-lights-2026-09-13.mp3",
+    isDefault: false,
+  },
+  {
+    id: uuid4(),
+    title: "Cat In The Window",
+    date: "2026-09-13T00:00:00",
+    file: "cat-in-the-window-2026-09-13.mp3",
+    isDefault: false,
+  },
+  {
+    id: uuid4(),
+    title: "17th Ave",
+    date: "2026-09-13T00:00:00",
+    file: "17th-ave-2026-09-13.mp3",
+    idDefault: false,
   },
 ];
 
