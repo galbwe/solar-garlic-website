@@ -110,6 +110,8 @@ export const EVENTS = [
     doors: "2026-10-30T01:00:00",
     show: "2026-10-30T02:00:00",
     timezone: "America/Denver",
+    ticketsUrl:
+      "https://www.etix.com/ticket/p/37788593/solar-garlic-wetam-oil-well-denver-globe-hall",
   },
 ];
 

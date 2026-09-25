@@ -88,14 +88,18 @@ export default function EventCard({ event }: EventCardProps) {
         {!!bands && <BandList bands={bands} />}
         {!!cover && <p>${cover} cover</p>}
         {!!ticketsUrl && (
-          <a
-            className="hover:text-yellow hover:underline"
-            href={ticketsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {address}
-          </a>
+          <div className="w-full flex flex-row justify-center">
+            <a
+              className="hover:text-yellow hover:underline"
+              href={ticketsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="cursor-pointer text-2xl font-bold bg-blue-500 text-white px-4 py-2 mt-4 rounded-sm w-full h-14">
+                Get Tickets
+              </button>
+            </a>
+          </div>
         )}
         {!!extraText && <p className="text-md font-light">{extraText}</p>}
 
