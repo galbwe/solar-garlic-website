@@ -46,14 +46,14 @@ export const CERVANTES_RECORDINGS = [
     title: "Maybe",
     date: "2026-09-13T00:00:00",
     file: "maybe-2026-09-13.mp3",
-    isDefault: true,
+    isDefault: false,
   },
   {
     id: uuid4(),
     title: "People of the Sun",
     date: "2026-09-13T00:00:00",
     file: "people-of-the-sun-2026-09-13.mp3",
-    isDefault: false,
+    isDefault: true,
   },
   {
     id: uuid4(),
