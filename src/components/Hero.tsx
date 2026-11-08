@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import armadilloRanch01sm from "../../public/armadillo-ranch-01-sm.jpg";
 
@@ -41,16 +40,20 @@ export default function Hero({ title }: HeroProps) {
             </div>
           )}
           <div className="flex flex-col items-center gap-2 mt-2">
-            <p className="text-4xl">See us at Globe Hall!</p>
-            <p className="text-3xl">10/29/2026</p>
-            <Link
-              href="https://www.etix.com/ticket/p/37788593/solar-garlic-wetam-oil-well-denver-globe-hall"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-5xl mt-1 underline text-yellow-light"
-            >
-              Get Tickets
-            </Link>
+            <p className="text-4xl">
+              See us Live at{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={"https://moesdenver.com/"}
+              >
+                <span className="underline hover:pointer-coarse:">
+                  Moe&apos;s BBQ
+                </span>
+              </a>
+              !
+            </p>
+            <p className="text-3xl">1/8/2027</p>
           </div>
         </div>
       </section>

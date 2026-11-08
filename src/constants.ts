@@ -101,17 +101,14 @@ export const SINGLES = [
 export const EVENTS = [
   {
     id: uuid4(),
-    title: "Spooks with a side o' Garlic",
-    venue: "Globe Hall",
-    venueUrl: "https://globehall.com/",
-    address: "4483 Logan St, Denver, CO 80216",
-    addressUrl: "https://maps.app.goo.gl/Aa3MUeN2XmJ2LqBu8",
-    bands: ["ETAM", "Oil Well"],
-    doors: "2026-10-30T01:00:00",
-    show: "2026-10-30T02:00:00",
+    title: "Moe's BBQ Englewood",
+    venue: "Moe's Original BBQ",
+    venueUrl: "https://moesdenver.com/live-music",
+    address: "3295 S Broadway, Englewood, CO 80113",
+    addressUrl: "https://maps.app.goo.gl/7R1z1rzj4pCpv7FV9",
+    doors: "2027-01-09T02:00:00",
+    show: "2027-01-09T03:00:00",
     timezone: "America/Denver",
-    ticketsUrl:
-      "https://www.etix.com/ticket/p/37788593/solar-garlic-wetam-oil-well-denver-globe-hall",
   },
 ];
 
