@@ -39,22 +39,6 @@ export default function Hero({ title }: HeroProps) {
               <NavLinks mobile items={navItems} linkSize="text-4xl" />
             </div>
           )}
-          <div className="flex flex-col items-center gap-2 mt-2">
-            <p className="text-4xl">
-              See us Live at{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={"https://moesdenver.com/"}
-              >
-                <span className="underline hover:pointer-coarse:">
-                  Moe&apos;s BBQ
-                </span>
-              </a>
-              !
-            </p>
-            <p className="text-3xl">1/8/2027</p>
-          </div>
         </div>
       </section>
       <OpaqueOverlay />
