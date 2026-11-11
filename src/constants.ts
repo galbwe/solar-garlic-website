@@ -1,6 +1,8 @@
 import { isWebpackDefaultLayer } from "next/dist/build/utils";
 import { v4 as uuid4 } from "uuid";
 
+import type { Event } from "@/types";
+
 export const CONTACT_EMAIL = "solar.garlic.denver@gmail.com";
 
 export const SPOTIFY_URL =
@@ -98,19 +100,7 @@ export const SINGLES = [
 ];
 
 // TODO: move events to an api call
-export const EVENTS = [
-  {
-    id: uuid4(),
-    title: "Moe's BBQ Englewood",
-    venue: "Moe's Original BBQ",
-    venueUrl: "https://moesdenver.com/live-music",
-    address: "3295 S Broadway, Englewood, CO 80113",
-    addressUrl: "https://maps.app.goo.gl/7R1z1rzj4pCpv7FV9",
-    doors: "2027-01-09T02:00:00",
-    show: "2027-01-09T03:00:00",
-    timezone: "America/Denver",
-  },
-];
+export const EVENTS: Event[] = [];
 
 export const PAST_EVENTS = [
   {
